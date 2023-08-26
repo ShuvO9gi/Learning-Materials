@@ -1,0 +1,90 @@
+:root {
+  --background: rgb(203, 175, 98);
+  --background-elemnt: rgb(67, 67, 143);
+  --font: rgb(85, 69, 69);
+  --white: rgb(180, 147, 147);
+  --red: rgb(207, 77, 77);
+
+  --border: 5px solid var(--red);
+}
+
+html,
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: var(--background);
+  margin: 10px;
+}
+
+.title {
+  font-size: 2em;
+  color: var(--font);
+  text-align: center;
+  border: var(--border);
+}
+
+.list {
+  height: 100%;
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 100px;
+  gap: 3px;
+  justify-content: center;
+  align-content: center;
+  padding: 5px 10px 10px;
+  border: var(--border);
+  overflow: auto;
+}
+
+.list li {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  background-color: var(--background-elemnt);
+  color: var(--white);
+  font-size: 1.5em;
+}
+
+.list li a {
+  text-decoration: none;
+  color: var(--white);
+}
+
+.list li:first-child {
+  grid-column: span 12;
+}
+
+.list li:nth-child(2) {
+  grid-column: span 6;
+}
+
+.list li:nth-child(3) {
+  grid-column: span 6;
+}
+
+.list li:nth-child(4) {
+  grid-column: span 6;
+}
+
+.list li:nth-child(5) {
+  grid-column: span 6;
+}
+
+.list li:last-child {
+  grid-column: span 12;
+}
+
+@media screen and (max-width: 498px) {
+  .list li:nth-child(2) {
+    grid-column: span 12;
+  }
+  .list li:nth-child(3) {
+    grid-column: span 12;
+  }
+  .list li:nth-child(4) {
+    grid-column: span 12;
+  }
+  .list li:nth-child(5) {
+    grid-column: span 12;
+  }
+}

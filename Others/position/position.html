@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uses of Position</title>
+    <style>
+      body {
+        padding-bottom: 2000px;
+        margin: 0; /* by default body has margin: 8px */
+        margin-top: 55px; /* makes a margin from top for the fixed header. so that, page content & header will not be overlapped */
+        margin-left: 80px; /* makes a margin from left for the fixed sidebar. so that, page content & sidebar will not be overlapped */
+      }
+
+      /* position fixed */
+      .header {
+        background-color: lightseagreen;
+        position: fixed; /* it will look like an inline-block */ /* placed in the browser window */
+        top: 0;
+        left: 0;
+        right: 0; /* if we set opposite property then element will be stretched to left to right & it will be responsive */
+        height: 45px; /* height or width will also be useful for element to be stretched but it will not be responsive like before */
+        z-index: 100; /* all position declared(except static) elemnts has z-index default value 0. Later elements will flow over the before
+                        elements. To change it uses higher z-index to the before elements then it will overflow over the other elements  */
+      }
+
+      .sidebar {
+        background-color: lightcoral;
+        position: fixed;
+        top: 45px;
+        bottom: 0; /* since we set oppposite property element will be stretched top(45px) to bottom */
+        left: 0;
+        width: 70px;
+      }
+
+      /* position absolute */
+      .absolute {
+        background-color: rgb(61, 136, 182);
+        color: whitesmoke;
+        position: absolute; /* placed in the page(current) window, if you scroll the page it will also be scrolled with that current page  */
+        top: 0;
+        bottom: 0;
+        left: 350px;
+        z-index: 101;
+      }
+
+      .absolute-fixed {
+        background-color: rgba(255, 0, 0, 0.5);
+        color: antiquewhite;
+        font-size: 25px;
+        text-align: center;
+        position: absolute; /* when used inside a fixed position it's positioning will be with respect to that container */
+        top: 0;
+        right: 0;
+        height: 25px;
+        width: 25px;
+      }
+
+      /* position relative */
+      .relative {
+        background-color: lightgreen;
+        position: relative; /* it doesn't make any change at all but it will be the container(like page) for absolute */
+        width: 250px;
+        height: 200px;
+      }
+
+      .absolute-relative {
+        background-color: lightslategray;
+        position: absolute;
+        bottom: 20px;
+        right: 40px;
+        z-index: 101; /* z-index can be negative(-) value */
+      }
+
+      .absolute-relative1 {
+        background-color: rgb(57, 147, 237);
+        position: absolute;
+        top: 20px;
+        right: 40px;
+      }
+
+      /* position sticky */
+      /* A sticky element toggles between relative and fixed, depending on the scroll position.
+       It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). */
+      .sticky {
+        height: 40px;
+        background: radial-gradient(circle, grey 25%, red 50%, green, purple);
+        position: sticky;
+        top: 0;
+        z-index: 105;
+      }
+
+      .sticky2 {
+        height: 40px;
+        background: repeating-linear-gradient(
+          to left,
+          pink,
+          red 50%,
+          green,
+          purple
+        );
+        position: sticky;
+        top: 0;
+        z-index: 105;
+      }
+
+      .sticky3 {
+        height: 40px;
+        background: repeating-linear-gradient(
+          45deg,
+          grey 25%,
+          red 50%,
+          green,
+          purple
+        );
+        position: sticky;
+        bottom: 0;
+      }
+
+      .div1 {
+        /* background-color: lightblue; */
+        background-image: linear-gradient(to right, red, green);
+        position: static; /* (default) every element has this position invisibly */
+        width: 200px;
+        height: 200px;
+        z-index: 105; /* all elements or position(static) > "Ignore all the positioning instructions from left, top, z-index, etc."
+                        N.B.: z-index is not ignored for flex-items or grid-items */
+      }
+
+      .div2 {
+        background-color: lightpink;
+        width: 200px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">Header</div>
+    <div class="sidebar">
+      Sidebar
+      <div class="absolute-fixed">X</div>
+    </div>
+    <div class="absolute">Absolute</div>
+    <div>
+      <div class="sticky">Sticky121</div>
+      <div class="div1">div1</div>
+    </div>
+    <div class="sticky">Sticky</div>
+    <div class="div1">div1</div>
+    <div class="sticky2">Sticky2</div>
+    <div class="div2" style="padding-bottom: 3000px">div2</div>
+    <div class="sticky3">Sticky3</div>
+    <div class="relative">
+      Relative
+      <div class="absolute-relative">5:30</div>
+      <div class="absolute-relative1">19:30</div>
+    </div>
+  </body>
+</html>

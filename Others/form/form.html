@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Example</title>
+    <style>
+      * {
+        /* box-sizing: border-box; */
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .container {
+        display: flex;
+      }
+
+      .container1 {
+        flex: 1;
+        border: 2px dotted lightsalmon;
+        background-color: antiquewhite;
+        margin: 10px;
+        padding: 10px;
+      }
+
+      .form1 label {
+        display: block;
+      }
+
+      .container2 {
+        border: 1px solid red;
+        flex: 1;
+        padding: 20px;
+        margin: 10px;
+      }
+
+      #form2 fieldset {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 20px;
+        line-height: 30px;
+        background-color: lightgrey;
+      }
+
+      #form2 input {
+        display: block;
+      }
+
+      .container3 {
+        border: 2px solid gray;
+        padding: 20px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container1">
+        <form class="form1" action="/action_page.php" novalidate>
+          <label for="name">Name:</label>
+          <input type="text" name="user-name" id="name" value="" readonly />
+          <label for="mobile">Mobile:</label>
+          <input type="text" name="mobile-number" disabled />
+        </form>
+      </div>
+      <!-- <div>Divider</div> -->
+      <div class="container2">
+        <form id="form2">
+          <fieldset>
+            <legend
+              style="
+                background-color: rgb(50, 149, 183);
+                padding: 10px;
+                color: bisque;
+              "
+            >
+              Form Example
+            </legend>
+            <label for="name">Name:</label>
+            <input type="text" name="user-name" id="name" value="" />
+            <label for="mobile">Mobile:</label>
+            <input type="tel" name="mobile-number" />
+            <label for="email">Mobile:</label>
+            <input type="email" name="E-mail" />
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter your password..."
+            />
+            <br />
+            <br />
+            <input
+              type="submit"
+              value="Submit"
+              formnovalidate
+              formmethod="get"
+              formtarget="_blank"
+              formenctype="application/x-www-form-urlencoded"
+              formaction="/action_page.php"
+            />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="container3">
+      <form class="form3" action="/action_page.php">
+        <label for="name">Name:</label>
+        <input type="text" name="user_name" id="name" value="" /><br /><br />
+        <label for="email">Email:</label>
+        <input type="email" name="user_email" id="email" value="" /><br /><br />
+        <label for="phone">Phone Number:</label>
+        <input
+          type="tel"
+          name="user_phone"
+          id="phone"
+          placeholder="+88-019-12345678"
+          pattern="+88-[0-9]{3}-[0-9]{8}"
+        /><br /><br />
+        <label for="pwd">Password:</label>
+        <input
+          type="password"
+          name="password"
+          id="pwd"
+          placeholder="Enter your password..."
+          minlength="8"
+          required
+        /><br /><br />
+        <label for="bday">Birthday:</label>
+        <input type="date" name="birthday" id="bday" value="" /><br /><br />
+        <label for="month">Name of the Month:</label>
+        <input type="month" name="month" id="month" value="" /><br /><br />
+        <label for="week">Week of the Year:</label>
+        <input type="week" name="week" id="week" value="" /><br /><br />
+        <label for="time">Time:</label>
+        <input type="time" name="time" id="time" value="" /><br /><br />
+        <label for="dt">Date & Time:</label>
+        <input
+          type="datetime-local"
+          name="date_time"
+          id="dt"
+          value=""
+        /><br /><br />
+        <label for="url">Web Address:</label>
+        <input type="url" name="url" id="url" value="" /><br /><br />
+        <label for="search">Search:</label>
+        <input type="search" name="Search" id="search" value="" /><br /><br />
+        <label for="check">Checkbox:</label>
+        <input type="checkbox" name="Check" id="check" value="" /><br /><br />
+        <label for="select">Select:</label>
+        <input type="radio" name="Select" id="select" value="" /><br /><br />
+        <label for="range">Range:</label>
+        <input
+          type="range"
+          name="Range"
+          id="range"
+          value="40%"
+          min="0"
+          max="150"
+        /><br /><br />
+        <label for="number">Number:</label>
+        <input
+          type="number"
+          name="Number"
+          id="number"
+          value="0"
+          min="0"
+          max="10"
+        /><br /><br />
+        <label for="clr">Select Color:</label>
+        <input type="color" name="Color" id="clr" value="#ff0000" /><br /><br />
+        <label for="file">Multiple Files:</label>
+        <input
+          type="file"
+          name="Uploaded File"
+          id="file"
+          value=""
+          accept="image/*"
+          multiple
+        />
+        <!-- accept="file_ext(.jpg,.doc)|image/*|audio/*|video/*|media_type(all valid media)" -->
+        <br /><br />
+        <label for="comments">Comments:</label>
+        <textarea name="Comments" id="comments" style="resize: none">
+Write down your comments...
+        </textarea>
+        <br /><br />
+        <!--  cols="30" rows="10" can be declared -->
+
+        <label for="option">Choose:</label>
+        <select name="Language" id="option">
+          <optgroup label="Frontend">
+            <option value="react">React</option>
+            <option value="javascript" selected>Javascript</option>
+            <option value="next.js">Next.js</option>
+          </optgroup>
+          <optgroup label="Backend">
+            <option value="python">Python</option>
+            <option value="php">PHP</option>
+            <option value="c++" disabled>C++</option>
+          </optgroup>
+        </select>
+        <br /><br />
+        <label for="browser">Choose your Browser:</label>
+        <input list="browsers" name="Browser" id="browser" />
+        <datalist id="browsers">
+          <option value="Edge">Edge</option>
+          <option value="Chrome">Chrome</option>
+          <option value="Safari">Safari</option>
+        </datalist>
+        <br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>

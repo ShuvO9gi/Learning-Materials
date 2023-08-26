@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layout</title>
+    <link rel="stylesheet" href="../styles/common.css" />
+    <link rel="stylesheet" href="../styles/layout.css" />
+    <style>
+      .container {
+        height: 100vh;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: 80px auto 80px;
+        /* grid-template-areas:
+          ". h h h h h h h h h h ."
+          "m m m c c c c c c c c c"
+          ". . f f f f f f f f f f"; */ /* dot(.) means blank column */
+      }
+
+      /* this grid-column numbering procedure can be replaced by grid-template-areas */
+      .header {
+        grid-column-start: 4;
+        grid-column-end: -1;
+        /* grid-column: grid-column-start / grid-column-end */
+        /* grid-column: 1 / 13; */
+        /* grid-column: 1 / -1; */
+      }
+
+      .menu {
+        /* grid-column: 1 / 4; */
+        grid-column: 1 / span 3;
+        grid-column: auto / span 3;
+        grid-row: 1 / -1;
+      }
+
+      .content {
+        /* grid-column: 4 / 13;
+        grid-column: 4 / -1; 
+        grid-column: 4 / span 9; */ /* spread upto 9 column */
+        grid-column: 4 / -1;
+      }
+
+      .footer {
+        grid-column: 4 / 13;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">Grid-Template Layout</h1>
+    <div class="container">
+      <div class="header">HEADER</div>
+      <div class="menu">MENU</div>
+      <div class="content">CONTENT</div>
+      <div class="footer">FOOTER</div>
+    </div>
+
+    <h1 class="title">Grid-Template-Areas Layout</h1>
+    <div class="container-areas">
+      <div class="header-area">HEADER</div>
+      <div class="menu-area">MENU</div>
+      <div class="content-area">CONTENT</div>
+      <div class="footer-area">FOOTER</div>
+    </div>
+  </body>
+</html>

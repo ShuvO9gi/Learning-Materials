@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transform & Transition</title>
+    <style>
+      .transform-example {
+        width: 200px;
+        height: 200px;
+        background-color: lightblue;
+        margin: 10px;
+        transform: translate(400px, -50px);
+      }
+
+      .transition-example {
+        width: 200px;
+        height: 200px;
+        background-color: rgb(246, 98, 120);
+        margin: 10px;
+        transition: background-color 5s ease-in, width 2s linear;
+      }
+
+      .transition-example:hover {
+        background-color: lightgreen;
+        cursor: pointer;
+      }
+
+      .transition-example:active {
+        background-color: lightskyblue;
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="transform-example">Transform</div>
+    <div class="transition-example">Transition</div>
+  </body>
+</html>

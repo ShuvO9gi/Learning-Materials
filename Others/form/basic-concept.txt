@@ -1,0 +1,20 @@
+
+> label:
+    <label> must be equal to the id attribute of the related element to bind them together.
+    Users who have difficulty clicking on very small regions (such as checkboxes) - 
+    because when a user clicks the text within the <label> element, it toggles the input (this increases the hit area).
+
+    label can be used as attribute of an element & it will be showed to the browser(like <optgroup label="label_example">
+    or <option label="label_example">)
+
+> name & value:
+    In <input />, name & value attribute are used. So that, when we submit the form, name & value also submitted.
+    Incase of input(type="text), if you want to set some default value then write it on value attribute(like value="Default Value").
+    But if we leave it blank then user written text will be submitted.
+
+    For <option> or radio button, value is defined as default value. If attribute value is blank("") or attribute value is not mentioned
+    but innertext is given then when form is submitted it will treated as value.
+
+> input element has 
+
+> form(attribute) can be used in label & textarea to define which <form> it will be used for by using id(attribute) in the <form> 

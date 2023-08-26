@@ -1,0 +1,85 @@
+:root {
+  --first-element: #06d6a0;
+  --second-elemnt: #ef476f;
+  --third-element: #118ab2;
+  --fourth-element: #ffd166;
+
+  --body-background: antiquewhite;
+  --border-color: #9d324b;
+  --text-color: rgb(89, 84, 84);
+
+  --border: 5px solid var(--border-color);
+}
+
+html,
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 2em;
+  color: var(--text-color);
+  background-color: var(--body-background);
+}
+
+.container1-1 > div:nth-child(1n) {
+  background-color: var(--first-element);
+}
+
+.container1-1 > div:nth-child(2n) {
+  background-color: var(--second-elemnt);
+}
+
+.container1-1 > div:nth-child(3n) {
+  background-color: var(--third-element);
+}
+
+.container1-2 > div {
+  background-color: var(--fourth-element);
+}
+
+.container {
+  height: 80vh;
+  border: var(--border);
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+}
+
+.container1-1 {
+  flex: 1 1 60vw;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 3px;
+}
+
+.item1-1 {
+  flex-grow: 1;
+  display: flex;
+  /* justify-content: center;
+    align-items: center; */
+}
+
+.a {
+  flex-basis: 49%;
+}
+
+.b {
+  flex-basis: 49%;
+}
+
+.container1-2 {
+  flex: 1 0 40vw;
+  display: flex;
+}
+
+.item1-2 {
+  flex-grow: 1;
+}
+
+@media screen and (max-width: 468px) {
+  .container {
+    flex-wrap: wrap;
+  }
+
+  .item1-1 {
+    flex: 1 0 100%;
+  }
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animation, Transition & Translate</title>
+    <style>
+      .wrap {
+        display: flex;
+      }
+
+      .container {
+        width: 100px;
+        height: 100px;
+        margin-top: 100px;
+        background-color: brown;
+        /* animation: rotation 4s linear 1 alternate forwards; */
+        animation-name: rotation;
+        animation-duration: 4s;
+        animation-timing-function: linear;
+        animation-delay: 0; /* default */
+        animation-iteration-count: 1;
+        animation-direction: alternate;
+        animation-fill-mode: forwards;
+        animation-play-state: running; /* default */
+      }
+
+      .container1 {
+        width: 100px;
+        height: 100px;
+        margin-top: 100px;
+        background-color: brown;
+        animation: rotation1 4s linear 1 alternate forwards;
+      }
+
+      .container:hover {
+        width: 200px;
+      }
+
+      @keyframes rotation {
+        0% {
+          transform: rotate(0deg); /* rotate clockwise */
+          /* transform: rotate(360deg); */ /* rotate anticlockwise */
+          transition: animation 9s ease;
+          background-color: blueviolet;
+          margin-left: 0;
+          margin-top: 100px;
+        }
+
+        25% {
+          background-color: blue;
+          margin-left: 300px;
+          margin-top: 100px;
+        }
+
+        50% {
+          background-color: pink;
+          margin-left: 300px;
+          margin-top: 400px;
+        }
+
+        75% {
+          background-color: gold;
+          margin-left: 0;
+          margin-top: 400px;
+        }
+
+        100% {
+          transform: rotate(360deg);
+          background-color: green;
+          margin-left: 0;
+          margin-top: 100px;
+        }
+      }
+
+      @keyframes rotation1 {
+        0% {
+          transform: rotate(0deg);
+          background-color: purple;
+          /* margin-left: 0;
+          margin-top: 100px; */
+        }
+
+        25% {
+          transform: translateX(300px); /* invisibly translateY(0px)  */
+          background-color: blue;
+          /* margin-left: 300px;
+          margin-top: 100px; */
+        }
+
+        50% {
+          transform: translateX(300px) translateY(300px);
+          background-color: pink;
+          /* margin-left: 300px;
+          margin-top: 400px; */
+        }
+
+        75% {
+          transform: translateX(0px) translateY(300px); /* translateX(0px) is redundent */
+          background-color: gold;
+          /* margin-left: 0;
+          margin-top: 400px; */
+        }
+
+        100% {
+          transform: translateY(0px);
+          background-color: green;
+          /* margin-left: 0;
+          margin-top: 100px; */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="container"></div>
+      <div class="container1"></div>
+    </div>
+  </body>
+</html>

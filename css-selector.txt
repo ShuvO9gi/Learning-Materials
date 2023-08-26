@@ -1,0 +1,7 @@
+.class_name a {
+    //all <a> inside this class_name
+}
+
+.class_name > a {
+    //Only those <a> which are direct child of this class_name
+}

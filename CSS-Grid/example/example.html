@@ -1,0 +1,74 @@
+<!-- Bootstrap uses HTML elements and CSS properties that require the HTML5 doctype.
+Always include the HTML5 doctype at the beginning of the page, along with the lang attribute and the correct character set: -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- The tag with http-equiv=”X-UA-Compatible” content=”IE=edge” ensures that IE uses the latest available rendering engine
+    to render a web page, helping to ensure compatibility with modern web standards and features.
+    http-equiv attribute is used to define an HTTP header for the document, and X-UA-Compatible is a non-standard header
+    that Microsoft introduced to support compatibility with older versions of IE.
+    IE=edge means IE should use the latest (edge) version of its rendering engine -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Bootstrap 3 is designed to be responsive to mobile devices. Mobile-first styles are part of the core framework.
+        To ensure proper rendering and touch zooming, add the viewport meta tag.width=device-width part sets the
+         width of the page to follow the screen-width of the device (which will vary depending on the device).
+        initial-scale=1 part sets the initial zoom level when the page is first loaded by the browser. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- You can disable zooming capabilities on mobile devices by adding user-scalable=no to the viewport meta tag.This disables zooming, 
+    meaning users are only able to scroll, and results in your site feeling a bit more like a native application. -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"> -->
+
+    <title>Bootstrap vs CSS Grid</title>
+    <link rel="stylesheet" href="../styles/example.css" />
+
+    <!-- Ddon't need to download Bootstrap if you add it from CDN
+        MaxCDN provides CDN(Content Delivery Network) support for Bootstrap's CSS and JavaScript. You must also include jQuery. -->
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library(Bootstrap uses jQuery for JavaScript plugins (like modals, tooltips, etc)) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <!-- CSS Grid -->
+    <h1 class="title">CSS GRID</h1>
+    <div class="wrapper">
+      <div class="header">HEADER</div>
+      <div class="menu">MENU</div>
+      <div class="content">CONTENT</div>
+      <div class="footer">FOOTER</div>
+    </div>
+
+    <!-- RAW CSS -->
+    <h1 class="title">RAW CSS</h1>
+    <div class="carrier">
+      <div class="header">HEADER</div>
+      <div class="clear">
+        <div class="menu left">MENU</div>
+        <div class="content right">CONTENT</div>
+      </div>
+      <div class="footer">FOOTER</div>
+    </div>
+
+    <!-- BOOTSTRAP -->
+    <h1 class="title">BOOTSTRAP</h1>
+    <div class="row">
+      <div class="col-xs-12 header">HEADER</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-4 menu">MENU</div>
+      <div class="col-xs-8 content">CONTENT</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 footer">FOOTER</div>
+    </div>
+  </body>
+</html>

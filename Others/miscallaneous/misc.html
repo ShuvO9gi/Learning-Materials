@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Miscellaneous</title>
+    <style>
+      body {
+        padding: 20px;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      details > p {
+        background: linear-gradient(to bottom, purple, red);
+        padding: 10px;
+        color: rgb(205, 205, 205);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <details>
+          <summary
+            style="
+              padding: 10px;
+              background: linear-gradient(to right, red, green);
+              box-shadow: 2px 2px 2px #4f2249;
+            "
+          >
+            Use of Details with Summary
+          </summary>
+          <p>
+            My favorite color is <del>red</del> <ins>blue</ins>! <br />
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
+            obcaecati iusto eum quibusdam soluta, ducimus vero nihil aliquid
+            quos amet sequi rem id sed. Impedit quas quod consequatur
+            laudantium! Eos? Commodi accusamus praesentium perferendis nihil
+            expedita unde repellendus labore vero suscipit provident inventore
+            laudantium ex voluptate, quas sunt ad, saepe fugit assumenda
+            officiis porro ut odio qui hic cupiditate? Nihil.
+          </p>
+        </details>
+      </section>
+      <section>
+        <h2>Order List(ol)</h2>
+        <p>Here, value attribute can reset numbering</p>
+        <ol>
+          <li>Peanut</li>
+          <li value="11">Butter</li>
+          <li>Bread</li>
+          <li>Milk</li>
+          <ul>
+            <li>Coffee</li>
+            <li>Tea</li>
+          </ul>
+          <li>Cheese</li>
+        </ol>
+      </section>
+      <section>
+        <h2>Unorder List(ul)</h2>
+        <ul>
+          <li>Mango</li>
+          <li style="list-style-type: square">Apple</li>
+          <li style="list-style-type: lower-alpha">Watermalon</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Description List(dl)</h2>
+        <p>
+          dl(description list), dt(description terms/names), dd(description
+          descriptions)
+        </p>
+        <dl>
+          <dt>Jackfruit</dt>
+          <dd>National Fruit</dd>
+          <dt>Hilsha</dt>
+          <dd>National Fish</dd>
+        </dl>
+      </section>
+      <section>
+        <h2>Menu List(menu)</h2>
+        <menu type="context"
+          ><li>This is a context List.</li>
+          <li>This is a context List.</li></menu
+        >
+        <menu type="toolbar"><li>This is a Toolbar List.</li></menu>
+      </section>
+      <section>
+        <h2>Figure with Caption</h2>
+        <figure>
+          <img
+            src="/public/images/logo/google.jpg"
+            alt="google"
+            width="200px"
+          />
+          <figcaption>Fig.1: Google Logo</figcaption>
+        </figure>
+      </section>
+      <section>
+        <h2>Use of Source Element</h2>
+        <p>
+          Here, source tag allows you to specify alternative video/audio/image
+          files which the browser may choose from, based on browser support or
+          viewport width. The browser will choose the first source it supports.
+        </p>
+        <audio src="" controls>
+          <source src="#,mp3" type="audio/mp3" />
+          <source src="#,mp3" type="audio/mp3" />
+        </audio>
+        <audio src="#.mp3" controls loop muted autoplay preload="auto">
+          This text will be visible when browser doesn't support this audio file
+        </audio>
+        <video src="" controls>
+          <source src="#.mp4" type="video/mp4" />
+          <source src="#.mp4" type="video/mp4" />
+        </video>
+        <figure>
+          <video
+            src="#.mp4"
+            poster="/public/images/coding/coding6.jpg"
+            width="200px"
+            height="auto"
+          >
+            Video null
+          </video>
+          <figcaption>
+            Image will be shown until video is dowanloading/not played(like
+            Video Thumbnail)
+          </figcaption>
+        </figure>
+        <picture>
+          <source
+            media="(min-width: 650px)"
+            srcset="/public/images/coding/coding5.webp"
+          />
+          <img
+            src="/public/images/coding/coding2.jpg"
+            alt="coding"
+            style="width: auto"
+          />
+        </picture>
+      </section>
+      <section>
+        <h2>Dialog Window</h2>
+        <dialog open="open">This is an open dialog window.</dialog>
+      </section>
+    </main>
+  </body>
+</html>

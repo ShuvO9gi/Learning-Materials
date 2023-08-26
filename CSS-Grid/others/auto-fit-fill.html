@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexible Layout</title>
+    <link rel="stylesheet" href="../styles/common.css" />
+    <style>
+      .container {
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fit,
+          90px
+        ); /* there will be a blank space until it got the 90px column space */
+
+        /* between auto-fit & auto-fill there is only one difference i.e. when all elements are covered in one row by 90px leftover space will
+        be filled with blank column of 90px(it will look like a blank space) i.e. auto-fill doesn't stretched the column any more where
+        auto-fit will stretched the column according to 1fr ration. So, auto-fit is more recommended */
+        grid-template-columns: repeat(
+          auto-fit,
+          minmax(90px, 1fr)
+        ); /* in this case blank space is covered by stretching all the column
+            by minmax 1fr ratio until it got the 90px column space also it coveres the whole row though all elements */
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        grid-template-rows: repeat(1, 1fr);
+        grid-auto-rows: 1fr;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+      <div>10</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nested Layout Example</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Roboto:wght@400;700&display=swap");
+
+      body {
+        font-family: Roboto, Arial;
+      }
+
+      #container {
+        border: 5px solid rgb(234, 120, 120);
+      }
+
+      .horizontal {
+        display: inline-block;
+        vertical-align: top;
+      }
+
+      .horizontal:first-of-type {
+        width: 100px;
+        margin: 30px 10px 0;
+      }
+
+      .horizontal:nth-of-type(2) {
+        width: 350px;
+        padding: 20px;
+      }
+
+      .horizontal:last-of-type {
+        width: 100px;
+        margin-top: 62px;
+        padding: 10px;
+        background-color: rgb(89, 89, 228);
+        font-size: 20px;
+        font-weight: bold;
+        color: rgb(176, 198, 215);
+        letter-spacing: 0.1rem;
+        text-align: center;
+        border-radius: 05px;
+      }
+
+      .horizontal img {
+        width: 80px;
+        border-radius: 40px;
+      }
+
+      .vertical {
+        margin: 10px;
+        padding: 5px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div>
+        <div class="horizontal">
+          <img src="../../images/others/logo.png" alt="logo" />
+        </div>
+        <div class="horizontal">
+          <div class="vertical">Oliver</div>
+          <div class="vertical">Chat Logo</div>
+          <div class="vertical">Popular</div>
+        </div>
+        <div class="horizontal">Follow</div>
+      </div>
+
+      <div>
+        <div class="horizontal">
+          <img src="../../images/others/google.webp" alt="logo" />
+        </div>
+        <div class="horizontal">
+          <div class="vertical">Google</div>
+          <div class="vertical">Company Logo</div>
+          <div class="vertical">Popular</div>
+        </div>
+        <div class="horizontal">Follow</div>
+      </div>
+    </div>
+  </body>
+</html>

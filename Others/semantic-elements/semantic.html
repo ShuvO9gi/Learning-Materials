@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Semantic Elements</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: space-around;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>Header can contains one or more heading elements (h1 - h6)</h1>
+        <p>describes the content at the top of the page body</p>
+        <p>logo or icon</p>
+        <p>authorship information</p>
+        <p>navigational links or a search bar.</p>
+        <nav>
+          <h1><mark>Navigation</mark> defines a set of navigation links.</h1>
+          <a href="#">HTML</a>
+          <a href="/action.php">CSS</a>
+        </nav>
+      </header>
+
+      <section>
+        <p>
+          Semantic elements = elements with a meaning. A semantic element
+          clearly describes its meaning to both the browser and the developer.
+        </p>
+      </section>
+
+      <section>
+        <h2>Example of Semantic Elements: form, table, audio, video.</h2>
+        <p>
+          section defines elements in a document, such as chapters, headings, or
+          any other area of the document with the same theme.
+        </p>
+        <article>
+          <header><h1>Header</h1></header>
+          <p>
+            article holds content that makes sense on its own such as
+            <strong>articles, blogs, and comments. </strong>
+          </p>
+        </article>
+      </section>
+
+      <article>
+        <!--Main Content-->
+      </article>
+
+      <aside>
+        <!--Additional information-->
+        Aside content should be indirectly related to the surrounding
+        content.(like a sidebar)
+      </aside>
+
+      <footer>
+        Footer
+        <p>Authorship Info</p>
+        <p>Copyright Info</p>
+        <address>Contact Information</address>
+        <p>Site map</p>
+        <img
+          src="/public/images/coding/coding2.jpg"
+          alt="Workplace"
+          usemap="#workmap"
+          width="400"
+          height="379"
+        />
+        <map name="workmap">
+          <area
+            shape="rect"
+            coords="34,44,270,350"
+            alt="Computer"
+            href="/public/images/coding/coding6.jpg"
+          />
+          <area
+            shape="rect"
+            coords="290,172,333,250"
+            alt="Phone"
+            href="/public/images/coding/coding4.jpg"
+          />
+        </map>
+      </footer>
+    </main>
+  </body>
+</html>

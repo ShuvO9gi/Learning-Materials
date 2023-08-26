@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table</title>
+    <style>
+      table {
+        width: 50%;
+        height: 400px;
+        font-family: "Times New Roman", Times, serif;
+        font-size: 1.5em;
+        border: 2px solid rgb(211, 39, 39);
+        /* border-collapse: collapse; */ /* table borders should be collapsed into a single border */
+        padding: 10px;
+        margin: 20px;
+      }
+
+      caption {
+        font-family: "Times New Roman", Times, serif;
+        font-weight: bold;
+        padding: 10px;
+        margin: 10px;
+        background: linear-gradient(to right, red, green);
+        color: rgb(228, 228, 228);
+      }
+
+      /* for responsive table, use table within a div.container with overflow-x: auto; */
+
+      /* tbody {
+        display: table-row-group;
+        vertical-align: middle;
+        border: 2px solid lightcoral;
+      } //(default value)*/
+
+      /* colgroup {
+        display: table-column-group;
+      } //default value */
+
+      thead {
+        text-transform: uppercase;
+        letter-spacing: 2%;
+      }
+
+      td,
+      th {
+        border: 2px solid;
+        text-align: center;
+        padding: 10px;
+      }
+
+      tr:nth-child(odd):hover {
+        background: linear-gradient(45deg, darkblue, red);
+      }
+
+      tr:nth-child(even) {
+        background-color: lightcoral;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>
+        Table Example
+      </caption>
+      <colgroup>
+        <col span="2" style="background-color: rgb(80, 80, 136)" />
+        <col />
+        <col style="background: linear-gradient(to bottom, purple, red)" />
+      </colgroup>
+      <thead>
+        <th>Name</th>
+        <th>Math</th>
+        <th>English</th>
+        <th>Total</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John</td>
+          <td>75</td>
+          <td>70</td>
+          <td>145</td>
+        </tr>
+        <tr>
+          <td>Rahman</td>
+          <td>55</td>
+          <td>60</td>
+          <td>115</td>
+        </tr>
+        <tr>
+          <td>Hossain</td>
+          <td>70</td>
+          <td>30</td>
+          <td rowspan="2">Both of them are failed in English</td>
+        </tr>
+        <tr>
+          <td>Abraham</td>
+          <td>60</td>
+          <td>30</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <td colspan="3">Sum</td>
+        <td>215</td>
+      </tfoot>
+    </table>
+  </body>
+</html>

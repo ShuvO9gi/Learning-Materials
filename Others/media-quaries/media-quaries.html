@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Load an icon library -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- load external media query -->
+    <!-- caution: For linking css to a html file you have to maintain the order(specially for media quaries) carefully,
+    otherwise you will get abnormal effect because when the html file loaded it load the file from top to bottom line by line.
+    So, below media quarey will not act as expected -->
+    <link
+      rel="stylesheet"
+      media="only screen and (orientation: portrait)"
+      href="portrait.css"
+    />
+    <style>
+      body {
+        background-color: rgb(202, 202, 202);
+      }
+
+      /* mobile first design */
+      /* outer navigation */
+      .nav-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .nav-list > li > a {
+        text-decoration: none;
+        padding: 20px;
+        display: block;
+        background-color: grey;
+        border-bottom: 1px solid whitesmoke;
+      }
+
+      .nav-list > li:hover > a {
+        background: linear-gradient(to right, purple, red);
+      }
+
+      /* inner navigation */
+      .container1-inner-nav {
+        position: relative;
+      }
+
+      .container1-inner-nav-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(to right, purple, blue);
+      }
+
+      .container1-inner-nav-list a {
+        text-decoration: none;
+        padding: 20px;
+        color: rgb(211, 211, 211);
+        border-bottom: 1px solid whitesmoke;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .container1-inner-nav-list a:hover {
+        background: linear-gradient(to left, purple, red);
+      }
+
+      .container1-inner-nav-list-container {
+        display: none;
+        /* position: absolute; */
+        /* background: linear-gradient(to right, purple, blue); */
+        z-index: 1;
+      }
+
+      /* .container1-inner-nav:hover .container1-inner-nav-list-container {
+        display: flex;
+        flex-direction: column;
+      } */
+
+      .icon {
+        display: none;
+        margin: 5px;
+      }
+
+      /* only navigation(without drodown) will be shown upto 199px which is mobile first design */
+      /* inner(dropdown) menu with position absolute from width 200px to 350px(not 349px because for 349.1px it will change).
+        So, max-width(350px) must be equal to the next min-width(350px).
+        N.B.: If you don't declare max-width with min-width then min-width will be applicable for all above screen */
+      @media (min-width: 200px) and (max-width: 350px) {
+        .container1-inner-nav-list-container {
+          position: absolute;
+        }
+
+        .container1-inner-nav:hover .container1-inner-nav-list-container {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      /* inner(dropdown) menu without position absolute will act like block element from width 350px to 500px */
+      @media /* only screen and */(min-width: 350px) and (max-width: 500px) {
+        .container1-inner-nav:hover .container1-inner-nav-list-container {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      /* there will be no dropdown */
+      @media (min-width: 500px) and (max-width: 600px) {
+        .container1 {
+          background: linear-gradient(45deg, purple, blue, red, green);
+        }
+
+        .nav-list {
+          flex-direction: row;
+          justify-content: space-evenly;
+        }
+
+        .nav-list > li > a {
+          background-color: transparent;
+          border-bottom: none;
+          color: rgb(226, 226, 226);
+        }
+      }
+
+      @media (min-width: 600px) and (max-width: 768px) {
+        .container1 {
+          background: linear-gradient(45deg, purple, green, blue, red);
+        }
+
+        .nav-list > li > a {
+          background-color: transparent;
+          border-bottom: none;
+          color: rgb(226, 226, 226);
+        }
+
+        .nav-list {
+          /* background: linear-gradient(45deg, purple, blue, red, green); */
+          flex-direction: row;
+          justify-content: space-evenly;
+        }
+
+        .container1-inner-nav-list-container {
+          position: absolute;
+          left: -12px;
+        }
+
+        .container1-inner-nav-list a {
+          box-shadow: 1px 3px 4px 2px slategray;
+          min-width: max-content;
+        }
+
+        .container1-inner-nav:hover .container1-inner-nav-list-container {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .container1 {
+          background: linear-gradient(45deg, purple, green, blue, red);
+        }
+
+        .nav-list > li > a {
+          background-color: transparent;
+          border-bottom: none;
+          color: rgb(226, 226, 226);
+        }
+
+        .nav-list {
+          /* background: linear-gradient(45deg, purple, blue, red, green); */
+          flex-direction: row;
+          justify-content: space-evenly;
+        }
+
+        .container1-inner-nav-list-container {
+          position: absolute;
+          top: 68px;
+        }
+
+        .container1-inner-nav-list a {
+          box-shadow: 1px 3px 4px 2px slategray;
+          min-width: max-content;
+        }
+
+        .container1-inner-nav:hover .container1-inner-nav-list-container {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .icon {
+          /* display: inline-flex; */
+          display: inline-flex;
+        }
+
+        .nav-list > li {
+          display: flex;
+        }
+      }
+
+      /* when screen dimension(orientation) is changed from landscape(default) to portrait i.e. height greater than width */
+      /* @media only screen and (orientation: portrait) {
+        body {
+          background: linear-gradient(to right, red, blue, purple);
+        }
+      } */
+    </style>
+  </head>
+  <body>
+    <nav class="container1">
+      <ul class="nav-list">
+        <li>
+          <a href="#home"><i class="icon fa fa-home"></i>Home</a>
+        </li>
+        <li class="container1-inner-nav">
+          <a href="#menu">Menu</a>
+          <nav class="container1-inner-nav-list-container">
+            <ul class="container1-inner-nav-list">
+              <li><a href="#history">Company History</a></li>
+              <li><a href="#goal">Company Goal</a></li>
+              <li><a href="#location">Company Location</a></li>
+            </ul>
+          </nav>
+        </li>
+        <li><a href="#content">Content</a></li>
+        <li><a href="#about">About</a></li>
+        <li class="icon-hamburger">
+          <a href="javascript:void(0);" onclick="myFunction()"
+            ><i class="fa fa-bars"></i
+          ></a>
+        </li>
+      </ul>
+    </nav>
+  </body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlexBox Example</title>
+    <style>
+      :root {
+        --first-element: #06d6a0;
+        --second-elemnt: #ef476f;
+        --third-element: #118ab2;
+        --fourth-element: #ffd166;
+
+        --body-background: antiquewhite;
+        --border-color: #9d324b;
+        --text-color: rgb(89, 84, 84);
+
+        --border: 5px solid var(--border-color);
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 2em;
+        font-weight: bold;
+        color: var(--text-color);
+        background-color: var(--body-background);
+      }
+
+      .container > div:nth-child(1n) {
+        background-color: var(--first-element);
+      }
+
+      .container > div:nth-child(2n) {
+        background-color: var(--second-elemnt);
+      }
+
+      .container > div:nth-child(3n) {
+        background-color: var(--third-element);
+      }
+
+      .container > div:nth-child(4n) {
+        background-color: var(--fourth-element);
+      }
+
+      .container {
+        height: 80vh;
+        margin: 10px;
+        padding: 10px;
+        border: var(--border);
+        display: flex;
+
+        /* flex-direction: column;
+        flex-wrap: wrap;
+        shorthand(flex-flow: column wrap;) */
+        /* flex-flow: row wrap-reverse; */ /* row-reverse, column-reverse */
+        /* wrap will wrap the items to down side but wrap-reverse will wrap the items to upper side so
+        that starting items will be placed to the end side */
+        flex-flow: row wrap;
+
+        gap: 5px 3px;
+
+        justify-content: flex-start; /* move whole container along main(horizontal) axis */
+        /* flex-start, flex-end, center, space-around, space-between, space-evenly */
+        /* Here, all value are flexible(responsive), for fixed gap use margin */
+
+        /* align-items */
+        /* *** if align-content or align-items is not declared, align-items: stretch; (will be default value) */
+        /* align-items: stretch; (default value) if there is no height declared items will be stretched */
+        /* align-items: center; */ /* *** align-items move items(every row/column is considered as items) along cross(vertical) axis 
+        and there will be a gap(if container has available space) between every items */
+        /* flex-start, flex-end, center, space-around, space-between, space-evenly */
+
+        /* align-content */
+        align-content: flex-end; /* move whole container along cross(vertical) axis */
+      }
+
+      .container div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .item {
+        /* width: 100px; > used for fixed width(will not be flexible(responsive)) */
+        /* max-width or min-width > useful for maximum or minimum flexibility */
+        height: 100px;
+      }
+
+      /* flex property of individual elements */
+      /* order(by default every flex element has 0 order) */
+      .one {
+        order: 2;
+      }
+
+      .two {
+        order: 3;
+      }
+
+      .three {
+        order: 1;
+      }
+
+      /* flex-grow: 0(default) */
+      /* different items may have different flex-grow value like 2,3,4 etc. so that, different items will grow differently(to its declared value) */
+      .item {
+        flex-grow: 1; /* remaining space will be filled by stretching(horizontally) every elements though fixed width was declared */
+      }
+
+      /* flex-shrink: 1(default) */
+      /* different items may have different flex-shrink value like 2,3,4 etc. so that, different items will shrink differently(to its declared value)
+      and will also wrap its inner content(text) if flex-wrap:nowrap */
+      .item {
+        /* flex-shrink: 0; */ /* if we decrease the browser window, elements size will not be decreased below its declared size rather it will overfllow */
+        flex-shrink: 1;
+      }
+
+      /* flex-basis: number(px/percentage/em)|auto|initial|inherit */
+      /* flex-basis means starting width. flex-basis & min-width almost have the same meaning but flex-basis is more responsive.
+      if container size is lesser than the items size it will honour its size(flex-shrink must have to be 1) 
+      but min-width will not(i.e. it will overflow)*/
+      /* .one {
+        min-width: 400px;
+      }
+      .two {
+        flex-basis: 380px;
+      }
+      .three {
+        flex-basis: 500px;
+      } */
+
+      .item {
+        /* min-width: 100px; */
+        flex-basis: 100px;
+      }
+
+      /* flex */
+      /* shorthand => flex: flex-grow flex-shrink flex-basis
+      flex: auto(1 1 auto)|initial(0 1 auto)(default value)|none(0 0 auto)|inherit(value of the parent element)
+      flex: 0 1 100px; can be written as flex: 100px;
+      flex: 50%; means => flex: 0 1 50%; */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="item one">1</div>
+      <div class="item two">2</div>
+      <div class="item three">3</div>
+      <div class="item four">4</div>
+      <div class="item five">5</div>
+      <div class="item six">6</div>
+      <div class="item seven">7</div>
+      <div class="item eight">8</div>
+      <div class="item nine">9</div>
+      <div class="item ten">10</div>
+    </div>
+  </body>
+</html>

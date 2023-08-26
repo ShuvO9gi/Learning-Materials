@@ -1,0 +1,32 @@
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffeead;
+  height: 100vh;
+  margin: 10px;
+}
+
+.container > div {
+  font-size: 2em;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  color: #ffeead;
+  /* height: 200px; */
+}
+
+.container > div:nth-child(1n) {
+  background-color: #06d6a0;
+}
+
+.container > div:nth-child(2n) {
+  background-color: #ef476f;
+}
+
+.container > div:nth-child(3n) {
+  background-color: #118ab2;
+}
+
+.container > div:nth-child(4n) {
+  background-color: #ffd166;
+}

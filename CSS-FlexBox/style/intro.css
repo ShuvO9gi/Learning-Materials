@@ -1,0 +1,90 @@
+:root {
+  --body-background: rgb(247, 209, 163);
+  --main-background: rgb(85, 85, 145);
+  --section-background: rgb(188, 136, 145);
+  --section1-background: rgb(69, 98, 69);
+
+  --font-color: rgb(74, 80, 86);
+}
+
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--body-background);
+}
+
+.container {
+  height: 100%;
+}
+
+.title {
+  font-size: 2em;
+  color: var(--font-color);
+  text-align: center;
+}
+
+section:first-of-type {
+  background-color: var(--section-background);
+  padding: 10px 5px;
+}
+
+section:last-of-type {
+  background-color: var(--section1-background);
+  padding: 10px;
+}
+
+/* CSS for Float */
+.float main {
+  background-color: var(--main-background);
+  padding: 10px;
+}
+
+.float section:first-of-type {
+  float: left;
+  width: calc(50% - 10px);
+}
+
+.float section:last-of-type {
+  float: right;
+  width: calc(50% - 20px);
+}
+
+.float {
+  /* overflow: auto; */
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.float img {
+  width: 50px;
+  float: left;
+  margin: 5px;
+}
+
+.float main {
+  overflow: auto;
+}
+
+/* CSS for Flex */
+.flex main {
+  background-color: var(--main-background);
+  padding: 10px;
+}
+
+.flex {
+  display: flex; /* display element in a row basis */
+  flex-direction: row; /* row(default), row-reverse, column, column-reverse */
+  flex-wrap: wrap; /* nowrap(default), wrap-reverse */
+  /* flex-flow: row wrap; */
+  justify-content: space-between;
+}
+
+.flex > main {
+  flex-basis: 100%;
+}
+
+.flex section {
+  flex-basis: 50%;
+  flex-grow: 1;
+}

@@ -1,0 +1,65 @@
+> Media Query Syntax
+    A media query consists of a media type and can contain one or more expressions, which resolve to either true or false.
+        @media not|only mediatype and (expressions) {
+            CSS-Code;
+            }
+        
+        @media not|only mediatype and (mediafeature and|or|not mediafeature) {
+                CSS-Code;
+                }
+
+        > mediatype : all, print(for printers), screen(computer screens, tablets, smart-phones etc.), speech(screenreaders that "reads" the page out loud)
+        > Unless you use the not or only operators, the media type is optional and the all type will be implied.
+        > not(inverts the meaning of an entire media query), only(), and(combines a media feature with a media type or other media features)
+        > if you use not or only, you must also specify a media type.
+
+
+> You can also have different stylesheets for different media:
+    <link rel="stylesheet" media="mediatype and|not|only (expressions)" href="print.css">
+    <link rel="stylesheet" media="screen and (min-width: 900px)" href="widescreen.css">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="smallscreen.css">
+
+> Comma separated list:
+    add an additional media query to an already existing one, using a comma (this will behave like an OR operator):
+    @media screen and (max-width: 900px) and (min-width: 600px), (min-width: 1100px) {
+        div.example {
+            //When the width is between 600px and 900px OR above 1100px - change the appearance of <div>
+        }
+        }
+
+> Example:
+    @media screen and (min-width: 480px) {
+        body {
+            //css will be applicable if the width(viewport) is 480 pixels or more
+        }
+        }
+
+    @media only screen and (max-width: 600px) {
+        body {
+            //css will be applicable upto maximum width(viewport) is 600 pixels or less
+        }
+        }
+
+    @media screen and (max-width: 900px) and (min-width: 600px) {
+        div.example {
+            // when the browser's width is between 600 and 900px, change the appearance of a <div> element
+        }
+        }
+
+    @media only screen and (orientation: landscape) {
+        body {
+            //CSS properties that will only apply when the browser window is wider than its height, a so called "Landscape" orientation.
+        }
+        }
+
+    @media screen {
+        body {
+            color: green;
+        }
+        }
+
+    @media print {
+        body {
+            color: black;
+        }
+        }

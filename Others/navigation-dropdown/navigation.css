@@ -1,0 +1,255 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  padding-bottom: 2000px;
+}
+
+header {
+  margin-bottom: 20px;
+}
+
+header > nav {
+  display: flex;
+  justify-content: space-evenly;
+  background: linear-gradient(to right, red, green);
+}
+
+#top a {
+  /* for aligning icon */
+  display: flex;
+  align-items: center;
+  /*  */
+  text-decoration: none;
+  font-weight: bold;
+  padding: 20px;
+  color: rgb(175, 175, 175);
+  border-bottom: 1px solid gray;
+}
+
+#top a#active {
+  background-color: brown;
+}
+
+#top a:hover {
+  background-color: lightgrey;
+  color: rgb(53, 53, 53);
+}
+
+.top-inner-nav-container {
+  display: flex;
+}
+
+.top-inner-nav {
+  position: relative; /* position relative must be the container for getting sense of position absolute property. Otherwise, it has 
+                            no effect to position absolute element(as like this case) */
+}
+
+.top-inner-nav-list {
+  display: none;
+  flex-direction: column;
+  background: linear-gradient(to right, purple, red);
+  box-shadow: 1px 2px 4px grey;
+  min-width: 160px;
+  position: absolute;
+  top: 86px;
+}
+
+.top-inner-nav-container:hover .top-inner-nav-list {
+  display: flex;
+}
+
+.icon {
+  margin: 4px;
+  font-size: 35px;
+}
+
+/* pagination */
+.next-container {
+  display: inline-block;
+}
+
+.next-container {
+  writing-mode: vertical-lr;
+}
+
+.pagination {
+  display: inline-block;
+  border: 1px solid darkgrey;
+  margin: 0;
+}
+
+.pagination-container {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.pagination-number {
+  display: flex;
+}
+
+.pagination-number a {
+  text-decoration: none;
+  display: flex;
+  padding: 4px 10px;
+  border: 1px solid darkgrey;
+}
+
+.pagination-2 {
+  display: flex;
+  align-items: center;
+  border: 1px solid darkgrey;
+}
+
+/* middle navigation */
+.nav-container-middle {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin: 30px 0;
+  background: linear-gradient(45deg, purple, red, blue);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.nav-container-middle a {
+  padding: 20px;
+  text-decoration: none;
+}
+
+.nav-container-middle a:hover {
+  background-color: lightseagreen;
+}
+
+.nav-container-middle a#active {
+  background-color: crimson;
+}
+
+.inner-nav-container {
+  position: relative;
+}
+
+.inner-nav-list {
+  display: none;
+  flex-direction: column;
+  min-width: 160px;
+  overflow: auto;
+  background: linear-gradient(to bottom, lightgrey, grey, red);
+  box-shadow: 2px 3px 4px 4px grey;
+  position: absolute;
+  top: -200px;
+}
+
+.inner-nav-container:hover .inner-nav-list {
+  display: flex;
+}
+
+/* bottom style */
+.bottom {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* bottom navigation */
+.nav-container {
+  display: inline-block;
+}
+
+.nav {
+  padding: 20px;
+  background: linear-gradient(45deg, purple, red);
+  color: rgb(238, 238, 238);
+  position: relative;
+  user-select: none; /* disable the content to copy */
+}
+
+.nav-list {
+  /* display: none; */
+  /* visibility: hidden; */
+  opacity: 0;
+  /* left: -2000px; */ /* it can be only used for fixed elements otherwise positioning may mismatch */
+  min-width: 160px;
+  box-shadow: -2px 3px 5px 3px grey;
+  position: absolute;
+  /* transition: display 0.5s ease-in-out; */ /* for display property transition doesn't works */
+  /* transition: visibility 0.5s ease-in-out; */ /* element will be visible for declared times(0.5s) */
+  /* transition: left 1s ease-in-out; */ /* transition will work but useful for fixed elements */
+  transition: opacity 1s ease-in-out; /* if we use opacity as transition than you have to use pointer-events: none; otherwise 
+                                    if you move the mouse over the element(rather than the selected hover element) it will be visible */
+  pointer-events: none;
+}
+
+.nav-list a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: rgb(71, 69, 69);
+}
+
+.nav-list a.active {
+  background-color: aquamarine;
+}
+
+.nav-list a:hover:not(a.active) {
+  background: linear-gradient(to right, gray, red);
+}
+
+.nav-container:hover .nav-list {
+  /* display: block; */
+  /* visibility: visible; */
+  /* left: 234px; */ /* it can be only used for fixed elements otherwise positioning value may mismatch */
+  opacity: 1; /* if we use opacity as transition than you have to use pointer-events: none; otherwise if you move the mouse over
+                    the element(rather than the selected hover element) it will be visible */
+}
+
+/* bottom-nav2 */
+#bottom-nav2-container {
+  position: relative;
+}
+
+#bottom-nav2 {
+  padding: 20px;
+  color: rgb(208, 208, 208);
+  background: linear-gradient(to right, blue, purple);
+}
+
+#bottom-nav2-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  min-width: 160px;
+  background: linear-gradient(45deg, white, grey, blue);
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 58px;
+  z-index: 1;
+  overflow: auto; /* Enable scrolling if the sidenav has too much content */
+  /* opacity: 0;
+  transition: opacity 0.5s ease-in-out; */
+  /* pointer-events: none; */ /* it will disable cursor when we move it over */
+}
+
+#bottom-nav2-list li {
+  background-color: transparent;
+  border-bottom: 1px solid gray;
+}
+
+#bottom-nav2-list li a {
+  text-decoration: none;
+  padding: 20px;
+  display: block;
+}
+
+#bottom-nav2-list li a:hover {
+  background: linear-gradient(to left, purple, brown, red);
+}
+
+#bottom-nav2-container:hover #bottom-nav2-list {
+  /* opacity: 1; */
+  display: flex;
+}

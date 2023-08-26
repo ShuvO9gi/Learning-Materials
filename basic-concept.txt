@@ -1,0 +1,19 @@
+General Technique:
+1. Create element with HTML
+2. Style with CSS one-by-one
+
+There are three types of elements:
+    1. block element(takes up the whole container space)
+    2. inline-block(only takes up as much space as needed)
+    3. inline element(appear within a line of text)
+
+<div> is a block element. div means division
+
+There are two types of layout:
+    1. Vertical Layout
+        use a div element because div is a block element which makes a vertical layout by default.
+    2. Horizontal Layout
+        use a div element but change its display to inline-block which makes a horizontal layout.
+
+> image will always overflow its container border if we doesn't declare its size(width). So, declare
+    image size(width/height) to 100% or below its container width(size)

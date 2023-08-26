@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animation</title>
+    <style>
+      .animation {
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        background-color: rgb(245, 126, 144);
+        position: relative; /* because in @keyframes we used left,top property */
+        animation: animation_name 3s ease-in 0.2s 3 alternate forwards;
+      }
+
+      .animation1 {
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        background-color: rgb(89, 18, 77);
+        animation: practice 3s ease-in 0.2s 3 alternate forwards;
+      }
+
+      .text {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        animation-name: practice;
+        animation-duration: 5s;
+      }
+
+      @keyframes animation_name {
+        from {
+          left: 0px;
+        }
+        to {
+          left: 400px;
+          background-color: rgb(141, 48, 48);
+        }
+        to {
+          top: 100px;
+          background-color: bisque;
+        }
+      }
+
+      @keyframes practice {
+        0% {
+          background-color: aqua;
+        }
+
+        50% {
+          margin-left: 20%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="animation">Animation</div>
+    <div class="animation1">Animation1</div>
+    <div class="text">Animation Example</div>
+  </body>
+</html>

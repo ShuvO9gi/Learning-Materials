@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Gallery</title>
+    <style>
+      .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 3px;
+        grid-auto-flow: dense; /* row(default), dense(fill all the blank space by rearranging the image(element)) */
+      }
+
+      .container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .vertical {
+        /* grid-row: auto / span 2; */
+        grid-row: span 2;
+      }
+
+      .horizontal {
+        /* grid-column: auto / span 2; */
+        grid-column: span 2;
+      }
+
+      .big {
+        grid-row: auto / span 2;
+        grid-column: auto / span 2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div><img src="../../images/grid/normal1.jpg" /></div>
+      <div class="vertical"><img src="../../images/grid/vertical1.jpg" /></div>
+      <div class="horizontal">
+        <img src="../../images/grid/horizontal1.jpg" />
+      </div>
+      <div><img src="../../images/grid/normal2.jpg" /></div>
+      <div><img src="../../images/grid/normal3.jpg" /></div>
+      <div class="big"><img src="../../images/grid/big1.jpg" /></div>
+      <div><img src="../../images/grid/normal4.jpg" /></div>
+      <div class="vertical"><img src="../../images/grid/vertical2.jpg" /></div>
+      <div><img src="../../images/grid/normal5.jpg" /></div>
+      <div class="horizontal">
+        <img src="../../images/grid/horizontal2.jpg" />
+      </div>
+      <div><img src="../../images/grid/normal6.jpg" /></div>
+      <div class="big"><img src="../../images/grid/big2.jpg" /></div>
+      <div><img src="../../images/grid/normal7.jpg" /></div>
+      <div class="horizontal">
+        <img src="../../images/grid/horizontal3.jpg" />
+      </div>
+      <div><img src="../../images/grid/normal8.jpg" /></div>
+      <div class="big"><img src="../../images/grid/big3.jpg" /></div>
+      <div><img src="../../images/grid/normal9.jpg" /></div>
+      <div class="vertical"><img src="../../images/grid/vertical3.jpg" /></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,129 @@
+.css_selector {
+    css_property: css_value
+}
+
+> transition: 
+    allow elements to change its styles or effects smoothly in specified values in two states (hover and active) using pseudo-classes,
+        i.e. transition-property will be declared in two states (hover and active) using pseudo-classes like [:hover{width: 200px}]
+    transition: 
+        transition-property transition-duration transition-timing-function transition-delay;
+        [name of the CSS property] [length of time] [speed of transition] [delay to starts];
+        all 0s ease 0s; (default value) (in this case transition will have no effect.)
+        background-color .5s ease-in-out .2s;
+        width .35s ease-in .1s;
+        width .5s; (width .5s ease 0s)
+
+    > transition-timing-function: 
+        ease|linear|ease-in|ease-out|ease-in-out|cubic-bezier(n,n,n,n)|steps(int,start|end)|step-start|step-end
+        slow start, then fast, then end slowly(default)[cubic-bezier(0.25,0.1,0.25,1)]|same speed from start to end[cubic-bezier(0,0,1,1)]|
+        slow start[0.42,0,1,1]|slow end[0,0,0.58,1]|slow start and end[0.42,0,0.58,1]|
+        (initial-time, initial-state, final-time, final-state)
+
+>transform:
+    The transform property applies a 2D or 3D transformation to an element. 
+    This property allows you to rotate, scale, move, skew, etc., elements.
+    transform: 
+        translate(x,y)|translate3D(x,y,z)|translateX(x)|translateY(y)|translateZ(z)|        
+        rotate(angle)|rotate3D(x,y,z,angle)|rotateX(angle)|rotateY(angle)|rotateZ(angle)|
+        skew(x-angle,y-angle)|skewX(angle)|skewY(angle)
+        scale(x,y)|scale3D(x,y,z)|scaleX(x)|scaleY(y)|scaleZ(z)|
+        matrix(n,n,n,n,n,n)|matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n)|
+        perspective(n) = perspective view for a 3D transformed element
+
+        * translate property allows you to change the position of elements.
+
+> animation: 
+    animation-name animation-duration animation-timing-function animation-delay animation-iteration-count animation-direction 
+        animation-fill-mode animation-play-state;
+    [name of the keyframe] [time takes to complete] [speed of animation] [delay to starts] [how many times to be played]
+        [whether or not play in reverse on alternate cycles] [what values are applied outside the time it is executing]
+            [whether it is running or paused];
+    [name of the keyfram] = @keyframes animation_name {from{left: 0px;} to{left:200px;}}
+    [how many times to be played] = number|infinite
+    [whether or not play in reverse on alternate cycles] = normal(default-forwards)|reverse|alternate(forward & backward)|alternate-reverse
+    [what values are applied outside the time it is executing] = forwards|backwards|both
+    [whether it is running or paused] = running(default)|paused
+
+        animation: none 0 ease 0 1 normal none running; (default)
+                   animation .5s ease-in-out 0 infinite alternate forwards running;
+                   animation .5s ease-in-out infinite alternate forwards; (*** ignored two parameters value will be default value)
+
+> cubic-bezier()
+
+> object-position: 
+    (Resize an image to fit its content box(fit inside to its container))
+    object-position property is used together with object-fit to specify 
+    how an <img> or <video> should be positioned with x/y coordinates inside its "own content box".
+    object-position: X-axis Y-axis; left|right|center or number(px or %)
+
+    example:
+        object-fit: none; cover|contain|scale-down|fill(default, object may stretched or squished)
+        object-position: 5px 10%;
+
+
+> vertical-align:     (sets the vertical alignment of an element)
+    top|middle|bottom|sub|super|text-top(element is aligned with the top of the parent element's fon)|text-bottom 
+
+
+> writing-mode: (specifies whether lines of text are laid out horizontally or vertically)
+    vertical-lr|vertical-rl
+
+> image 
+    to write something over an image use:
+    position: absolute for the div used & image container will be position relative
+
+> background: 
+    background:
+        bg-color bg-image position/bg-size bg-repeat bg-origin bg-clip bg-attachment; //(must use a / (slash) to separate bg-position & size)
+        [] [] [10px 20px/50px 50px] [] [] [] [];    //bg(background)
+
+        [background-image] [background-position] [background-repeat];
+        [liner-gradient] [left top] [repeat];
+        [url(image_source_location)] [right bottom] [no-repeat];
+
+> Gradients: 
+    CSS defines three types of gradients:
+        Linear Gradients (goes down/up/left/right/diagonally)
+        Radial Gradients (defined by their center)
+        Conic Gradients (rotated around a center point)
+
+        background-image: linear-gradient(direction(angle|to side-or-corner), color-stop1, color-stop2, ...); repeating-linear-gradient();
+                            direction(top to bottom(default), to right, angle);
+                          radial-gradient(shape size at position, start-color, ..., last-color);
+                            shape is ellipse, size is farthest-corner, and position is center(default);
+                          conic-gradient([from angle] [at position,] color [degree], color [degree], ...);
+                            angle is 0deg and position is center(default)
+
+> box-shadow:
+     h-offset v-offset blur spread color; (it will make shadow outside of the box)
+     [positive value shadow right side but negative value left side] [+(down) or -(above)] [higher number higher blur] 
+        [+(shadow size increase) or -(shadow size decrease)];
+     inset h-offset v-offset blur spread color; (it will make shadow inside of the box)
+
+> border: 5px solid red; (border: border-width border-style border-color)
+
+> border-bottom: 5px solid red
+
+> border-radius: for curving the box
+
+> white-space:
+    for controlling over space in a text content.
+    white-space: nowrap(content will not be wrapped until we we make a new line by pressing Enter button)
+
+> cursor: pointer; (for changing the cursor)
+
+> pointer-events: none; (for disabling the mouse over an specific element)
+
+> search-box:
+    for selecting search box placeholder content use:
+        .class::placeholder {font-family, font-size}
+
+> input box/search box:
+     has some width by default. For more flexibility change its width to 0(zero).
+
+> input box = two input box has two separate border(left & right) to make it one border use:
+    margin-left: -1px; or margin-right: -1px;
+
+> font-family: Roboto, Arial; (Here, Arial used as backup font incase of google font Roboto is not available. This procedure is called font stack) 
+
+> font-weight: bold/700; medium/500; (number is more precise)

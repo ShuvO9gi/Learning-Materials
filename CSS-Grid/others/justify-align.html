@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexible Layout</title>
+    <link rel="stylesheet" href="../styles/common.css" />
+    <style>
+      .container {
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, 90px);
+        grid-template-rows: repeat(2, 90px);
+        gap: 3px;
+
+        /* it will align the whole content(because it is the container of the whole element) thats why justify/align-content used */
+        justify-content: space-evenly; /* align whole content horizontally */
+        /* space-around(equal space around an element), space-between(equal space between an element),
+        space-evenly(whole space is equally distributed) */
+        align-content: center; /* align whole content vertically */
+
+        /* shorthand(place-content: align-content justify-content) */
+        place-content: stretch end;
+
+        /* it will align all the individual items(elements) */
+        justify-items: center;
+        align-items: end;
+
+        /* place-items: align-items justify-items; */
+        place-items: end center; /* for same value, place-items: center; */
+      }
+
+      /* for aligning single items(element), it will align inside of its own grid box */
+      .three {
+        justify-self: end;
+        align-self: end;
+
+        /* shorthand(place-self) */
+        place-self: baseline end;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>1</div>
+      <div>2</div>
+      <div class="three">3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+      <div>7</div>
+      <div>8</div>
+      <div>9</div>
+      <div>10</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,163 @@
+/* Common CSS */
+html,
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffeead !important;
+}
+
+html {
+  padding: 0 10px;
+  margin: 0 10px;
+}
+
+body > .row {
+  margin: 0px;
+}
+
+.title {
+  color: #264653;
+  text-align: center;
+  padding: 36px 0 10px;
+  margin: 0px;
+}
+
+.header {
+  background-color: #2a9d8f;
+}
+
+.menu {
+  background-color: #ff6f69;
+}
+
+.content {
+  background-color: #ffcc5c;
+  color: #264653 !important;
+}
+
+.footer {
+  background-color: #2a9d8f;
+}
+
+/* CSS GRID */
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 40px 100px 40px;
+  /* grid-template-areas:
+    "h h h h h h h h h h h h" "m m m m c c c c c c c c"
+    "f f f f f f f f f f f f"; */
+}
+
+.wrapper > .header {
+  /* grid-area: h; */
+  grid-column: 1 / span 12;
+}
+.wrapper > .menu {
+  /* grid-area: m; */
+  grid-column: span 4;
+}
+
+.wrapper > .content {
+  /* grid-area: c; */
+  grid-column: 5 / span 8;
+}
+
+.wrapper > .footer {
+  /* grid-area: f; */
+  grid-column: span 12;
+}
+
+.wrapper > div {
+  color: #ffeead;
+  padding-left: 20px;
+  font-size: 20px;
+  /* for vetical align of text */
+  /* display: flex;
+  align-items: center; */
+  display: grid;
+  align-items: center;
+}
+
+@media screen and (max-width: 480px /* orientation: landscape/portrait */) {
+  .wrapper > .header {
+    grid-column: span 6;
+  }
+  .wrapper > .menu {
+    grid-column: span 6;
+  }
+  .wrapper > .content {
+    grid-column: span 12;
+  }
+}
+
+/* Raw CSS */
+.carrier > .header,
+.carrier > .footer {
+  height: 40px;
+  padding-top: 5px;
+  padding-left: 20px;
+  color: #ffeead;
+  font-size: 20px;
+}
+
+.carrier > .clear > div {
+  padding-left: 20px;
+  color: #ffeead;
+  font-size: 20px;
+}
+
+.left {
+  float: left;
+  width: 33.33%;
+  height: 100px;
+  padding: 35px 0;
+}
+
+.right {
+  float: right;
+  width: 66.66%;
+  height: 100px;
+  padding-top: 35px;
+}
+
+.clear::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media screen and (max-width: 768px) {
+  .carrier > .header {
+    float: left;
+    width: 50%;
+  }
+  .left {
+    float: right;
+    width: 50%;
+    height: 40px;
+    padding-top: 5px;
+  }
+  .right {
+    width: 100%;
+  }
+}
+
+/* Bootstrap CSS */
+/* > (selects only those elements which are direct children of a parent) */
+.row > div {
+  padding-left: 20px;
+  color: #ffeead;
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+}
+
+.row > .header,
+.row > .footer {
+  height: 40px;
+}
+
+.row > .menu,
+.row > .content {
+  height: 100px;
+}

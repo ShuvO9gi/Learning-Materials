@@ -1,0 +1,93 @@
+/* Basic CSS */
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Roboto&display=swap"); */
+
+:root {
+  --accent: #f6ae2d;
+  --dark: #2f4858;
+  --light: #ebf5ee;
+
+  --border: 5px solid var(--accent);
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  background-color: var(--dark);
+  color: var(--light);
+  display: grid;
+  grid-template: auto / 1fr minmax(250px, 500px) 1fr;
+}
+
+h1 {
+  grid-column: 2/3;
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+
+div {
+  border: var(--border);
+  height: 60vh;
+  margin: 10vh 0;
+}
+
+.title {
+  grid-column: 1 /2;
+  writing-mode: vertical-lr;
+  margin: 0 0.5em 0 auto;
+  padding-left: 1em;
+  color: var(--accent);
+  opacity: 0.5;
+  text-align: center;
+}
+
+/* with table */
+.table {
+  display: table;
+}
+
+.table p {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: left;
+}
+
+/* with position */
+.position {
+  position: relative;
+}
+
+.position p {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
+}
+
+/* with flexbox */
+.flexbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* with grid */
+.grid {
+  display: grid;
+  /* align-items: center;
+  justify-content: center; */
+  place-items: center;
+}
+
+/* with margins */
+.margin {
+  /* display: flex; */
+  display: grid;
+}
+
+.margin p {
+  margin: auto;
+}

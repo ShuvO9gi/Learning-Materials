@@ -1,0 +1,10 @@
+The <!DOCTYPE html> declaration defines this document to be HTML5
+The <html> element is the root element of an HTML page
+The <head> element contains meta information about the document
+The <title> element specifies a title for the document
+The <meta> element should define the character set to be UTF-8
+The <meta> element with name="viewport" makes the website look good on all devices and screen resolutions
+The <style> element contains the styles for the website (layout/design)
+The <body> element contains the visible page content
+The <h1> element defines a large heading
+The <p> element defines a paragraph

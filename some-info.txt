@@ -1,0 +1,42 @@
+each browser adds different default margins, padding, etc., to different items.
+This means that you get slightly, or greatly, different layouts in each.
+For avoiding this problem use
+
+* {
+    box-sizing: border box;
+    padding: 0;
+    margin: 0;
+}
+so that, your declared padding & margin will be applied.
+
+By default, the width and height of an element is calculated like this:
+        width + padding + border = actual width of an element
+        height + padding + border = actual height of an element
+    In normal case, if you set width: 300px; but actually it will be 300px+padding(px)+border(px)
+    but if we set box-sizing: border-box; then if we set width:300px; now elements width will be still 300px i.e. padding & border px will be
+        inside 300px.
+
+> What is box-sizing?
+    Defines how the width and height of an element are calculated: should they include padding and borders, or not.
+    If you set box-sizing: border-box; on an element, padding and border are included in the width and height.
+    You can easily create three floating boxes side by side. However, when you add something that enlarges the width of each box
+    (e.g. padding or borders), the box will break. The box-sizing property allows us to include the padding and border in the 
+    box's total width (and height), making sure that the padding stays inside of the box and that it does not break.
+    
+
+
+Some browser doesn't support some css property, use below code before that css property for browser support
+
+/* For Safari 6.1 and above browsers(chrome) */
+    -webkit-
+The webkit-appearance property enables web authors to change the appearance of HTML elements to resemble native User Interface (UI) controls.
+ WebKit extensions contain the -webkit- prefix, which indicates that it belongs to the WebKit open-source framework.
+
+For Firefox older version use this prefix before css property
+    -moz- 
+
+For Internet Explorer(IE) older version use this prefix before css property
+    -ms-
+
+For Opera Mini older version use this prefix before css property
+    -o-

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navigation Example</title>
+    <link rel="stylesheet" href="navigation.css" />
+    <!-- Load Google Icons -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+  <body>
+    <main>
+      <header>
+        <nav id="top">
+          <a id="active" href="#"
+            ><i
+              class="icon material-icons"
+              style="font-size: 30px; margin: 4px; color: rgb(118, 114, 114)"
+              >home</i
+            >Home</a
+          >
+          <a href="#"
+            ><i class="icon material-icons">subscriptions</i>Subscriptions</a
+          >
+          <div class="top-inner-nav-container">
+            <a class="top-inner-nav" href="#"
+              ><i class="icon material-icons">menu</i> Menu
+            </a>
+            <nav class="top-inner-nav-list">
+              <a href="#">Link 1</a><a href="#">Link 2</a><a href="#">Link 3</a>
+            </nav>
+          </div>
+          <a href="#"><span class="icon material-icons">details</span>About</a>
+          <a href="#"
+            ><span class="icon material-icons">contact_phone</span>Contact</a
+          >
+        </nav>
+      </header>
+
+      <div class="nav-container-middle">
+        <a href="#">Home</a>
+        <div class="inner-nav-container">
+          <a class="inner-nav" href="#">Menu</a>
+          <div class="inner-nav-list">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div>
+
+        <a href="#">Content</a>
+        <a href="#">About</a>
+        <a id="active" href="#">Contact</a>
+      </div>
+
+      <div class="bottom">
+        <div class="nav-container">
+          <div class="nav">Dropdown Menu</div>
+          <div class="nav-list">
+            <a class="active" href="#">Home</a>
+            <a href="#">Content</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+        <div id="bottom-nav2-container">
+          <div id="bottom-nav2">Dropdown Menu</div>
+          <ul id="bottom-nav2-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#content">Content</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <nav>
+        <p>Next/Previous:</p>
+        <div class="next-container">
+          <a href="#" class="prev"
+            ><span class="pagination material-icons">chevron_left</span></a
+          >
+          <a href="#"
+            ><span class="pagination material-icons">chevron_right</span></a
+          >
+        </div>
+      </nav>
+
+      <nav>
+        <p>Next/Previous Pagination:</p>
+        <div class="pagination-container">
+          <a href="#"
+            ><span class="pagination-2 material-icons">chevron_left</span></a
+          >
+          <div class="pagination-number">
+            <a href="#">1</a><a href="#">2</a><a href="#">3</a>
+          </div>
+
+          <a href="#"
+            ><span class="pagination-2 material-icons">chevron_right</span></a
+          >
+        </div>
+      </nav>
+    </main>
+  </body>
+</html>
