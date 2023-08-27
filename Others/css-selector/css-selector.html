@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Selector</title>
+    <style>
+      /* Effect of different css selector */
+      /* it is very useful for coloring, border sizing or so on because from this one point anyone can easily understand or change
+       the color or size of the element */
+      :root {
+        --adjacent-sibling-color: brown;
+        --general-sibling-color: rgb(122, 11, 234);
+      }
+
+      /* for adjacent sibling selector both element must have the same parent than only one immediate second element(p) of 
+      the first element(ul) will be selected */
+      ul + p {
+        color: var(--adjacent-sibling-color);
+        font-size: 20px;
+      }
+
+      /* for general sibling selector both element must have the same parent than all second element(div)[not necessary to be immediate]
+       of the first element(ul) will be selected */
+      ul ~ div {
+        color: var(--general-sibling-color);
+        font-size: 20px;
+      }
+
+      /* attributes selector */
+      [href="#"] {
+        text-decoration: none;
+        font-size: 1rem;
+        display: block;
+        background-color: aquamarine;
+      }
+
+      input[type="email"] {
+        width: 50%;
+      }
+
+      /* wildcard selector */
+      [class^="wild"] {
+        background-color: red;
+      }
+
+      /* uses of em and rem */
+      /* 
+         1em changes with font size of the element's ancestors or parent's element.
+         1rem changes with font size of the root html element.
+         if font size is not declared than font size will be the default browser font size which is usually 16px.
+         it makes the font size responsive with user choice(browser font size)
+         */
+      /* html {
+        font-size: 100%;
+      } */
+
+      div#font {
+        font-size: 20px;
+      }
+
+      /* (>) select all child element(only) */
+      div#font > span {
+        font-size: 1.5em;
+      }
+
+      div#font2 {
+        font-size: 16px; /* 16px is default value */
+      }
+
+      span {
+        font-size: 1.5em;
+      }
+
+      span.inner {
+        font-size: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <div>
+          <h1>Effect of different css selector</h1>
+          <p>Paragraph 0</p>
+          <ul>
+            <li>List 1</li>
+            <li>List 2</li>
+          </ul>
+          <p>Paragraph 1</p>
+          <p>Paragraph 2</p>
+          <p>Paragraph 3</p>
+          <div>
+            <p>Paragraph 4</p>
+            <ul>
+              <li>List 1</li>
+              <li>List 2</li>
+            </ul>
+            <p>Paragraph 5</p>
+          </div>
+          <div>Divison 1</div>
+          <p>Paragraph 6</p>
+          <ul>
+            <a href="#">HTML</a
+            ><a href="#">CSS</a>
+          </ul>
+          <p>Paragraph 7</p>
+          <p>Paragraph 8</p>
+          <input type="email" name="email" /> <br />
+          <br />
+          <div class="wildcard">Wildcard Selector</div>
+        </div>
+      </section>
+
+      <section>
+        <h1>Difference between em and rem</h1>
+        <div id="font">
+          <span
+            >Outer line contain <span>inner line</span> for better
+            understanding</span
+          >
+        </div>
+        <div id="font2">
+          <span
+            >Outer line contain <span class="inner">inner line</span> for better
+            understanding</span
+          >
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

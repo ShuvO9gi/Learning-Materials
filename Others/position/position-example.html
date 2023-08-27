@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Uses of Position</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      body {
+        margin: 0;
+      }
+
+      /* Header Navigation */
+      .header {
+        background: linear-gradient(to right, red, purple);
+        padding: 20px;
+      }
+
+      .nav-header {
+        display: inline-block;
+      }
+
+      .nav-header > button {
+        background-color: lightgrey;
+        font-size: 26px;
+        padding: 10px;
+      }
+
+      /* position fixed */
+      #sidebar {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        overflow-x: hidden; /* overflowed elements(contents outside the container element box along x-axis) will be hidden */
+        padding-top: 60px;
+        top: 0px;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        background: linear-gradient(to bottom, red, purple, blue);
+        /* transition: width 0.5s; */
+        transition: 0.5s;
+      }
+
+      #sidebar > a {
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+      }
+
+      #sidebar > a:hover:not(.close) {
+        background-color: brown;
+      }
+
+      #main {
+        transition: margin-left 0.5s;
+        /* padding: 10px; */
+      }
+
+      /* position absolute */
+      .absolute-fixed {
+        padding: 10px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 101;
+      }
+
+      .icon {
+        font-size: 25px;
+      }
+
+      /* Collapsible Hamburger Menu */
+      .container {
+        display: inline-block;
+      }
+
+      .container > div {
+        width: 50px;
+        height: 5px;
+        margin: 6px 0;
+        background-color: black;
+      }
+
+      .change .bar1 {
+        transform: translate(0, 11px) rotate(-45deg); /* here, 11px equal to the height(5px)+margin(6px). Always maintain this ratio */
+      }
+
+      .change .bar2 {
+        opacity: 0;
+      }
+
+      .change .bar3 {
+        transform: translate(0, -11px) rotate(45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="sidebar">
+      <a href="#" class="close absolute-fixed" onclick="closeSidebar()"
+        ><i class="icon fa fa-close"></i
+      ></a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">History</a>
+      <a href="#">Contact</a>
+    </nav>
+    <main class="main" id="main">
+      <header class="header">
+        <nav class="nav-header">
+          <button id="open" onclick="openSidebar()">
+            <i class="icon fa fa-bars"></i>Open Sidebar
+          </button>
+        </nav>
+      </header>
+      <section>
+        <h1>Collapsed Sidebar</h1>
+      </section>
+      <section>
+        <h2>Collapsible Hamburger Menu</h2>
+        <div class="container" onclick="styleChange(this)">
+          <div class="bar1"></div>
+          <div class="bar2"></div>
+          <div class="bar3"></div>
+        </div>
+      </section>
+    </main>
+    <script>
+      function openSidebar() {
+        document.getElementById("sidebar").style.width = "200px";
+        /* document.getElementById("main").style.marginLeft = "200px"; */
+      }
+
+      function closeSidebar() {
+        document.getElementById("sidebar").style.width = "0px";
+        /* document.getElementById("main").style.marginLeft = "0px"; */
+      }
+
+      function styleChange(x) {
+        x.classList.toggle("change");
+      }
+    </script>
+  </body>
+</html>

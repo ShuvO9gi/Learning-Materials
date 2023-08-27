@@ -100,11 +100,25 @@
         [+(shadow size increase) or -(shadow size decrease)];
      inset h-offset v-offset blur spread color; (it will make shadow inside of the box)
 
-> border: 5px solid red; (border: border-width border-style border-color)
+> border: 
+    border: [border-width] [border-style] [border-color];
+            [5px] [solid] [red];
 
-> border-bottom: 5px solid red
+    border-bottom: 5px solid red
 
-> border-radius: for curving the box
+    border-radius: for curving the box
+
+> Overflow
+    The overflow property specifies whether to clip the content or to add scrollbars when the content of an element is too big
+    to fit in the specified area.
+    overflow property only works for block elements with a specified height.
+
+    visible(default)(content renders outside the element's box)|
+    hidden(overflow is clipped, and the rest of the content will be invisible)|
+    scroll(overflow is clipped, and a scrollbar is added to see the rest of the content)
+    auto(Similar to scroll, but it adds scrollbars only when necessary)
+
+    overflow-x and overflow-y properties specifies whether to change the overflow of content just horizontally or vertically (or both)
 
 > white-space:
     for controlling over space in a text content.
@@ -127,3 +141,24 @@
 > font-family: Roboto, Arial; (Here, Arial used as backup font incase of google font Roboto is not available. This procedure is called font stack) 
 
 > font-weight: bold/700; medium/500; (number is more precise)
+
+> em & rem:
+    If a font-size has not been set on any of the element's ancestors or parent's element, then 1em will equal the default browser font-size,
+    which is usually 16px. So, 2em means 32px and so on.
+    The em is a very useful unit in CSS since it automatically adapts its length relative to the font that the reader chooses to use.
+    One important fact to keep in mind: em values compound. That is if we use em in parent & nested child element than nested child element
+    will bigger than expected which is called compounding. For solving this use *rem to the nested child element.
+
+    rem values are relative to the root html element, not the parent element. rem values were invented in order to sidestep 
+    the compounding problem. If we don't set any values to html then it will be default browser font-size.
+
+    Shortly:
+    1em changes with font size of the element's ancestors or parent's element.
+    1rem changes with font size of the root html element.
+    if font size is not declared than font size will be the default browser font size which is usually 16px.
+    it makes the font size responsive with user choice(browser font size)
+
+    The relation between the absolute units is as follows: 1in = 2.54cm = 25.4mm = 72pt = 6pc
+        Screen: recommended to use(em, px, %) 	occaisonal to use(ex) not recommended(pt(point), pc(pica), cm, mm, in)
+        Print:	recommended to use(em, cm, mm, in, pt, pc, %) 	occaisonal to use(px, ex)
+    The ex unit is rarely used. Its purpose is to express sizes that must be related to the x-height of a font.

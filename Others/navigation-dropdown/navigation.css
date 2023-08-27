@@ -77,8 +77,16 @@ header > nav {
 
 .pagination {
   display: inline-block;
+  padding: 3px 6px;
   border: 1px solid darkgrey;
-  margin: 0;
+}
+
+.next-container .next {
+  margin-top: -5px;
+}
+
+.next-container .prev {
+  margin-right: -5px;
 }
 
 .pagination-container {
@@ -94,14 +102,23 @@ header > nav {
 .pagination-number a {
   text-decoration: none;
   display: flex;
-  padding: 4px 10px;
+  padding: 5px 10px;
   border: 1px solid darkgrey;
+}
+
+.pagination-number a:hover {
+  background: lightsalmon;
 }
 
 .pagination-2 {
   display: flex;
   align-items: center;
+  padding: 2px 4px;
   border: 1px solid darkgrey;
+}
+
+.pagination-2:hover {
+  background-color: lightblue;
 }
 
 /* middle navigation */

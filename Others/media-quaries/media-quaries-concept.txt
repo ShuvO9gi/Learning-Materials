@@ -1,3 +1,7 @@
+> Mobile First Design:
+    Mobile First means designing for mobile before designing for desktop or any other device 
+    (This will make the page display faster on smaller devices).
+
 > Media Query Syntax
     A media query consists of a media type and can contain one or more expressions, which resolve to either true or false.
         @media not|only mediatype and (expressions) {

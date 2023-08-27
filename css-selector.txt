@@ -1,7 +1,90 @@
-.class_name a {
-    //all <a> inside this class_name
-}
+> Space(descendant selector)
+    div.class_name a {
+        //all <a> inside this class_name
+    }
 
-.class_name > a {
-    //Only those <a> which are direct child of this class_name
-}
+> [> Sign](child selector):
+    div#id_name > a {
+        //Only those <a> which are direct child of this class_name
+    }
+
+> For +(plus) and ~(tilde)
+    both element must have to be under same parent
+        in case of +(plus), second element must have to be immediately after the first element
+        in case of ~(tilde), for second element it is not mandatory to be immediately after the first element
+> [+ (plus) Sign](Adjacent sibling combinator):
+    combines two sequences of simple selectors having the same parent and the second one must come IMMEDIATELY after the first.
+    It selects all the elements that are adjacent siblings of specified elements. It selects the second element
+     if it immediately follows the first element. 
+
+    It selects h4 tags that immediately follow the ul tag.
+    ul+h4 {
+      border: 4px solid red;
+    }
+    <body>
+    <h1>GeeksForGeeks</h1>
+    <ul>
+        <li>Language</li>
+        <li>Concept</li>
+        <li>Knowledge</li>
+    </ul>
+    <h4>Coding</h4>
+    <h2>Time</h2>
+    </body>
+
+> [~ (tilde) Sign](general sibling combinator):
+    similar to Adjacent sibling combinator. The difference is that the second selector does NOT have to immediately follow 
+    the first one means It will select all elements that is preceded by the former selector.
+    Example:
+    //Changes to the span element content which follows paragraph tag and both have same parent tag. 
+        p~span {
+        color: red;
+        }
+        <body>
+        <p>Coding is
+            <span>fun!</span>
+        </p>
+        <h1>GeeksforGeeks</h1>
+        <p>learn</p>
+        <span>Last span tag.</span> //this will be selected
+        <span>Secind span tag.</span> //this will also be selected
+        </body>
+
+> Universal Selector:
+    universal selector (*) selects all HTML elements on the page.
+
+> Grouping Selector:
+    To group selectors, separate each selector with a comma.
+    h1, h2, p{}
+
+> id(#) selector
+
+> class(.) selector
+
+> Element Selector:
+    element selector selects HTML elements based on the element name (or tag) for example p, h1, div, span, etc.
+
+> Attribute Selector:
+    [attribute_name] {//will be applied to each and every HTML element on the page}
+
+    Example:
+        input[type="checkbox"] {
+            background: orange;
+        }
+
+        a[href="url_name"] {
+                        background: yellow;
+                    }
+
+> Pseudo-Element Selector(::):
+    Selector:Pseudo-Element{//used to style any specific part of the element}
+    p::first-line{//will be applied for the first line of any p element}
+
+> Pseudo-Class Selector(:):
+    Selector:Pseudo-Element{//used to tyle a special type of state of any element}
+    a:visited{//will be applied a element when it is visited}
+
+> Wildcard Selectors (*, ^ and $):
+    [attribute*=”str”] Selector: select that elements whose attribute value contains(first/last/middle) the specified sub string str.
+    [attribute^=”str”] Selector: select those elements whose attribute value begins with a specified value str. 
+    [attribute$=”str”] Selector: select those elements whose attribute value ends with a specified value str.
