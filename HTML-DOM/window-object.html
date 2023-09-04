@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Window Object</title>
+    <style>
+      body {
+        height: 2000px;
+        width: 2000px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>
+        Uses of
+        <abbr title="use of window is optional" id="bg-color">Window</abbr>
+        object
+      </h1>
+      <div id="time"></div>
+      <div id="greetings"></div>
+      <button onclick="stopWatch()">Stop the Watch</button>
+      <!-- here you have to call the function -->
+      <button onclick="stopGreetings()">Stop Greetings(Timeout)</button>
+    </div>
+
+    <div>
+      <button onclick="openWinow()">Open Window</button>
+      <button onclick="closeWinow()">Close Window</button>
+    </div>
+
+    <div>
+      <button onclick="back()">Back</button>
+      <button onclick="go()">Go</button>
+    </div>
+    <div>
+      <button onclick="pageScrollTo()">Page Scroll To</button>
+    </div>
+
+    <p id="location"></p>
+
+    <div>
+      <p>Person Name is:</p>
+      <p id="session"></p>
+      <button onclick="pageScroll()" style="position: fixed">
+        Page Scroll
+      </button>
+    </div>
+
+    <script>
+      /* here, window is optional */
+      /* window. */ addEventListener("click", colorChange);
+
+      function colorChange() {
+        document.getElementById("bg-color").style.backgroundColor = "red";
+      }
+
+      window.removeEventListener("click", colorChange);
+    </script>
+    <script>
+      const myTimeout = setTimeout(greetings, 5000);
+
+      function greetings() {
+        document.getElementById("greetings").innerHTML =
+          "Welcome to my Website";
+      }
+
+      function stopGreetings() {
+        clearTimeout(myTimeout);
+      }
+
+      const myTimeInterval = setInterval(
+        myTime,
+        1000
+      ); /* since setInterval is function, so no need to call function inside
+      it. Just use the function name. This setInterval() is called by default */
+
+      function myTime() {
+        const date = new Date();
+        document.getElementById("time").innerHTML = date.toLocaleTimeString();
+      }
+
+      function stopWatch() {
+        clearInterval(myTimeInterval);
+      }
+    </script>
+
+    <script>
+      /* window open& close */
+      let myWindow; /* for closing window you have to capture it by declaring some name */
+      function openWinow() {
+        myWindow = window.open(
+          " ",
+          " ",
+          "width=200, height=200"
+        ); /* open(url, target(_blank, _self), features) */
+        setTimeout(function () {
+          myWindow.close();
+        }, 3000);
+      }
+
+      function closeWinow() {
+        myWindow.close();
+      }
+
+      /* window go, back & forward */
+      function back() {
+        window.history.back();
+      }
+
+      function go() {
+        history.go(-2);
+      }
+
+      function pageScroll() {
+        window.scrollBy(100, 100);
+        alert("pageXOffset:" + pageXOffset + ", pageYOffset:" + pageYOffset);
+      }
+
+      function pageScrollTo() {
+        window.scrollTo(100, 0);
+        alert("pageXOffset:" + pageXOffset + ", pageYOffset:" + pageYOffset);
+      }
+
+      /* it will stop the window loading */
+      /* window.stop();
+
+      window.print(); */
+    </script>
+
+    <script>
+      /* sessionStorage, stores data for one session(i.e. when browser is closed data is lost) */
+      /* sessionStorage.setItem("fname", "Shuvo", "lname", "Faruq");
+      sessionStorage.setItem("lname", "Faruq");
+      sessionStorage.removeItem("lname", "Faruq");
+      let name = sessionStorage.getItem("lname"); */
+
+      /* localStorage, stores data for all session(i.e. when browser is closed data will not be lost) */
+      localStorage.setItem("lname", "Faruq");
+
+      let name = localStorage.getItem("lname");
+
+      document.getElementById("session").innerText = name;
+    </script>
+
+    <script>
+      let hostname =
+        window.location
+          .hostname; /* port, href, origin, pathname, protocal, replace() */
+      document.getElementById("location").innerHTML = hostname;
+    </script>
+
+    <script>
+      window.console.table({ fname: "Shuvo", lname: "Faruq" });
+      console.error("You made a mistake");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Callback Function</title>
+    <style>
+      .toogle {
+        font-size: larger;
+      }
+    </style>
+  </head>
+  <body onload="timeCallback()">
+    <div>
+      <h1>When to Use the Callback Function</h1>
+      Javascript is a <strong>single-threaded</strong> language, which means, it
+      executes the code sequentially one line after another.<br />
+      JavaScript runs code sequentially in top-down order. However, there are
+      some cases that code runs (or must run) after something else happens and
+      also not sequentially. This is called asynchronous programming. <br />
+      Callbacks make sure that a function is not going to run before a task is
+      completed but will run right after the task has completed. It helps us
+      develop asynchronous JavaScript code and keeps us safe from problems and
+      errors. <br />
+      In JavaScript, the way to create a callback function is to pass it as a
+      parameter to another function, and then to call it back right after
+      something has happened or some task is completed.
+      <p>
+        Indeed, callbacks are most often used with asynchronous functions. A
+        typical example is JavaScript setTimeout().
+      </p>
+    </div>
+    <div>
+      <h2>Arrow function</h2>
+      <p style="line-height: 1.5">
+        We can write an arrow function in this format like.. <br />
+        <i><b>let arrrowFunc = () => { return "Hello World!"; }</b></i> <br />
+        or let arrrowFunc = () => {console.log("Hello World!");} //Though we
+        didn't use return keyword but there will be no error because
+        console.log() implicitly return something. Still if we use
+        console.log(arrowFunc()) we will get some undefined result because if we
+        don't use return keyword, hiddenly it's value was set as undefined.
+        <br />
+        or let arrrowFunc = () => { console.log("Hello World!"); return "Hello
+        World!"; } //in this case undefined problem will be eliminated. <br />
+        <br />
+        if we had <strong>only one statement</strong> then we can eliminate
+        curly braces and return keyword like.. <br />
+        let arrowFunc = () => "Hello World"!; or () => "Hello World!"; <br />
+        <br />
+        but we can't write it as below though it has only one statement because
+        we use curly braces it doesn't return anything. So there will be an
+        error. <br />
+        let arrrowFunc = () => { "Hello World!";} <br />
+        or () => return "Hello World!"; (it doesn't has curly braces.)
+      </p>
+    </div>
+    <p id="extime"></p>
+    <p class="param"></p>
+    <p id="positive"></p>
+    <p id="result"></p>
+    <button class="btn">Click Event</button>
+    <button onclick="useThis(this)">Use of this</button>
+
+    <p id="ex1"></p>
+    <p id="ex2"></p>
+    <p id="ex3"></p>
+    <p id="ex4"></p>
+
+    <script>
+      /* this timeCallback() function is initially called when page is loaded first by onload event of body
+      then it is called by setTimeout which is inside this function and it makes looping after every 1s */
+      function timeCallback() {
+        const date = new Date();
+        document.getElementById("extime").innerHTML = date.toLocaleTimeString();
+        setTimeout(function () {
+          timeCallback();
+        }, 1000); /* if there is now way to use callback function, use anonymous function */
+        /* setTimeout(timeCallback, 1000);  //same meaning */
+      }
+
+      setTimeout(function () {
+        paramCallback(5, 6);
+      }, 2000);
+      /* setTimeout(paramCallback, 2000, 5, 6); //same meaning but best practice to use above */
+
+      /* best example to uderstand the uses callback */
+      /* setTimeout(paramCallback(5, 6), 2000); */ // //it will be executed instantly with the page loading(i.e. it will not wait for 2sec)
+
+      function paramCallback(x, y) {
+        document.querySelector(".param").innerHTML = x + y;
+      }
+    </script>
+
+    <script>
+      setTimeout(message1, 1000);
+
+      function message1() {
+        document.getElementById("ex1").innerHTML =
+          "This is callback example 1.";
+      }
+
+      setTimeout(function () {
+        document.getElementById("ex2").innerHTML = "This is callback example 2";
+      }, 2000);
+
+      setTimeout(() => {
+        document.getElementById("ex3").innerHTML = "This is callback example 3";
+      }, 3000);
+
+      document.querySelector(".btn").addEventListener("click", function () {
+        document.getElementById("ex4").innerHTML = "This is callback example 4";
+      });
+
+      function useThis(x) {
+        x.innerHTML = "Example of use of this keword";
+      }
+    </script>
+
+    <script>
+      function resultDisplay(output) {
+        document.getElementById("result").innerHTML = output;
+      }
+
+      function calculator(x, y, callback) {
+        let result = x ** 3 + y * 2;
+        callback(result);
+      }
+
+      calculator(3, 6, resultDisplay);
+    </script>
+
+    <script>
+      const myNumbers = [1, 0, -12, -4, 2, -1, 0];
+
+      const positiveNumbers = removeNeg(myNumbers, (x) => x >= 0);
+
+      document.getElementById("positive").innerHTML = positiveNumbers;
+
+      function removeNeg(numbers, callback) {
+        let array = [];
+        for (let x of numbers) {
+          if (callback(x)) {
+            array.push(x);
+          }
+        }
+        return array;
+      }
+    </script>
+  </body>
+</html>

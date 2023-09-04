@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Collection & Nodelist</title>
+  </head>
+  <body>
+    <div>
+      <h1>DOM Nodes</h1>
+      <p>
+        According to the W3C HTML DOM standard, everything in an HTML document
+        is a node: <br />
+        The entire document is a document node<br />
+        Every HTML element is an element node<br />
+        The text inside HTML elements are text nodes<br />
+        Every HTML attribute is an attribute node (deprecated)<br />
+        All comments are comment nodes
+      </p>
+
+      <h2>Node Relationships</h2>
+      <p>
+        In a node tree, the top node(html) is called the root (or root node)<br />
+        Every node has exactly one parent, except the root (which has no
+        parent)<br />
+        A node can have a number of children<br />
+        Siblings (brothers or sisters) are nodes with the same parent
+      </p>
+
+      <h2>Navigating Between Nodes</h2>
+      <p>
+        parentNode<br />
+        childNodes[nodenumber]<br />
+        firstChild<br />
+        lastChild<br />
+        nextSibling<br />
+        previousSibling
+      </p>
+
+      <!-- <title id="demo">DOM Tutorial</title> -->
+      <p>
+        Here, [DOM Tutorial] is not a text. It's a text node which can be
+        accessed by innerHTML property or nodeValue property. <br />
+        document.getElementById("demo").innerHTML;<br />
+        document.getElementById("demo").firstChild.nodeValue;<br />
+        document.getElementById("demo").childNodes[0].nodeValue;
+      </p>
+      <p>
+        nodeName property will return element node as tag name(capital letter),
+        text node as #text, document node as #document.
+      </p>
+      <p>
+        For more details, visit
+        <a href="https://www.w3schools.com/js/js_htmldom_navigation.asp"
+          >Node Details</a
+        >
+      </p>
+
+      <div id="div1">
+        <p id="p1">This paragraph 1.</p>
+        <p id="p2">This paragraph 2.</p>
+        <p id="p3">This paragraph 3.</p>
+      </div>
+    </div>
+    <script>
+      let parent = document.getElementById("div1");
+      let newElement = document.createElement("a");
+      newElement.setAttribute("href", "#");
+      let textNode = document.createTextNode("This is a new anchor");
+      newElement.appendChild(textNode);
+      /* parent.appendChild(newElement); */ /* add new element as a last child */
+      let child2 = document.getElementById("p2");
+      let child3 = document.getElementById("p3");
+      parent.insertBefore(newElement, child2);
+      /* newElement.removeAttribute("href");
+      newElement.remove(); */
+      /* parent.removeChild(child2); */
+      /* parent.remove(); */
+      parent.replaceChild(child3, child2);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class</title>
+  </head>
+  <body>
+    <div>
+      <h1>JavaScript Classes</h1>
+      <p>
+        ECMAScript 2015, also known as ES6, introduced JavaScript Classes.
+        <br />
+        JavaScript Classes are
+        <strong>templates for JavaScript Objects</strong>.
+      </p>
+      <p>
+        A JavaScript class is not an object. It is a template for JavaScript
+        objects. Use class keyword to create a class method.
+      </p>
+      <p>
+        The constructor method is a special method: <br />
+
+        It has to have the exact name "constructor" <br />
+        It is executed automatically when a new object is created <br />
+        It is used to initialize object properties <br />
+        If you do not define a constructor method, JavaScript will add an empty
+        constructor method. <br />
+        A class cannot have more than one constructor() method. You can use the
+        super() method which refers to the parent class. By calling the super()
+        method in the constructor method, we call the parent's constructor
+        method and get access to the parent's properties and methods.<br />
+
+        After constructor method you can add any number of methods.
+      </p>
+      <p>
+        <strong>super keyword:</strong> <br />
+        Super keyword in JavaScript can be used to access and call on an
+        object's parent, it can be used in two ways.<br />
+        As a function<br />
+        As an object<br />
+        Syntax: super(arguments);<br />
+        super.parentMethod(arguments);<br />
+        Arguments: This keyword can accepts all the arguments that has been used
+        to create a constructor.
+        <br />
+        <strong>extend keyword:</strong> <br />
+        The extends keyword is used to create a child class of another class
+        (parent). The child class inherits all the methods from another class.
+        Inheritance is useful for code reusability: reuse properties and methods
+        of an existing class when you create a new class.
+        <br />
+        <strong>static keyword:</strong> <br />
+        The static keyword defines static methods for classes. Static methods
+        are called directly on the class (Person from the example above) -
+        without creating an instance/object (myProfession) of the class.
+      </p>
+
+      <div>
+        <h2>Example:</h2>
+        <p>Class Constructor: <span id="exmp1"></span></p>
+        <p>Super Method: <span id="super"></span></p>
+        <p>Super Function: <span id="super-func"></span></p>
+        <p>Super Property: <span id="super-pro"></span></p>
+        <p>Static keyword: <span id="static-key"></span></p>
+        <p>Static method: <span id="static-method"></span></p>
+        <p>Static method with arg: <span id="static-method-arg"></span></p>
+      </div>
+    </div>
+
+    <script>
+      class Language {
+        constructor(name, name2, inventor, year) {
+          this.fullName = name;
+          this.officialName = name2;
+          this.inventor = inventor;
+          this.year = year;
+        }
+        age() {
+          const date = new Date();
+
+          return `${
+            date.getFullYear() - this.year
+          } years passed but still it is popular.`;
+        }
+      }
+
+      let myLanguage = new Language(
+        "JavaScript",
+        "ECMASCript",
+        "Brendan Eich",
+        1995
+      );
+
+      console.log(myLanguage.fullName);
+
+      document.getElementById("exmp1").innerHTML = myLanguage.age();
+    </script>
+
+    <script>
+      class Person {
+        constructor(name, age) {
+          this.fullName = name;
+          this.age = age;
+        }
+
+        atWork() {
+          return this.fullName + " reaches his office just in time.";
+        }
+
+        hobby() {
+          return this.fullName + " hobby is to travel.";
+        }
+      }
+
+      class Profession extends Person {
+        constructor(name, name2, age) {
+          super(name, age); //super(arguments)
+          this.officialName = name2;
+        }
+
+        profession(value) {
+          return (
+            this.fullName +
+            " is a programmer and also an inventor of " +
+            value +
+            ". " +
+            this.atWork()
+          );
+        }
+
+        oldness() {
+          return super.hobby() + "He is " + this.age + " years old."; //super.parentMethod(arguments)
+        }
+
+        static checkStatic() {
+          return "Use of static keyword";
+        }
+
+        static history(x) {
+          return x.officialName + " started its journey since 1995.";
+        }
+
+        static pythonHistory(x, y) {
+          return (
+            x.profession(y) +
+            "Python's name comes from " +
+            x.officialName +
+            " since 1991."
+          );
+        }
+      }
+
+      let data = "JavaScript";
+      let py = "Python";
+
+      let myProfession = new Profession("Brendan Eich", "ECMAScript", 50);
+
+      let myPython = new Profession(
+        "Guido van Rossum",
+        "Monty Python's Flying Circus"
+      );
+
+      let myPhp = new Profession(
+        "Rasmus Lerdorf",
+        "PHP(Personal Home Page): Hypertext Preprocessor",
+        1994
+      );
+
+      console.log(myProfession.age);
+
+      document.getElementById("super").innerHTML = myProfession.oldness();
+      document.getElementById("super-func").innerHTML =
+        myProfession.profession(data);
+      document.getElementById("super-pro").innerHTML = myProfession.fullName;
+
+      //static keyword
+      document.getElementById("static-key").innerHTML =
+        Profession.checkStatic();
+      document.getElementById("static-method").innerHTML =
+        Profession.history(myProfession);
+
+      //most important example
+      document.getElementById("static-method-arg").innerHTML =
+        Profession.pythonHistory(myPython, py);
+    </script>
+  </body>
+</html>

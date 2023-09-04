@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log(window.document);
+      window.console.error("You made a mistake");
+      window.console.time();
+    </script>
+    <script>
+      for (let i = 0; i < 10; i++) {
+        window.console.count("my Count");
+      }
+    </script>
+
+    <script>
+      let x = 5;
+      let y = 5;
+      /* const myObj = { firsname: "John", lastname: "Doe" }; */
+      console.assert(x + y == 11 /* myObj */);
+    </script>
+  </body>
+</html>
