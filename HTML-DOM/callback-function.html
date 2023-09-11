@@ -55,6 +55,25 @@
         or () => return "Hello World!"; (it doesn't has curly braces.)
       </p>
     </div>
+    <div>
+      <h2>What is this?</h2>
+      In JavaScript, the this keyword refers to an object. <br />
+
+      Which object depends on how this is being invoked (used or called). <br />
+
+      The this keyword refers to different objects depending on how it is used:
+      <br />
+
+      In an object method, this refers to the object. <br />
+      Alone, this refers to the global object. <br />
+      In a function, this refers to the global object. <br />
+      In a function, in strict mode, this is undefined. <br />
+      In an event, this refers to the element that received the event. <br />
+      Methods like call(), apply(), and bind() can refer this to any object.
+      <br />
+      When a function is used as a callback, this is lost. <br />
+      The bind() method has to be used to prevent losing this.
+    </div>
     <p id="extime"></p>
     <p class="param"></p>
     <p id="positive"></p>
@@ -66,6 +85,15 @@
     <p id="ex2"></p>
     <p id="ex3"></p>
     <p id="ex4"></p>
+    <div>
+      Example of this: <br />
+      call method: <span id="call"></span> <br />
+      apply method: <span id="apply"></span> <br />
+      apply method for finding max number: <span id="apply-max"></span> <br />
+      bind method(borrow method from another object): <span id="bind"></span
+      ><br />
+      bind(losing this solved) method: <span id="bind-callback"></span><br />
+    </div>
 
     <script>
       /* this timeCallback() function is initially called when page is loaded first by onload event of body
@@ -146,6 +174,77 @@
         }
         return array;
       }
+    </script>
+
+    <script>
+      const person = {
+        fname: "John",
+        lname: "Doe",
+        origin: "England",
+        details: function (age, profession) {
+          return (
+            this.fname +
+            " " +
+            this.lname +
+            " age is " +
+            age +
+            " and profession is a " +
+            profession
+          );
+        },
+        fullname: function () {
+          return `${this.fname} ${this.lname}`;
+        },
+        display: function () {
+          let output = document.getElementById("bind-callback");
+          output.innerHTML = this.fname + " " + this.lname;
+        },
+        /* display: () => {
+          let output = document.getElementById("bind-callback");
+          let person;
+          console.log(this);
+          output.innerHTML = this.fname + " " + this.lname;
+        }, */
+      };
+
+      const person1 = { fname: "Henry", lname: "Hedon", origin: "France" };
+      const person2 = { fname: "Robert", lname: "Thomson", origin: "Italy" };
+
+      document.getElementById("call").innerHTML = person.details.call(
+        person1,
+        35,
+        "Programmer."
+      );
+      document.getElementById("apply").innerHTML = person.details.apply(
+        person2,
+        [35, "Programmer."]
+      );
+
+      //Math.max(1,2,3) used to find max number. We can use this method to find max number of an array
+      document.getElementById("apply-max").innerHTML = Math.max.apply(
+        null,
+        [3, 2, 7, 0, 1]
+      ); //here, null can be replaced by 0, "", Math but result will be same
+
+      //With the bind() method, an object can borrow a method from another object.
+      let fullname = person.fullname.bind(person1);
+      document.getElementById("bind").innerHTML = fullname();
+
+      //for better understanding about this keword
+      //ouput will be undefined since this is lost in callback function
+      /* setTimeout(person.display, 2000); */
+      //this technique may used to above problemsolve
+      /* setTimeout(function () {
+        person.display();
+      }, 2000); */
+
+      //solving losing this by using bind method
+      //defining this as another object
+      /* let x = person.display.bind(person2);
+      setTimeout(x, 2000); */
+      //defining this as himself
+      let result = person.display.bind(person);
+      setTimeout(result, 2000);
     </script>
   </body>
 </html>

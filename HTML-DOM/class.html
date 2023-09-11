@@ -59,6 +59,7 @@
       <div>
         <h2>Example:</h2>
         <p>Class Constructor: <span id="exmp1"></span></p>
+        <p>Get-Set Method: <span id="get-set"></span></p>
         <p>Super Method: <span id="super"></span></p>
         <p>Super Function: <span id="super-func"></span></p>
         <p>Super Property: <span id="super-pro"></span></p>
@@ -114,9 +115,10 @@
       }
 
       class Profession extends Person {
-        constructor(name, name2, age) {
+        constructor(name, name2, age, year) {
           super(name, age); //super(arguments)
           this.officialName = name2;
+          this._inventionYear = year; //convention to use underscore(_) to separate the property of getter/setter from actual property
         }
 
         profession(value) {
@@ -131,6 +133,15 @@
 
         oldness() {
           return super.hobby() + "He is " + this.age + " years old."; //super.parentMethod(arguments)
+        }
+
+        //convention to use underscore(_) to separate the property of getter/setter from actual property
+        get info() {
+          return `${this.fullName} invented JavaScript in ${this._inventionYear} and it is ${this._acceptance} programming language.`;
+        }
+
+        set popularity(x) {
+          this._acceptance = x;
         }
 
         static checkStatic() {
@@ -154,7 +165,11 @@
       let data = "JavaScript";
       let py = "Python";
 
-      let myProfession = new Profession("Brendan Eich", "ECMAScript", 50);
+      let myProfession = new Profession("Brendan Eich", "ECMAScript", 50, 1995);
+
+      //use of set and get
+      myProfession.popularity = "Most Popular";
+      document.getElementById("get-set").innerHTML = myProfession.info;
 
       let myPython = new Profession(
         "Guido van Rossum",

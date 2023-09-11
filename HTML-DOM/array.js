@@ -8,7 +8,7 @@ const myObject = { fname: "Java", lname: "Script" };
   console.log(x);
 } */
 
-console.log(myObject.valueOf());
+/* console.log(myObject.valueOf());
 
 console.log(Object.entries(myObject));
 console.log(myArray.keys());
@@ -19,4 +19,27 @@ Array.prototype.cusPro = function () {
   for (let i = 0; i < this.length; i++) {
     this[i] = this[i].toUpperCase();
   }
+}; */
+
+const person = {
+  fname: "John",
+  lname: "Doe",
+  origin: "England",
+  details: function (age, profession) {
+    return (
+      this.fname +
+      " " +
+      this.lname +
+      " age is " +
+      age +
+      " and profession is a " +
+      profession
+    );
+  },
+  fullname: function () {
+    return this.fname + " " + this.lname;
+  },
 };
+
+const person1 = { fname: "Henry", lname: "Hedon", origin: "France", nationalit: };
+const person2 = { fname: "Robert", lname: "Thomson", origin: "Italy" };
