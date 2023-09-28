@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h1>HTML Collection & Nodelist</h1>
+      <h2>The Difference Between an HTMLCollection and a NodeList</h2>
+      A NodeList and an HTMLcollection is very much the same thing.<br />
+      Both are array-like collections (lists) of nodes (elements) extracted from
+      a document.<br />
+      The nodes can be accessed by index numbers. The index starts at 0.<br />
+      Both have a length property that returns the number of elements in the
+      list (collection).<br />
+      An HTMLCollection is a collection of document elements. A NodeList is a
+      collection of document nodes (element nodes, attribute nodes, and text
+      nodes).<br />
+      HTMLCollection items can be accessed by their name, id, or index
+      number.<br />
+      NodeList items can only be accessed by their index number.<br />
+      An HTMLCollection is always a live collection. Example: If you add a *li
+      element to a list in the DOM, the list in the HTMLCollection will also
+      change.<br />
+      A NodeList is most often a static collection. Example: If you add a *li
+      element to a list in the DOM, the list in NodeList will not change.<br />
+      The getElementsByClassName() and getElementsByTagName() methods return a
+      live HTMLCollection.<br />
+      The querySelectorAll() method returns a static NodeList. <br />
+      The childNodes property returns a live NodeList.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        $("#header").load("header.html");
+      });
+    </script>
+    <script>
+      $(function () {
+        $("#footer").load("footer.html");
+      });
+    </script>
+  </head>
+  <body>
+    <header id="header"></header>
+    <main
+      style="
+        background-color: blueviolet;
+        height: 400px;
+        color: aliceblue;
+        font-size: 25px;
+        text-align: center;
+      "
+    >
+      This main content
+    </main>
+    <footer id="footer"></footer>
+  </body>
+</html>
