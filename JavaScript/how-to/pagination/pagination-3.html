@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    #content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    #content > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom right, red, blue);
+      border: 1px solid lightblue;
+      padding: 2rem;
+      margin: 1rem;
+    }
+
+    #content h2 {
+      background: lightseagreen;
+    }
+    #content p {
+      color: aliceblue;
+    }
+
+    #nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #nav a {
+      text-decoration: none;
+      font-size: 1.5rem;
+      border: lightgray solid 1px;
+      padding: 0.3rem;
+      margin: 0.3rem;
+    }
+
+    #nav li {
+      list-style: none;
+      font-size: 1.5rem;
+      border: lightgray solid 1px;
+      padding: 0.3rem;
+      margin: 0.3rem;
+    }
+  </style>
+  <body>
+    <div id="wrapper">
+      <div id="content"></div>
+      <div id="nav"></div>
+    </div>
+
+    <script>
+      let items = [
+        {
+          title: "Title 1",
+          desc: "This is title 1",
+        },
+        {
+          title: "Title 2",
+          desc: "This is title 2",
+        },
+        {
+          title: "Title 3",
+          desc: "This is title 3",
+        },
+        {
+          title: "Title 4",
+          desc: "This is title 4",
+        },
+        {
+          title: "Title 5",
+          desc: "This is title 5",
+        },
+      ];
+
+      let nav = document.getElementById("nav");
+      let content = document.getElementById("content");
+
+      let pageIndex = 0;
+      let itemsPerPage = 2;
+
+      loadItems();
+
+      function loadItems() {
+        content.innerHTML = "";
+
+        for (
+          let i = pageIndex * itemsPerPage;
+          i < pageIndex * itemsPerPage + itemsPerPage;
+          i++
+        ) {
+          if (!items[i]) break;
+          const item = document.createElement("div");
+          item.innerHTML = `
+                <div>
+                    <h2> ${items[i].title} </h2>
+                </div>
+                <div>
+                    <p> ${items[i].desc} </p>
+                </div>
+                `;
+
+          content.append(item);
+        }
+
+        loadPageNav();
+      }
+
+      //page navigation bar
+      /* function loadPageNav() {
+        nav.innerHTML = "";
+
+        for (let i = 0; i < items.length / itemsPerPage; i++) {
+          const span = document.createElement("span");
+          span.innerHTML = i + 1;
+          span.addEventListener("click", (e) => {
+            pageIndex = e.target.innerHTML - 1;
+            loadItems();
+          });
+
+          if (i === pageIndex) {
+            span.style.fontSize = "2rem";
+          }
+
+          nav.append(span);
+        }
+      } */
+
+      function loadPageNav() {
+        nav.innerHTML = "";
+
+        let prev = document.createElement("li");
+        prev.innerHTML = "Prev";
+        if (pageIndex != 0) {
+          prev.addEventListener("click", (e) => {
+            pageIndex = pageIndex - 1;
+            loadItems();
+          });
+        }
+
+        let itemsLength = items.length;
+        let numberOfPages = Math.ceil(itemsLength / itemsPerPage);
+
+        let next = document.createElement("li");
+        next.innerHTML = "Next";
+        if (pageIndex < numberOfPages - 1) {
+          next.addEventListener("click", (e) => {
+            pageIndex = pageIndex + 1;
+            loadItems();
+          });
+        }
+
+        nav.append(prev);
+
+        for (let i = 0; i < itemsLength / itemsPerPage; i++) {
+          const span = document.createElement("a");
+          //span.setAttribute("href", `?page=${i}`);
+          span.innerHTML = i + 1;
+          span.addEventListener("click", (e) => {
+            pageIndex = e.target.innerHTML - 1;
+            loadItems();
+          });
+
+          if (i === pageIndex) {
+            span.style.fontSize = "2rem";
+          }
+
+          nav.append(span);
+        }
+
+        nav.append(next);
+      }
+    </script>
+  </body>
+</html>

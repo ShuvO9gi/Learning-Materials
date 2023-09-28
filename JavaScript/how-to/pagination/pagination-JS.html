@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Bootstrap Pagination Example</title>
+    <!-- Include Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <style>
+      .active {
+        background: red !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Bootstrap Pagination Example</h1>
+      <nav>
+        <ul class="pagination">
+          <li class="prev" onclick="previous()">
+            <a href="#" aria-label="Previous"
+              ><span aria-hidden="true">&lt;</span></a
+            >
+          </li>
+          <li class="link active" value="1" onclick="activeLink()">
+            <a href="?page=1">1</a>
+          </li>
+          <li class="link" value="2" onclick="activeLink()">
+            <a href="?page=2">2</a>
+          </li>
+          <li class="link" value="3" onclick="activeLink()">
+            <a href="#">3</a>
+          </li>
+          <li class="link" value="4" onclick="activeLink()">
+            <a href="#">4</a>
+          </li>
+          <li class="link" value="5" onclick="activeLink()">
+            <a href="#">5</a>
+          </li>
+          <li class="next" onclick="next()">
+            <a href="#" aria-label="Next"
+              ><span aria-hidden="true">&gt;</span></a
+            >
+          </li>
+          <!-- <li class="prev">
+            <a href="#" aria-label="Previous" onclick="previous(this)"
+              ><span aria-hidden="true">&lt;</span></a
+            >
+          </li>
+          <li>
+            <a
+              class="link active"
+              value="1"
+              onclick="activeLink()"
+              href="?page=1"
+              >1</a
+            >
+          </li>
+          <li>
+            <a class="link" value="2" onclick="activeLink()" href="?page=2"
+              >2</a
+            >
+          </li>
+          <li>
+            <a class="link" value="3" onclick="activeLink()" href="?page=3"
+              >3</a
+            >
+          </li>
+          <li>
+            <a class="link" value="4" onclick="activeLink()" href="?page=4"
+              >4</a
+            >
+          </li>
+          <li>
+            <a class="link" value="5" onclick="activeLink()" href="?page=5"
+              >5</a
+            >
+          </li>
+          <li class="next">
+            <a href="#" aria-label="Next" onclick="next(this)"
+              ><span aria-hidden="true">&gt;</span></a
+            >
+          </li> -->
+        </ul>
+      </nav>
+    </div>
+
+    <!-- include jQuery and Bootstrap js -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+      let link = document.getElementsByClassName("link");
+
+      let currentValue = 1;
+
+      function activeLink() {
+        for (let l of link) {
+          l.classList.remove(".active");
+        }
+        event.target.classList.add("active");
+        currentValue = event.target.value;
+      }
+
+      function previous() {
+        if (currentValue > 1) {
+          for (let l of link) {
+            l.classList.remove("active");
+          }
+          currentValue--;
+          link[currentValue - 1].classList.add("active");
+        }
+      }
+
+      function next() {
+        if (currentValue < 5) {
+          for (let l of link) {
+            l.classList.remove("active");
+          }
+          currentValue++;
+          link[currentValue - 1].classList.add("active");
+        }
+      }
+    </script>
+
+    <!-- <script>
+    let link = document.getElementsByClassName("link");
+
+    let currentValue = 1;
+
+    function activeLink() {
+      for (let l of link) {
+        l.classList.remove(".active");
+      }
+      event.target.classList.add("active");
+      currentValue = event.target.value;
+    }
+
+    function previous(event) {
+      if (currentValue > 1) {
+        for (let l of link) {
+          l.classList.remove("active");
+        }
+        currentValue--;
+        link[currentValue - 1].classList.add("active");
+        event.setAttribute("href", "?page=" + currentValue);
+      }
+    }
+
+    function next(event) {
+      if (currentValue < 5) {
+        for (let l of link) {
+          l.classList.remove("active");
+        }
+        currentValue++;
+        event.setAttribute("href", "?page=" + currentValue);
+        link[currentValue - 1].classList.add("active");
+      }
+    }
+  </script> -->
+  </body>
+</html>

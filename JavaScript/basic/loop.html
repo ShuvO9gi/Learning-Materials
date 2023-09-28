@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loop Method</title>
+  </head>
+  <body>
+    <div>
+      <h1>Different Kinds of Loops</h1>
+
+      JavaScript supports different kinds of loops: <br />
+
+      for - loops through a block of code a number of times<br />
+      for/in - loops through the properties of an object<br />
+      for/of - loops through the values of an iterable object<br />
+      while - loops through a block of code while a specified condition is
+      true<br />
+      do/while - also loops through a block of code while a specified condition
+      is true
+    </div>
+    <div>
+      <h2>For loop</h2>
+      Loops can execute a block of code a number of times. <br />
+      for(let i = 0; i < 10; i++) { //block of code } <br />
+      you can use this loop in an iterable object(like array, string) for
+      accessing all the item by their index number. it can also useful for
+      calculation of large number.<br />
+      <strong>iterable</strong> - An object that has iterable properties.<br />
+      <strong>Iterating</strong> - It simply means looping over a sequence of
+      elements(iterable object).<br />
+      Example:
+      <p id="arr"></p>
+
+      <h2>For In Loop</h2>
+      let object = {key: value(string or number),} for(let key in object) { //
+      code to be executed} <br />
+      for in loop also can be useful for iterable object(like array) but not
+      recommended when order is important. <br />
+      For Example:<br />
+      let array = [45, 2, 14]; //[14, 45, 2](if order is changed)<br />
+      for(let x in array) {console.log(array[x]//array[0])}; [// 45], [//14(for
+      changed order)];<br />
+      //this is because here x works with array index number 0, 1, 2 <br />
+      //but for object if order is changed, result will not change because in
+      this case x works with object key.<br />
+      let object = {fname: "Java", lname: "Script"};// {lname: "Script", fname:
+      "Java"};(if order is changed)<br />
+      for(let x in object)
+      {console.log(object[x]//object["key"]//object["fname"])}; //Java(both case
+      output will be same)<br />
+      Example:
+      <p id="obj"></p>
+
+      <h2>For Of Loop</h2>
+      The JavaScript for of statement loops through the values of an iterable
+      object(such as Arrays, Strings, Maps, Sets, NodeLists, and more). <br />
+      <p id="of"></p>
+      <div>
+        <h2>While Loop</h2>
+        The while loop loops through a block of code as long as a specified
+        condition is true. It just like for loop with first and last parameter
+        ommited.
+        <strong>Functionality of while loop & for loop is almost same.</strong>
+        <p>
+          <strong>while(true){}</strong> is a looping construct in the
+          JavaScript programming language that allows a block of code to be
+          repeated indefinitely. It is often used in
+          <strong>conjunction with a break statement</strong>, which allows the
+          loop to be exited under certain conditions.<br />
+          In this case, there must be some condition inside the while loop that
+          stops the looping otherwise browser will be crashed.
+        </p>
+        while(i < 10) { i++;(If you
+        <strong>forget to increase the variable used in the condition</strong>,
+        the loop will never end. This will crash your browser.) }
+
+        <h2>Do While Loop</h2>
+        do while loop will execute its code once(instantly for one time) whether
+        its condition is true or not then if it is not true it stop its
+        execution. But while loop will execute its code only if the condition is
+        true. <br />
+        do {//code; i++;} while(i < 10) <br />
+        <div>
+          While loop:
+          <p id="while"></p>
+        </div>
+
+        <div>
+          DO While loop:
+          <span id="do-while"></span>
+        </div>
+      </div>
+      <div>
+        <h2>Array.forEach()</h2>
+        <p>
+          The forEach() method calls a function (a callback function) once for
+          each array element. The forEach() method is an iterative method. It
+          changes the array mutably.
+        </p>
+        <p>
+          Syntax: <br />
+          Array.forEach(function(currentValue, index, arrayItself){//block of
+          code}, thisValue); <br />
+          //thisValue(optional): A value passed to the function as its this
+          value.
+        </p>
+        <p>Summation of an array[45, 2, 14]: <span id="for-each"></span></p>
+        <p>
+          Multiply each array element[45, 2, 14] by 10:
+          <span id="for-each1"></span>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      let array = ["Rahim", "Karim", "Rahman"];
+      console.log(array[2]);
+      let len = array.length;
+      /* let text = ""; */
+      /* document.getElementById("arr").innerHTML = ""; */ //in the element it is null, no need to declare it again
+      for (let i = 0; i < array.length; i++) {
+        document.getElementById("arr").innerHTML += array[i] + "<br/>";
+      }
+    </script>
+    <script>
+      const person = { fname: "Java", lname: "Script" };
+      console.log(person.fname);
+      console.log(person["lname"]);
+      for (let x in person) {
+        console.log(x); //x returns key of the object(fname, lname)
+        console.log(typeof x); //x is string
+        //console.log(person.x); //it will be undefined //
+        document.getElementById("obj").innerHTML += person[x] + "";
+      }
+    </script>
+    <script>
+      const frontend = ["React", "Redux", "Next.js"];
+      for (let x of frontend) {
+        document.getElementById("of").innerHTML += x + " ";
+      }
+    </script>
+    <script>
+      /* for better understanding of while loop & do while loop */
+      let i = 0;
+      while (i < 0) {
+        document.getElementById("while").innerHTML += i;
+        i++;
+      }
+
+      do {
+        document.getElementById("do-while").innerHTML += i;
+        i++; //it is manadatory
+      } while (i < 0);
+    </script>
+
+    <script>
+      let array3 = [45, 2, 14];
+      //let x = ""; //45214
+      let x = 0; //61
+
+      array3.forEach(eachFunction);
+      function eachFunction(y) {
+        x += y;
+        console.log(y);
+        console.log(x);
+        //return x;
+      }
+
+      /* array3.forEach(function (value, index, arrayItself) {
+        x += value;
+      }); */
+
+      /* array3.forEach((value) => {
+        x += value;
+      }); */
+
+      /* array3.forEach((value) => (x += value)); */
+
+      console.log(typeof x);
+      document.getElementById("for-each").innerHTML = x;
+
+      /* Multiply the value of each element with 10: */
+      let array4 = [45, 2, 14];
+      array4.forEach((item, index, arr) => {
+        arr[index] = item * 10;
+      });
+      //array4.forEach((item, index, arr) => (arr[index] = item * 10));
+      document.getElementById("for-each1").innerHTML = array4;
+    </script>
+  </body>
+</html>

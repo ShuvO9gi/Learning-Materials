@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bubbling & Capturing</title>
+    <style>
+      #child {
+        padding: 20px;
+        background-color: red;
+        text-align: center;
+      }
+
+      #parent {
+        padding: 20px;
+        background-color: blue;
+        text-align: center;
+      }
+
+      #grandparent {
+        padding: 20px;
+        background-color: purple;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Event Bubbling & Event Capturing</h1>
+    <div>
+      <h1>Event Bubbling & Event Capturing</h1>
+      <p>
+        <strong>Event Bubbling:</strong>The process of propagating(action) from
+        the closest(inside) element to the farthest away(outside) element in the
+        DOM (Document Object Modal) is called event bubbling.
+      </p>
+      <p>
+        <strong>Event Capturing:</strong>The process of propagating(action) from
+        the farthest(outside) element to the closest(inside) element in the DOM
+        (Document Object Modal) is called event capturing.
+      </p>
+
+      <p>
+        If we use both event bubbling/capturing for the same nested elements
+        then at first event capturing will happen and then will be event
+        bubbling.
+      </p>
+
+      <p>
+        if we use same event(like click, mouseover, keyup etc) for nested
+        elements then this weired propagation of event bubbling/capturing will
+        happen. To stop it, use event of stopPropagation.
+      </p>
+
+      <p>
+        <strong>Example:</strong>The child div lies inside the parent div as
+        well as in the grandparent div. So, when the child div clicked, we
+        indirectly clicked on both parent div and grandparent div. Thus,
+        propagation is moving from inside to outside in the DOM or we can say
+        events are getting bubble up.
+      </p>
+
+      <div id="grandparent">
+        Grandparent
+        <div id="parent">
+          Parent
+          <div id="child">Child</div>
+        </div>
+      </div>
+
+      <script>
+        let grandparent = document.getElementById("grandparent");
+        let parent = document.getElementById("parent");
+        let child = document.getElementById("child");
+
+        /* even though if we use same event(click) to the main document then it will also be affected by the event bubbling/capturing */
+        /* here, use of *e as function parameter is optional but in some cases it is mandatory to use(as used in bottom line) */
+        /* below as a function parameter we use *e(event) because this function will be executed when declared event(i.e. click) occurs */
+        document.addEventListener("click", (e) => {
+          console.log("Document is bubbling");
+          console.log(e);
+        });
+
+        /* if we don't defined third parameter then it will be by default {capture: false}(i.e. event bubbling) */
+        grandparent.addEventListener("click", () => {
+          console.log("Grandparent is bubbling");
+        });
+
+        parent.addEventListener("click", (e) => {
+          console.log("Parent is bubbling");
+        });
+
+        child.addEventListener("click", (e) => {
+          console.log("Child is bubbling");
+        });
+
+        /* if we defined third parameter as {capture: true} then it will be event capturing) */
+        grandparent.addEventListener(
+          "click",
+          (e) => {
+            console.log("Grandparent is capturing");
+          },
+          { capture: true }
+        );
+
+        parent.addEventListener(
+          "click",
+          (e) => {
+            console.log("Parent is capturing");
+          },
+          { capture: true }
+        );
+
+        child.addEventListener(
+          "click",
+          (e) => {
+            console.log("Child is capturing");
+          },
+          { capture: true }
+        );
+
+        /* For stopping this weired propagation of event bubbling/capturing use event of stopPropagation */
+        /* parent.addEventListener("click", (e) => {
+          e.stopPropagation();
+          console.log("Parent is bubbling");
+        }); */
+      </script>
+    </div>
+  </body>
+</html>

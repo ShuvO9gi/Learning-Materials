@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>number Related Method and Properties</h1>
+
+    <h2>Most Frequently Used</h2>
+    <div>
+      Number.parseFloat() method parses a value as a string and returns a number
+      with decimal value(if available). <br />
+      Number.parseInt() method parses a value as a string and returns a whole
+      number(i.e. only integar part & ignores decimal part). <br />
+      toFixed(x) Formats a number with x numbers of digits after the decimal
+      point, i.e. <strong>rounded to a specified number of decimals</strong>. If
+      x is not defined it will rounded the number into an integer(whole number)
+      by as like Math.round().
+      <br />
+      toPrecision(x) Formats a number to x length & at the x point value is
+      rounded <br />
+      toExponential(x) Converts a number into an exponential notation i.e. add
+      e+ notation. Here, x defines length of decimal value(doesn't round the
+      value) <br />
+    </div>
+    <div>
+      isFinite(number or value) or Number.isFinite(only number) Checks whether a
+      value is a finite number & returns true or false. Infinite (not finite)
+      numbers are Infinity, -Infinity, or NaN. <br />
+      Number.isInteger() method returns true if a value is an integer of the
+      datatype Number. <br />
+      Number.isNaN() method returns true if the value is NaN, and the type is a
+      Number. In JavaScript, NaN is a number that is not a legal number.<br />
+    </div>
+    <div>
+      Number.MAX_VALUE returns the largest number possible in JavaScript which
+      is 1.7976931348623157e+308 . Numbers larger than MAX_VALUE are represented
+      as Infinity. <br />
+      Number.MIN_VALUE returns the smallest number possible in JavaScript which
+      is 5e-324 . MIN_VALUE is the value closest to 0. Numbers smaller than this
+      are converted to 0. The most negative number is the negative MAX_NUMBER.
+      <br />
+      <br />
+      Number.MAX_SAFE_INTEGER represents the maximum safe integer in JavaScript
+      which is (2<sup>53</sup> - 1) <br />
+      Number.MIN_SAFE_INTEGER represents the minimum safe integer in JavaScript
+      which is -(2<sup>53</sup> - 1) <br />
+      <br />
+      Number.POSITIVE_INFINITY returns positive infinity. POSITIVE_INFINITY is
+      <strong>"something higher than any other number"</strong> . <br />
+      Number.NEGATIVE_INFINITY returns negative infinity.
+      Number.NEGATIVE_INFINITY is .
+      <strong>"a number lower than any other number"</strong> . <br />
+    </div>
+
+    <script></script>
+  </body>
+</html>

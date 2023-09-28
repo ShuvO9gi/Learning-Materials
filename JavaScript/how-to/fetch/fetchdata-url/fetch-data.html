@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Authors</h1>
+    <ul id="authors"></ul>
+
+    <script>
+      const ul = document.getElementById("authors");
+      //const url = "https://jsonplaceholder.typicode.com/users";
+      //const url = "https://jsonplaceholder.typicode.com/posts";
+
+      const url = "http://127.0.0.1:5501/how-to/fetch/fetchdata-url/data.json";
+
+      //GET request
+      fetch(url)
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          let authors = data;
+          console.log(authors);
+
+          /* authors.map(function (author) {
+            let li = document.createElement("li");
+            let name = document.createElement("h2");
+            let email = document.createElement("span");
+
+            name.innerHTML = `${author.name}`;
+            email.innerHTML = `${author.email}`;
+
+            li.appendChild(name);
+            li.appendChild(email);
+            ul.appendChild(li);
+          }); */
+
+          authors.forEach(function (author) {
+            let li = document.createElement("li");
+            let name = document.createElement("h2");
+            let email = document.createElement("span");
+
+            name.innerHTML = `${author.name}`;
+            email.innerHTML = `${author.email}`;
+
+            li.appendChild(name);
+            li.appendChild(email);
+            ul.appendChild(li);
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+      //POST request
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify({
+          userId: 25,
+          name: "Shuvo Mohammad",
+          body: "Unknown",
+        }),
+        headers: {
+          "Content-type": "application/json; charset = UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((resposne) => {
+          console.log(resposne);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    </script>
+  </body>
+</html>

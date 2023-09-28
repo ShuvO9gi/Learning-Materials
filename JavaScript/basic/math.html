@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Math Related Method and Properties</h1>
+
+    <h2>Most Frequently Used</h2>
+    <div>
+      Math.abs(x) Returns the absolute value of x <br />
+      Math.exp(x) means e<sup>x</sup> Returns the value of Ex <br />
+      Math.floor(x) Returns x, rounded downwards to the nearest integer <br />
+      Math.ceil(x) Returns x, rounded upwards to the nearest integer <br />
+      Math.log(x) Returns the natural logarithm (base E) of x i.e. ln <br />
+      Math.log*(x) Returns the base-*(2, 10, ...) logarithm of x <br />
+      Math.cbrt(x) Returns the cubic root of x <br />
+      Math.max(x, y, z, ..., n) Returns the number with the highest value <br />
+      Math.min(x, y, z, ..., n) Returns the number with the lowest value <br />
+      Math.pow(x, y) Returns the value of x to the power of y <br />
+      Math.random() Returns a random number between 0 and 1(exclusive means
+      maximum number will be 0.999 but not 1) <br />
+      Math.round(x) Rounds x to the nearest integer <br />
+      Math.PI Returns PI (approx. 3.14) <br />
+    </div>
+
+    <div>
+      <h3>Example:</h3>
+      <p>Math.abs(-2.59): <span id="abs"></span></p>
+      <p>Math.exp(2): <span id="exp"></span></p>
+      <p>Math.log(100): <span id="ln"></span></p>
+      <p>Math.log10(100): <span id="log"></span></p>
+      <p>Math.sqrt(4): <span id="square"></span></p>
+      <p>Math.cbrt(27): <span id="cubic"></span></p>
+      <p>Math.pow(2,3): <span id="pow"></span></p>
+      <p>Math.floor(2.99): <span id="floor"></span></p>
+      <p>Math.ceil(2.0001): <span id="ceil"></span></p>
+      <p>Math.round(2.49): <span id="round"></span></p>
+      <p>Math.round(2.51): <span id="round2"></span></p>
+      <p>Math.max(8.9, 9, -4, 1): <span id="max"></span></p>
+      <p>Math.min(8.9, 9, -4, 1): <span id="min"></span></p>
+      <p>Math.random(): <span id="random"></span></p>
+      <p>Math.PI: <span id="pi"></span></p>
+    </div>
+
+    <script>
+      document.getElementById("abs").innerHTML = Math.abs(-2.59);
+      document.getElementById("exp").innerHTML = Math.exp(2);
+      document.getElementById("ln").innerHTML = Math.log(100);
+      document.getElementById("log").innerHTML = Math.log10(100);
+      document.getElementById("square").innerHTML = Math.sqrt(4);
+      document.getElementById("cubic").innerHTML = Math.cbrt(27);
+      document.getElementById("pow").innerHTML = Math.pow(2, 3);
+      document.getElementById("floor").innerHTML = Math.floor(2.99);
+      document.getElementById("ceil").innerHTML = Math.ceil(2.0001);
+      document.getElementById("round").innerHTML = Math.round(2.49);
+      document.getElementById("round2").innerHTML = Math.round(2.51);
+      document.getElementById("max").innerHTML = Math.max(8.9, 9, -4, 1);
+      document.getElementById("min").innerHTML = Math.min(8.9, 9, -4, 1);
+      document.getElementById("random").innerHTML = Math.random();
+      document.getElementById("pi").innerHTML = Math.PI;
+    </script>
+  </body>
+</html>

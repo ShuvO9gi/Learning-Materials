@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Handle Query String</h1>
+
+    <script>
+      //handle query string
+
+      const url = window.location.href;
+
+      //URL(), Creates and returns a URL object referencing the URL specified using an absolute URL string
+      // .search provides URL's parameter string beginning with the leading ? character
+      // .searchParams used to access the individual query parameters found in search
+      const searchParams = new URL(url).searchParams;
+      console.log(searchParams);
+
+      //first way
+      //URLSearchParams work with the query string of a URL
+      /* const entries = new URLSearchParams(searchParams).entries();
+      console.log(entries);
+      const array = Array.from(entries); */
+
+      //second way
+      /* const values = new URLSearchParams(searchParams).values();
+      console.log(values);
+      const array = Array.from(values);
+      console.log(array); */
+
+      //third way
+      const entries = new URLSearchParams(searchParams).values();
+      const array = Array.from(entries);
+      console.log(array);
+
+      const obj = JSON.parse(array[0]);
+
+      console.log(obj);
+    </script>
+  </body>
+</html>

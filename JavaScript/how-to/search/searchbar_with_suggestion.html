@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <style>
+    .container {
+      width: 50%;
+      height: 500px;
+      margin-top: 15px;
+      padding-top: 40px;
+      background: linear-gradient(to right, red, blue);
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+    }
+    .search {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .search input {
+      padding: 3px 0px 3px 8px;
+      border-radius: 20px;
+      /* outline: none;
+      border: none; */
+      background: transparent;
+      /* color: #fff; */
+      transition: 1s linear;
+      -webkit-transition: 1s linear;
+      /* width: 10px; */
+    }
+    .search i {
+      /* color: rgb(255, 255, 255, 0.7); */
+      padding-left: 4px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: 0.4s linear;
+    }
+
+    .search .search_bx2 {
+      position: absolute;
+      width: 200px;
+      height: 300px;
+      border: 1px solid #fff;
+      top: 35px;
+      left: -10px;
+      background: rgb(184, 184, 184, 0.3);
+      border-radius: 10px;
+      overflow: auto;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.3s linear;
+    }
+
+    .search .search_bx2::-webkit-scrollbar {
+      width: 8px;
+      background: rgba(98, 46, 46, 0.3);
+      border-radius: 20px;
+    }
+    .search .search_bx2::-webkit-scrollbar-thumb {
+      background: rgb(184, 184, 184, 0.3);
+      border-radius: 20px;
+    }
+
+    .search .search_bx2 a {
+      text-decoration: none;
+      color: #fff;
+      width: 100%;
+      height: 50px;
+      border: 1px solid #fff;
+      display: flex;
+      align-items: center;
+    }
+
+    .search .search_bx2 a img {
+      width: 30px;
+      height: 45px;
+      border-radius: 5px;
+      margin: 0 5px;
+    }
+
+    .search .search_bx2 a .content2 {
+      color: #fff;
+    }
+    .search .search_bx2 a .content2 h6 {
+      font-size: 13px;
+    }
+  </style>
+  <body>
+    <div>
+      <span>Tutorials on:</span>
+      <h3>
+        How To Create A Search Bar Using Javascript | Javascript Search Bar
+      </h3>
+      <a href="https://www.youtube.com/watch?v=15OSymnDC9A">Click to Watch</a>
+    </div>
+    <div class="container">
+      <div class="search">
+        <input type="text" placeholder="Search..." id="search" />
+        <i class="fa fa-search" id="search_icon"></i>
+        <div class="search_bx2">
+          <!-- <a href="">
+          <img src="" alt="Nothing" />
+          <div class="content2">
+            <h6>A Movie</h6>
+          </div>
+        </a> -->
+        </div>
+      </div>
+    </div>
+    <script>
+      const movies = [
+        {
+          id: 1,
+          img: "../../public/images/coding6.jpg",
+          title: "Titanic",
+          url: "#",
+        },
+        {
+          id: 2,
+          img: "../../public/images/coding1.webp",
+          title: "Vampire",
+          url: "#",
+        },
+        {
+          id: 3,
+          img: "../../public/images/coding3.jpg",
+          title: "Galaxy of the Guardians",
+          url: "#",
+        },
+        {
+          id: 4,
+          img: "../../public/images/coding8.jpg",
+          title: "Horror",
+          url: "#",
+        },
+        {
+          id: 5,
+          img: "../../public/images/coding5.webp",
+          title: "Romantic",
+          url: "#",
+        },
+        {
+          id: 6,
+          img: "../../public/images/coding7.jpg",
+          title: "Superman",
+          url: "#",
+        },
+        {
+          id: 7,
+          img: "../../public/images/coding5.webp",
+          title: "Spiderman Homecoming",
+          url: "#",
+        },
+        {
+          id: 8,
+          img: "../../public/images/coding7.jpg",
+          title: "Avengers: The end game",
+          url: "#",
+        },
+        {
+          id: 9,
+          img: "../../public/images/coding2.jpg",
+          title: "Iron Man",
+          url: "#",
+        },
+      ];
+
+      let search_bx2 = document.getElementsByClassName("search_bx2")[0];
+      window.addEventListener("load", () => {
+        movies.forEach((element) => {
+          const { img, title, url } = element;
+
+          let card = document.createElement("a");
+          card.href = url;
+          card.innerHTML = `
+            <img src="${img}" alt="" />
+            <div class="content2">
+                <h6>${title}</h6>
+            </div>
+          `;
+          search_bx2.appendChild(card);
+        });
+      });
+
+      let search = document.getElementById("search");
+      search.addEventListener("keyup", () => {
+        let filter = search.value.toUpperCase();
+        let a = search_bx2.getElementsByTagName("a");
+        for (let i = 0; i < a.length; i++) {
+          let b = a[i].getElementsByClassName("content2")[0];
+          let c = b.getElementsByTagName("h6")[0];
+
+          let TextValue = c.textContent || c.innerText;
+          if (TextValue.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+            search_bx2.style.visibility = "visible";
+            search_bx2.style.opacity = 1;
+          } else {
+            a[i].style.display = "none";
+          }
+          if (search.value == 0) {
+            search_bx2.style.visibility = "hidden";
+            search_bx2.style.opacity = 0;
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

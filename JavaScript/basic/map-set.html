@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map</title>
+  </head>
+  <body>
+    <div>
+      <h1>JavaScript Maps</h1>
+      <p>
+        A Map <strong>holds key-value pairs</strong> where the
+        <strong>keys can be any datatype</strong> . <br />
+        A Map
+        <strong>remembers the original insertion order of the keys</strong>.
+        <br />
+        A Map has a property that represents the size of the map.
+      </p>
+      <p>Differences between JavaScript Objects and Maps:</p>
+      <table>
+        <thead style="font-weight: bold">
+          <td>Object</td>
+          <td>Map</td>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Not directly iterable</td>
+            <td>Directly iterable</td>
+          </tr>
+          <tr>
+            <td>Do not have a size property</td>
+            <td>Have a size property</td>
+          </tr>
+          <tr>
+            <td>Keys must be Strings (or Symbols)</td>
+            <td>Keys can be any datatype</td>
+          </tr>
+          <tr>
+            <td>Keys are not well ordered</td>
+            <td>Keys are ordered by insertion</td>
+          </tr>
+          <tr>
+            <td>Have default keys</td>
+            <td>Do not have default keys</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>JavaScript Set</h2>
+      <p>
+        A JavaScript Set is a <strong>collection of unique values</strong>.
+        <br />
+        Each value can only occur once in a Set. <br />
+        A Set can <strong>hold any value of any data type</strong>.
+      </p>
+      <h3>Map Method</h3>
+      <p>
+        new Map(), .set(), .get(), .delete(), .clear(), .has(), .forEach(),
+        .entries(), .keys(), .values() and has size property
+      </p>
+      <h3>Set Method</h3>
+      <p>
+        new Map(), .add(), <del>.get()</del>, .delete(), .clear(), .has(),
+        .forEach(), .entries(), .keys(), .values() and has size property
+      </p>
+    </div>
+    <div>
+      <h2>Example</h2>
+      <p>
+        Map: .get() method: <span id="map-get"></span> <br />.has() method:
+        <span id="map-has"></span> <br />
+        .entries() method: <span id="map-entries"></span> <br />
+        .foEach() method: <span id="map-each"></span>
+      </p>
+      <p>
+        Set: .size property: <span id="set-get"></span> <br />.has() method:
+        <span id="set-has"></span> <br />
+        .entries() method: <span id="set-entries"></span> <br />
+        .foEach() method: <span id="set-each"></span>
+      </p>
+    </div>
+
+    <script>
+      let myMap = new Map([
+        ["fname", "Java"],
+        ["lname", "Script"],
+        ["check", "delete"],
+      ]);
+      myMap.set("age", 25);
+      myMap.delete("check");
+      document.getElementById("map-get").innerHTML = myMap.get("age");
+      document.getElementById("map-has").innerHTML = myMap.has("fname");
+
+      myMap.forEach((value, key) => {
+        console.log(value);
+        document.getElementById("map-each").innerHTML +=
+          key + " : " + value + ", ";
+      });
+
+      //key/value pair
+      for (let x of myMap.entries()) {
+        document.getElementById("map-entries").innerHTML += x + ", ";
+      }
+    </script>
+
+    <script>
+      //new Set() constructor
+      let mySet = new Set(["a", "b", "{fname: 'Java'}", "delete"]);
+
+      mySet.add("a"); //you cann't add same value
+      mySet.add("{lname: 'Script'}");
+      mySet.delete("delete");
+
+      document.getElementById("set-get").innerHTML = mySet.size;
+      document.getElementById("set-has").innerHTML =
+        mySet.has("{lname: 'Script'}");
+
+      //since there is no key, key/value pair will be value/value pair
+      /* for (let x of mySet.entries()) {
+        document.getElementById("set-entries").innerHTML += x + ", ";
+      } */
+      for (let x of mySet.values()) {
+        document.getElementById("set-entries").innerHTML += x + ", ";
+      }
+
+      mySet.forEach((value) => {
+        console.log(value);
+        document.getElementById("set-each").innerHTML += value + ", ";
+      });
+    </script>
+  </body>
+</html>

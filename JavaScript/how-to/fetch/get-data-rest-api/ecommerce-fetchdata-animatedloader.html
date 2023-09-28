@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      list-style-type: none;
+      text-decoration: none;
+    }
+
+    html {
+      font-size: 62.5%;
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-size: 1.6rem;
+    }
+
+    .container {
+      max-width: 144rem;
+      padding: 0 2rem;
+      margin: 0 auto;
+    }
+
+    .products {
+      padding: 2rem 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+      gap: 2rem;
+    }
+
+    .product {
+      background: #f9f8fc;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product img {
+      width: 100%;
+    }
+
+    .product-content {
+      padding: 1rem 2rem;
+    }
+
+    .product .product-title {
+      font-size: 2rem;
+    }
+
+    .product-description {
+      text-align: justify;
+    }
+
+    .product-title,
+    .product-price-container,
+    .product-description,
+    .product-category {
+      padding: 0.5rem 0;
+    }
+
+    .product-price-container {
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .add-to-cart {
+      background: rgb(16, 8, 69);
+      width: 4rem;
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      color: white;
+      border-radius: 1rem;
+    }
+
+    .add-to-cart ion-icon {
+      font-size: 3rem;
+    }
+
+    .loader {
+      display: inline-flex;
+      width: 100%;
+      height: 20rem;
+      align-items: flex-end;
+      justify-content: center;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="products"></div>
+      <div class="loader">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="150px"
+          height="150px"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="xMidYMid"
+        >
+          <path
+            fill="none"
+            stroke="#6a67ce"
+            stroke-width="7"
+            stroke-dasharray="218.10058898925783 38.48833923339842"
+            d="M24.3 30C11.4 30 5 43.3 5 50s6.4 20 19.3 20c19.3 0 32.1-40 51.4-40 C88.6 30 95 43.3 95 50s-6.4 20-19.3 20C56.4 70 43.6 30 24.3 30z"
+            stroke-linecap="round"
+            style="transform: scale(0.4); transform-origin: 50px 50px"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              repeatCount="indefinite"
+              dur="1.1235955056179776s"
+              keyTimes="0;1"
+              values="0;256.58892822265625"
+            ></animate>
+          </path>
+        </svg>
+      </div>
+    </div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let products = document.querySelector(".products");
+
+        //let url = `https://fakestoreapi.com/products?offset=0&limit=5`;
+        let url = `https://api.escuelajs.co/api/v1/products?offset=0&limit=5`;
+        let opset = 0;
+        async function fetchProducts(url) {
+          try {
+            let data = await fetch(url);
+            opset = opset + 5;
+            if (data.ok) {
+              let response = await data.json();
+
+              for (let i = 0; i < response.length; i++) {
+                let description = response[i].description;
+                let title = response[i].title;
+                products.innerHTML += `
+                    <div class="product">
+                        <img src="${response[i].images[1]}" alt="${
+                  response[i].category.name
+                }" class="product-img">
+                        <div class="product-content">
+                        <h2 class="product-title">${
+                          title.length > 18
+                            ? title.substring(0, 18).concat(" ...")
+                            : title
+                        }</h2>
+                        <h4 class="product-category">${
+                          response[i].category.name
+                        }</h4>
+                        <p class="product-description">${
+                          description.length > 80
+                            ? description.substring(0, 80).concat(" ...more")
+                            : description
+                        }</p>
+                        <div class="product-price-container">
+                            <h3 class="product-price">$${response[i].price}</h3>
+                            <a href="#!" data-productId="${
+                              response[i].id
+                            }" class="add-to-cart"><ion-icon name="cart-outline"></ion-icon></a>
+                        </div>
+                        </div>
+                        
+                    </div>
+                    `;
+              }
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        }
+        fetchProducts(url);
+
+        window.addEventListener("scroll", function () {
+          const { scrollTop, scrollHeight, clientHeight } =
+            document.documentElement;
+          if (scrollTop + clientHeight >= scrollHeight - 3 / 4) {
+            setTimeout(() => {
+              fetchProducts(
+                `https://api.escuelajs.co/api/v1/products?offset=${opset}&limit=5`
+              );
+            }, 1000);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

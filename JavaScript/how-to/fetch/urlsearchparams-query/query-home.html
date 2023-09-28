@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">Go to page.html</button>
+    <script>
+      const btn = document.getElementById("btn");
+
+      //const url ="http://127.0.0.1:5501/urlsearchparams/query-parameter.html?v1=value&v2=value";
+      const url =
+        "http://127.0.0.1:5501/how-to/fetch/urlsearchparams-query/query-parameter.html?";
+
+      //first type
+      /* const obj = {
+        v1: "javascript",
+        v2: "java",
+        v3: "python",
+      };
+
+      const searchParams = new URLSearchParams(obj);
+      console.log(searchParams); */
+
+      //second type
+      /* const keywords = ["chrome", "firefox", "mozilla"];
+      const searchParams = new URLSearchParams();
+
+      for (let i = 0; i < keywords.length; i++) {
+        searchParams.append("v" + (i + 1), keywords[i]);
+      } */
+
+      //third type
+      const obj = {
+        v1: "javascript",
+        v2: "java",
+        v3: '["chrome", "firefox", "mozilla"]',
+      };
+
+      const searchParams = new URLSearchParams();
+
+      searchParams.append("v1", JSON.stringify(obj));
+
+      console.log(searchParams);
+
+      const queryString = searchParams.toString();
+      console.log(queryString);
+
+      btn.addEventListener("click", () => {
+        window.location.href = url + queryString;
+      });
+    </script>
+
+    <script>
+      const params = new URLSearchParams({
+        query: "one",
+        language: "en",
+      });
+      console.log(params);
+
+      params.set("name", "Shuvo");
+      params.set("age", 25);
+
+      console.log(params.get("language"));
+
+      const url1 = `http://127.0.0.1:5501/how-to/fetch/urlsearchparams-query/query-parameter.html?${params.toString()}`;
+      //const url1 =
+      ("http://127.0.0.1:5501/how-to/fetch/urlsearchparams-query/query-parameter.html");
+
+      fetch(url1)
+        .then((response) => response.text()) //json() will not be allowed since url is not in json data
+        .then(console.log); //.then((data) => console.log(data))
+
+      //POST
+      /* fetch(url1, {
+        method: "post",
+        body: params,
+      })
+        .then((response) => response.text())
+        .then(console.log); */
+    </script>
+  </body>
+</html>

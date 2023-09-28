@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Bootstrap Pagination Example</title>
+    <!-- Include Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+  </head>
+  <style>
+    ul li:nth-of-type(1n) > div {
+      background-color: lightcoral;
+      height: 45px;
+    }
+
+    ul li:nth-of-type(2n) > div {
+      background-color: lightslategray;
+      height: 45px;
+    }
+
+    /* pagination css */
+    nav {
+      clear: both;
+      margin: 100px 0;
+      text-align: center;
+    }
+
+    #page_navigation a {
+      padding: 3px 6px;
+      border: 1px solid blue;
+      text-decoration: none;
+    }
+
+    .active_page {
+      background: #337ab7;
+      color: white !important;
+    }
+  </style>
+  <body translate="no">
+    <div class="container-fluid">
+      <h1>Bootstrap Pagination Example</h1>
+      <div>
+        <input type="hidden" id="current_page" value="0" />
+        <input type="hidden" id="show_per_page" value="4" />
+
+        <ul id="pagingBox">
+          <li style="display: block">
+            <div>Item No: 1</div>
+          </li>
+          <li style="display: block">
+            <div>Item No: 2</div>
+          </li>
+          <li style="display: block">
+            <div>Item No: 3</div>
+          </li>
+          <li style="display: block">
+            <div>Item No: 4</div>
+          </li>
+          <li style="display: none">
+            <div>Item No: 5</div>
+          </li>
+          <li style="display: none">
+            <div>Item No: 6</div>
+          </li>
+          <li style="display: none">
+            <div>Item No: 7</div>
+          </li>
+          <li style="display: none">
+            <div>Item No: 8</div>
+          </li>
+          <li style="display: none">
+            <div>Item No: 9</div>
+          </li>
+          <li style="display: none">
+            <div>Item No: 10</div>
+          </li>
+          <li style="display: none">
+            <div>Item No: 11</div>
+          </li>
+          <li style="display: none">
+            <div>Item No: 12</div>
+          </li>
+          <li style="display: none">
+            <div>Item No: 13</div>
+          </li>
+          <li style="display: none">
+            <div>Item No: 14</div>
+          </li>
+        </ul>
+      </div>
+
+      <nav>
+        <ul id="page_navigation" class="pagination">
+          <a class="previous_link" href="javascript:previous();">Prev</a>
+
+          <a
+            class="page_link active_page"
+            href="javascript:go_to_page(0);"
+            longdesc="0"
+            >1</a
+          >
+          <a class="page_link" href="javascript:go_to_page(1);" longdesc="1"
+            >2</a
+          >
+          <a class="page_link" href="javascript:go_to_page(2);" longdesc="2"
+            >3</a
+          >
+          <a class="page_link" href="javascript:go_to_page(3);" longdesc="3"
+            >4</a
+          >
+          <a class="page_link" href="javascript:go_to_page(4);" longdesc="4"
+            >5</a
+          >
+
+          <a class="next_link" href="javascript:next()">Next</a>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- include jQuery and Bootstrap js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script id="rendered-js">
+      // Custom Javascript for pagination
+      jQuery(document).$(function () {
+        //Pagination JS
+        //how much item per page to show
+        var show_per_page = 4;
+
+        //getting the amount of element under pagingBox
+        var number_of_items = $("#pagingBox").children().size();
+
+        //calculate the number of pages we are going to have
+        var number_of_pages = Math.ceil(number_of_items / show_per_page);
+
+        //set the value of our hidden input fields
+        $("#current_page").val(0);
+        $("#show_per_page").val(show_per_page);
+
+        //now when we got all we need for the navigation let's make it.
+
+        /* 
+        what are we going to have in the navigation?
+            -link to previous page
+            -links to specific page
+            -link to next page
+        */
+        var navigation_html =
+          '<a class="previous_link" href="javascript:previous();">Prev</a>';
+        var current_link = 0;
+
+        while (number_of_pages > current_link) {
+          if (window.CP.shouldStopExecution(0)) break;
+          navigation_html +=
+            '<a class="page_link" href="javascript:go_to_page(' +
+            current_link +
+            ');" longdesc="' +
+            current_link +
+            '">' +
+            (current_link + 1) +
+            "</a>";
+          current_link++;
+        }
+        window.CP.exitedLoop(0);
+
+        navigation_html +=
+          '<a class="next_link" href="javascript:next();">Next</a>';
+
+        $("#page_navigation").html(navigation_html);
+
+        //add active_page class to the first page link
+        $("#page_navigation .page_link:first").addClass("active_page");
+
+        //hide all the elements inside the pagingBox
+        $("#pagingBox").children().css("display", "none");
+
+        //show the first n (show_per_page) elements
+        $("#pagingBox")
+          .children()
+          .slice(0, show_per_page)
+          .css("display", "block");
+      });
+
+      //Pagination JS
+      function previous() {
+        new_page = parseInt($("#current_page").val()) - 1;
+
+        //If there is an item before the current active link run the function
+        if ($(".active_page").prev(".page_link").length == true) {
+          go_to_page(new_page);
+        }
+      }
+
+      function next() {
+        new_page = parseInt($("#current_page").val()) + 1;
+
+        //If there is an item before the current active link run the function
+        if ($(".active_page").next(".page_link").length == true) {
+          go_to_page(new_page);
+        }
+      }
+
+      function go_to_page(page_num) {
+        //get number of items shown per page
+        var show_per_page = parseInt($("#show_per_page").val());
+
+        //get the element number where to start the slice from
+        start_from = page_num * show_per_page;
+
+        //get the element number where to end the slice
+        end_on = start_from + show_per_page;
+
+        //hide all children elements pagingBox div, get specific item and show them
+        $("#pagingBox")
+          .children()
+          .css("display", "none")
+          .slice(start_from, end_on)
+          .css("display", "block");
+
+        /* get the page link that has longdesc attribute of the current page and add active_page class to it
+        and remove that class from previously active page link */
+        $(".page_link[longdesc=" + page_num + "]")
+          .addClass("active_page")
+          .siblings(".active_page")
+          .removeClass("active_page");
+
+        //update the current page input field
+        $("#current_page").val(page_num);
+      }
+    </script>
+
+    <!-- N.B.: window.CP.shouldStopExecution(0) & window.CP.exitedLoop(0) keep tracks of infinite loop.
+    if we forgot to set the limitation for do while or for loop then this will prevent it from infinite loop. -->
+  </body>
+</html>

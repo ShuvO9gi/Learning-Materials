@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object</title>
+  </head>
+  <body>
+    <div>
+      <h1>Object</h1>
+      <p>A JavaScript object is a collection of named values.</p>
+      <p>
+        Properties are the values associated with a JavaScript object. A
+        JavaScript object is a collection of unordered properties.
+      </p>
+      <p>
+        The syntax for accessing the property of an object is: <br />
+        object.property;<br />
+        object["property"];<br />
+        object[expression]; //x = "age"; object[x];
+      </p>
+      <p>
+        <strong>Property Attributes:</strong> <br />
+        All properties have a name. In addition they also have a value. <br />
+
+        The value is one of the property's attributes. <br />
+
+        Other attributes are:
+        <strong>enumerable, configurable, and writable</strong>. <br />
+
+        These attributes define how the property can be accessed (is it
+        readable?, is it writable?) <br />
+
+        In JavaScript, all attributes can be read, but only the value attribute
+        can be changed (and only if the property is writable). <br />
+      </p>
+      <p>
+        <strong>Prototype Inheritance:</strong> <br />
+        All JavaScript objects inherit properties and methods from a prototype:
+        <br />
+
+        Date objects inherit from Date.prototype <br />
+        Array objects inherit from Array.prototype <br />
+        Person objects inherit from Person.prototype <br />
+        The Object.prototype is on the top of the prototype inheritance chain:
+        <br />
+
+        Date objects, Array objects, and Person objects inherit from
+        Object.prototype.
+      </p>
+      <div>
+        <h3>JavaScript Accessors (Getters and Setters)</h3>
+        <p>
+          Getters(get keyword) and Setters(set keyword) allow you to define
+          Object Accessors (Computed Properties). <br />
+          <br />
+          <strong>Why Using Getters and Setters?</strong> <br />
+          It gives simpler syntax <br />
+          It allows equal syntax for properties and methods <br />
+          It can secure better data quality <br />
+          It is useful for doing things behind-the-scenes
+        </p>
+      </div>
+      <div>
+        <h2>Managing Objects</h2>
+        <p>
+          // Create object with an existing object as prototype <br />
+          Object.create()<br />
+
+          // Adding or changing an object property<br />
+          Object.defineProperty(object, property, descriptor)<br />
+
+          // Adding or changing object properties<br />
+          Object.defineProperties(object, descriptors)<br />
+
+          // Accessing Properties<br />
+          Object.getOwnPropertyDescriptor(object, property)<br />
+
+          // Returns all properties as an array<br />
+          Object.getOwnPropertyNames(object)<br />
+
+          // Accessing the prototype<br />
+          Object.getPrototypeOf(object)<br />
+
+          // Returns enumerable properties as an array<br />
+          Object.keys(object)<br />
+        </p>
+
+        <h2>Protecting Objects</h2>
+        <p>
+          // Prevents adding properties to an object <br />
+          Object.preventExtensions(object) <br />
+
+          // Returns true if properties can be added to an object <br />
+          Object.isExtensible(object) <br />
+
+          // Prevents changes of object properties (not values) <br />
+          Object.seal(object) <br />
+
+          // Returns true if object is sealed <br />
+          Object.isSealed(object) <br />
+
+          // Prevents any changes to an object <br />
+          Object.freeze(object) <br />
+
+          // Returns true if object is frozen <br />
+          Object.isFrozen(object) <br />
+        </p>
+      </div>
+      <div>
+        <p>
+          for...in loop can be used to loop through an object. Exmp: for(let x
+          in object) {//block of code}
+        </p>
+        <p>Adding property to an object: object.property = "value"</p>
+        <p>
+          An enumerable property in JavaScript means that a property can be
+          viewed if it is iterated using the for…in loop or Object.keys()
+          method. All the properties which are created by simple assignment or
+          property initializer are enumerable by default. <br />
+          writable:- if true , the value can be changed, otherwise it's
+          read-only. <br />
+          enumerable :- if true , then listed in loops, otherwise not listed.
+          <br />
+          configurable :- if true , the property can be deleted and these
+          attributes can be modified, otherwise not
+        </p>
+        <p>
+          object.constructor; returns the function(function Object() { [native
+          code] }) that created the Object prototype.
+        </p>
+        <p>
+          Object.keys(object); returns an Array Iterator object with the keys of
+          an object.
+        </p>
+        <p>
+          prototype is a global property available with all JavaScript objects.
+          It adds new cutomized property and methods to an object
+        </p>
+        <p>
+          object.toString(); //[object Object] <br />
+          Object.toString(object); //function object() {[native code]}
+        </p>
+        <p>object.valueOf() returns object itself.</p>
+        <p>JSON.stringify(object) turns object string.</p>
+      </div>
+
+      <div>
+        <h2>Example:</h2>
+        <p>Object prototype: <span id="prototype"></span></p>
+        <p>
+          Loop through object{ fname: "Java", lname: "Script" }:
+          <span id="for-in"></span>
+        </p>
+        <p>Nested object property access: <span id="nested-property"></span></p>
+        <p>
+          Simple assignment or property initializer are enumerable by default:
+          <span id="enumerable-default"></span>
+        </p>
+        <p>
+          Enumerable property attributes will be effectful only if it is
+          iterated using the for…in loop or Object.keys():
+          <span id="enumerable-for-in"></span>
+        </p>
+        <p>
+          Object method property:
+          <span id="object-method"></span>
+        </p>
+        <p>
+          Object turned into string(stringify):
+          <span id="object-stringify"></span>
+        </p>
+        <p>
+          Use of Getter(get): <span id="get"></span> <br />
+          Use of Setter(set): <span id="set"></span>
+        </p>
+        <p>
+          Manage Object: <span id="manage"></span> <br />
+          Protect Object: <span id="protect"></span> <br />
+          <span id="protect2"></span> <br />
+          Check Output: <span id="output"></span>
+        </p>
+      </div>
+    </div>
+
+    <script>
+      //prototype //also an object constructor function(//function Person())
+      function Person(first, last, age) {
+        this.fname = first;
+        this.lname = last;
+        this.age = age;
+        this.changeLname = function (name) {
+          return (this.lname = name);
+        };
+      }
+
+      //create new object
+      let myPerson = new Person("React", "Redux", 25);
+      let myPerson2 = new Person("Angular", "Vue", 20);
+
+      //change lname
+      myPerson.changeLname("JavaScript");
+
+      //adding property to the prototype
+      Person.prototype.nationality = "Bangladesh";
+      document.getElementById(
+        "prototype"
+      ).innerHTML = `${myPerson.fname} ${myPerson.lname} frontend language is widely used in ${myPerson.nationality}.`;
+    </script>
+
+    <script>
+      const myObject = { fname: "Java", lname: "Script" };
+      myObject.language = "frontend"; //new property added to an object
+      myObject.officialName = "ECMAScript";
+      myObject.officialNameStandard = "ECMA-262";
+      for (let x in myObject) {
+        document.getElementById("for-in").innerHTML += myObject[x] + " ";
+      }
+    </script>
+    <script>
+      const myObj = {
+        name: "John",
+        age: 30,
+        cars: [
+          { name: "Ford", models: ["Fiesta", "Focus", "Mustang"] },
+          { name: "BMW", models: ["320", "X3", "X5"] },
+          { name: "Fiat", models: ["500", "Panda"] },
+        ],
+      };
+      document.getElementById(
+        "nested-property"
+      ).innerHTML = `${myObj.name} cars name is ${myObj["cars"][1]["name"]} and model name of Ford car is ${myObj.cars[0].models}`;
+    </script>
+
+    <script>
+      const myEnumerable = {
+        fname: "Java",
+        lname: "Script",
+        cars: "Ford",
+      };
+
+      //check object property is enumerable or not
+      console.log(myEnumerable.propertyIsEnumerable("name"));
+      // set object property
+      Object.defineProperty(myEnumerable, "age", {
+        value: 60,
+        configurable: false,
+        enumerable: false,
+        writable: false,
+      });
+      Object.defineProperty(myEnumerable, "cars", { enumerable: false });
+
+      //enumerable useful for iterating object like for..in or Object.keys()
+      //enumerable false will be hidden
+      /* for (let x in myEnumerable) {
+        document.getElementById("enumerable-for-in").innerHTML +=
+          myEnumerable[x] + ",";
+      } */
+
+      document.getElementById("enumerable-for-in").innerHTML =
+        Object.keys(myEnumerable);
+
+      //by default enumerable
+      document.getElementById("enumerable-default").innerHTML =
+        myEnumerable.name +
+        " age is " +
+        myEnumerable.age +
+        ". He uses " +
+        myEnumerable["cars"] +
+        " car.";
+    </script>
+
+    <script>
+      const methodObj = {
+        fname: "Java",
+        lname: "Script",
+        fullname: function () {
+          return this.fname + "" + this.lname + " is programming language.";
+        },
+      };
+      methodObj.fullnameUp = function () {
+        return (
+          this.fname +
+          "" +
+          this.lname +
+          " is programming language."
+        ).toUpperCase();
+      };
+      document.getElementById("object-method").innerHTML =
+        methodObj.fullnameUp();
+      document.getElementById("object-stringify").innerHTML =
+        JSON.stringify(methodObj);
+    </script>
+
+    <script>
+      const getterObj = {
+        fname: "Java",
+        lname: "Script",
+        language: "backend",
+        popularity: "lower",
+        get fullname() {
+          return (
+            this.fname +
+            " " +
+            this.lname +
+            " is a " +
+            this.language +
+            " programming language."
+          );
+        },
+        set setLanguage(lang) {
+          this.language = lang.toUpperCase();
+        },
+        set setProperty(value) {
+          this.inventor = value;
+        },
+      };
+
+      //set an object property using setter
+      getterObj.setLanguage = "frontend";
+      getterObj.setProperty = "Brendan Eich";
+
+      //add an object property
+      Object.defineProperty(getterObj, "released", {
+        get: function () {
+          return "First released in 1995";
+        },
+      });
+
+      //set an object property
+      Object.defineProperty(getterObj, "changePopularity", {
+        set: function (value) {
+          this.popularity = value;
+        },
+      });
+      getterObj.changePopularity = "Most Popular";
+
+      document.getElementById("get").innerHTML = getterObj.released;
+
+      console.log(getterObj);
+
+      document.getElementById("set").innerHTML =
+        "Popularity is " + getterObj.popularity;
+    </script>
+
+    <script>
+      const manageObj = {
+        fname: "Java",
+        lname: "Script",
+        language: "backend",
+        popularity: "lower",
+      };
+
+      document.getElementById("manage").innerHTML =
+        Object.getOwnPropertyNames(manageObj);
+
+      //prevent any kind of further extensions but you can change the property value
+      Object.preventExtensions(manageObj);
+      document.getElementById("protect").innerHTML =
+        Object.isExtensible(manageObj);
+
+      document.getElementById("protect2").innerHTML =
+        Object.isFrozen(manageObj);
+
+      /* Object.defineProperty(manageObj, "popularity", { value: "Most Popular" });
+      document.getElementById("output").innerHTML = manageObj.popularity; */
+
+      //// Prevents any kind of changes to an object
+      Object.freeze(manageObj);
+      Object.defineProperty(manageObj, "popularity", { value: "Most Popular" });
+      document.getElementById("output").innerHTML = manageObj.popularity;
+    </script>
+  </body>
+</html>

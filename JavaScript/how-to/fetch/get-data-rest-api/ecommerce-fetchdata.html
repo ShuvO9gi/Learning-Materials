@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      list-style-type: none;
+      text-decoration: none;
+    }
+
+    html {
+      font-size: 62.5%;
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-size: 1.6rem;
+    }
+
+    .container {
+      max-width: 144rem;
+      padding: 0 2rem;
+      margin: 0 auto;
+    }
+
+    .products {
+      padding: 2rem 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+      gap: 2rem;
+    }
+
+    .product {
+      background: #f9f8fc;
+      padding: 0 0 2rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product img {
+      width: 100%;
+    }
+
+    .product-content {
+      padding: 1rem 2rem;
+    }
+
+    .product .product-title {
+      font-size: 2rem;
+    }
+
+    .product-description {
+      text-align: justify;
+    }
+
+    .product-title,
+    .product-price-container,
+    .product-description,
+    .product-category {
+      padding: 0.5rem 0;
+    }
+
+    .product-price-container {
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .add-to-cart {
+      background: rgb(99, 122, 226);
+      width: 4rem;
+      height: 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      color: white;
+      border-radius: 1rem;
+    }
+
+    .add-to-cart ion-icon {
+      font-size: 3rem;
+    }
+  </style>
+  <body>
+    <div>
+      <h2>
+        <span>Tutorial on: </span>Ecommerce Api Data Fetch Using Javascript
+        Fetch Api:
+      </h2>
+      <a href="https://www.youtube.com/watch?v=LNoEn2N1w84">Click to Watch</a>
+    </div>
+    <div class="container">
+      <div class="products"></div>
+      <div class="product-content"></div>
+    </div>
+    <!--video_link:  https://www.youtube.com/watch?v=LNoEn2N1w84 -->
+    <!-- {
+    "id":7,
+    "title":"Ergonomic Soft Gloves",
+    "price":585,
+    "description":"New range
+    of formal shirts are designed keeping you in mind. With fits and styling
+    that will make you stand
+    apart",
+    "images":[
+    "https://picsum.photos/640/640?r=5358",
+    "https://picsum.photos/640/640?r=4691",
+    "https://picsum.photos/640/640?r=1651"
+    ],
+    "creationAt":"2023-09-25T07:57:46.000Z",
+    "updatedAt":"2023-09-25T07:57:46.000Z",
+    "category":{
+        "id":4,
+        "name":"Shoes",
+        "image":"https://picsum.photos/640/640?r=2887",
+        "creationAt":"2023-09-25T07:57:46.000Z",
+        "updatedAt":"2023-09-25T07:57:46.000Z"
+    }}, -->
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let products = document.querySelector(".products");
+        async function fetchProducts(url) {
+          try {
+            let data = await fetch(url);
+            let response = await data.json();
+            console.log(response);
+
+            for (let i = 0; i < 10 /* response.length */; i++) {
+              let description = response[i].description;
+              let title = response[i].title;
+
+              products.innerHTML += `
+                <div class="product">
+                    <img src="${
+                      response[i].images[1]
+                    }" alt="" class="product-img">
+                    <div class="product-content">
+                      <h2 class="product-title">${
+                        title.length > 10
+                          ? title.substring(0, 12).concat(" ...")
+                          : title
+                      }</h2>
+                      <h4 class="product-category">${
+                        response[i].category.name
+                      }</h4>
+                      <p class="product-description">${
+                        description.length > 20
+                          ? description.substring(0, 80).concat(" ...more")
+                          : description
+                      }</p>
+                      <div class="product-price-container">
+                          <h3 class="product-price">$${response[i].price}</h3>
+                          <a href="#!" data-productId="${
+                            response[i].id
+                          }" class="add-to-cart"><ion-icon name="cart-outline"></ion-icon></a>
+                      </div>
+                    </div>
+                </div>
+                `;
+            }
+          } catch (err) {
+            console.log(err);
+          }
+        }
+
+        fetchProducts("https://api.escuelajs.co/api/v1/products");
+      });
+    </script>
+  </body>
+</html>

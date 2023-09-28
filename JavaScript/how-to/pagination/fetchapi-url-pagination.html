@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Pagination Demo</h1>
+    <div id="linkCardGrid"></div>
+    <button id="loadMoreButton">Load More</button>
+    <script>
+      const linkCardGrid = document.getElementById("linkCardGrid");
+      const loadMoreButton = document.getElementById("loadMoreButton");
+      let page = 1;
+      const postPerPage = 4;
+
+      const loadLinks = async () => {
+        const skip = page - 1 * postPerPage;
+        const paginatedURL = `https://dummyjson.com/products?limit=${postPerPage}&skip=${skip}`;
+        const allProductsURL = "https://dummyjson.com/products?limit=1000";
+
+        const { products } = await fetch(paginatedURL).then((res) =>
+          res.json()
+        );
+        const htmlString = products
+          .map(
+            (product) => `<div class='card'>
+            <img src='${product.images[0]}' />
+            <h2>${product.title}</h2>
+            </div>`
+          )
+          .join("");
+        if (linkCardGrid) {
+          linkCardGrid.innerHTML += htmlString;
+        }
+      };
+      loadMoreButton.addEventListener("click", () => {
+        page++;
+        loadLinks();
+      });
+      loadLinks();
+    </script>
+  </body>
+</html>

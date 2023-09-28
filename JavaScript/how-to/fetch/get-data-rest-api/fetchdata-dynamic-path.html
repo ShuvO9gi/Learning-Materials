@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <h2>
+        <span>Tutorial on: </span>JavaScript fetch API - GET data from external
+        REST API & display with HTML/CSS DOM manipulations:
+      </h2>
+      <a href="https://www.youtube.com/watch?v=R9mSRUpoVXc" target="_blank"
+        >Click to Watch</a
+      >
+    </div>
+    <div id="post-section">
+      <h2>Latest Post</h2>
+      <div id="post-items-container"></div>
+    </div>
+
+    <script>
+      const apiUrl = "https://jsonplaceholder.typicode.com";
+
+      async function fetchPost() {
+        try {
+          let response = await fetch(`${apiUrl}/posts`);
+
+          if (!response.ok) {
+            throw new Error(`Failed to fetch posts: ${response.status}`);
+          }
+
+          return await response.json(); //if we don't use await it will return promise
+        } catch (e) {
+          console.log(e);
+        }
+      }
+
+      function listPosts(postContainerElementId) {
+        const postContainerElement = document.getElementById(
+          postContainerElementId
+        );
+
+        if (!postContainerElement) {
+          return;
+        }
+
+        fetchPost()
+          .then((posts) => {
+            if (!posts) {
+              postContainerElement.innerHTML = "No Post Found";
+              return;
+            }
+
+            for (const post of posts) {
+              postContainerElement.appendChild(postElement(post));
+            }
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
+
+      function postElement(post) {
+        const anchorElement = document.createElement("a");
+        anchorElement.setAttribute("href", `${apiUrl}/posts/${post.id}`);
+        anchorElement.setAttribute("target", "_blank");
+        anchorElement.innerText = capitalizeFirstLetter(post.title);
+
+        const postTitleElement = document.createElement("h3");
+        postTitleElement.appendChild(anchorElement);
+
+        return postTitleElement;
+      }
+
+      function capitalizeFirstLetter(str) {
+        return str.charAt(0).toUpperCase() + str.slice(1);
+      }
+
+      listPosts("post-items-container");
+    </script>
+
+    <!-- <script>
+      listPosts("post-items-container");
+    </script> -->
+  </body>
+</html>

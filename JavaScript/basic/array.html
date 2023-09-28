@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        line-height: 1.5;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>Array</h1>
+      <p>An objects, a function or an array may be an elements of an array.</p>
+      <p>
+        Array is an iterable objects. Every iterable objects has Symbol.iterator
+        method. The Symbol.iterator is a function that returns a next()
+        function.
+      </p>
+      <p>
+        The iterator protocol defines how to produce a sequence of values from
+        an object. An <strong>object becomes an iterator</strong> when it
+        <strong>implements a next() method</strong>. The next() method must
+        return an object with two properties:
+        <br />
+        value (the next value) <br />
+        done (true or false)
+      </p>
+      <p>
+        See the example to understand the use of Symbol.iterator & next()
+        method.
+      </p>
+      <p>
+        The typeof operator returns object because a JavaScript array is an
+        object. To check it whether it is an array or not, use
+        <strong
+          >[Array.isArray(myArray)] method or [myArray instanceof Array]
+          instanceof operator</strong
+        >
+        return true or false.
+      </p>
+
+      <div>
+        The Difference Between Arrays and Objects <br />
+        In JavaScript, arrays use numbered indexes. <br />
+
+        In JavaScript, objects use named indexes.<br />
+
+        Arrays are a special kind of objects, with numbered indexes.<br />
+
+        When to Use Arrays. When to use Objects.<br />
+        JavaScript does not support associative arrays. (Arrays with named
+        indexes are called associative arrays (or hashes). Many programming
+        languages supports it.)<br />
+        You should use objects when you want the element names to be strings
+        (text).<br />
+        You should use arrays when you want the element names to be numbers.<br />
+      </div>
+      <div>
+        Uses of property and method in JS array is given below: <br />
+        let myArr = ["Java", "Script", "React", "Redux"] <br />
+
+        <h3>Frequentley Used</h3>
+        <h4>
+          .every(), .some(), .filter(), .find(), .findIndex(), .forEach(),
+          .map(), .reduce(), .reduceRight(),
+        </h4>
+        1. myArr.every(function(value,index, arrItself) {}, thisValue) iterates
+        over each array elements just like array.ForEach() but it only returns
+        true or false.<br />
+        2. myArr.filter(function(value, index, arrItself), thisValue) iterates
+        over each array elements and returns only the filtered elements.
+        <br />
+        3. myArr.find(function(value, index, arrItself), thisValue) iterates
+        over each array elements and returns only the first elements that
+        matched the condition.
+        <br />
+        4. myArr.findIndex(function(value, index, arrItself), thisValue)
+        iterates over each array elements and returns only index(position) of
+        the first elements that matched the condition. If no matches found it
+        returns -1.
+        <br />
+        5. myArr.forEach(function(value, index, arrItself), thisValue) iterates
+        over each array elements and
+        <strong>calls a function for each elements in an array</strong>.
+        <strong>.forEach() method returns undefined</strong>.
+        <br />
+        6. myArr.map(function(value, index, arrItself), thisValue) iterates over
+        each array elements and
+        <strong>calls a function for each elements in an array</strong>.
+        <strong>It returns calculated result of each element as an array</strong
+        >.
+        <br />
+        <div>
+          7. myArr.reduce(function(total, value, index, arrItself),
+          initialValue) executes a reducer function for array element(from left
+          to right)
+          <strong
+            >. It returns a single value: the function's accumulated
+            result</strong
+          >. <br />
+          8. myArr.reduceRight(function(total, value, index, arrItself),
+          initialValue) executes a reducer function for array element(from right
+          to left). <br />
+          <strong>Note:</strong> <br />
+          At the first callback, there is no return value from the previous
+          callback. <br />
+          Normally, array element 0 is used as initial value, and the iteration
+          starts from array element 1. <br />
+          If an initial value is supplied, this is used, and the iteration
+          starts from array element 0.
+        </div>
+
+        <h3>Moderatley Used</h3>
+        <h4>
+          .entries(), .keys(), .values(), .includes(), .indexOf(),
+          .lastIndexOf(), .join(), .flatMap()
+        </h4>
+        1. myArr.entries(); returns an iterable object with key/value pairs that
+        can accessed by iterating over it and it doesn't change the original
+        array. Like <br />
+        for(let x of myArr.entries()) {console.log(x)}; //[0, "Java"], [1,
+        "Script"], [2, "React"]... <br />
+        2. myArr.keys(); returns an iterable object with keys(0,1,2,3) just like
+        entries.<br />
+        3. myArr.values(); returns an iterable object with
+        values(Java,Script,React,Redux) just like entries.<br />
+        Object.keys() 2.Array.from(object, mapFunction, thisValue) method
+        returns an array from any object with a length property. <br />
+        Example: Array.from("ABCD"); //["A","B","C","D"]; <br />
+        4. myArr.includes(element, start/position(optional)) returns true if
+        array contains specified element. <br />
+        5. myArr.indexOf(element, start/position(optional)) returns first
+        index(position) of specified element otherwise returns -1. <br />
+        6. myArr.lastIndexOf(element, start/position(optional)) returns last
+        index(position) of specified element otherwise returns -1. <br />
+        7. myArr.join("separator(sign/word/others)") makes an array into string
+        with the separator(if used) between elements. <br />
+        Example: myArr.join("*"); //Java*Script*React*Redux; <br />
+        8. myArr.flatMap(function(value, index, arrItself), thisValue) maps all
+        array elements and creates new array elements with specified condition.
+        <br />
+
+        <h3>Less Used</h3>
+        <h4>
+          .length, .concat(), .pop(), .shift(), .push(), .unshift(), .sort(),
+          .splice(), .slice(), .fill(), .copyWithin(), Array.from(), .isArray(),
+          .at(), .valueOf(), .flat(), .toString()
+        </h4>
+        1. myArr.length property returns the number of the elements in an array.
+        Its also set the length of an array like, myArr.length = 2; //["Java",
+        "Script"]
+        <br />
+        2. myArr.pop() method removes only the last element from original array
+        and returns removed element.<br />
+        3. myArr.shift() method removes only the first element from original
+        array and returns removed element. <br />
+        4. myArr.push(element1, element12,..) method add new elements to the end
+        of the original array and returns added elements as an array. <br />
+        5. myArr.unshift(element1, element12,..) method add new elements to the
+        begining of the original array and returns added elements as an array.
+        <br />
+
+        6. myArr.sort() method sorts the elements in ascending(as strings in
+        alphabetical) order and overwrites the original array. For descending
+        order use sortedArr.reverse().<br />
+        When sort() compares two values, it sends the values to the compare
+        function, and
+        <strong
+          >sorts the values according to the returned (negative, zero, positive)
+          value</strong
+        >.
+        <br />
+        7. myArr.splice(index(position),howmany(remove), item1("add"),
+        item2("add"),...) method add elements, remove elements or both add and
+        remove elements from an array on specified position and
+        <strong>returns only array of the removed elements</strong>. It also
+        <strong>overwrites the original array</strong>. <br />
+        8. myArr.slice(start, end) method
+        <strong>returns selected elements in an array, as a new array</strong>.
+        It <strong>does not change the original array</strong>. <br />
+        9. myArr.copyWithin(1(target), 0(start), 2(end)) copies specified array
+        elements and place them the target place like ["Java", "Java", "Script",
+        "React", "Redux"] <br />
+        10. myArr.fill(value, start, end) fills the array with the value from
+        specified position and overwrites the original array. <br />
+        11. myArr.concat(mayArr1, myArr2...) equals [myArr, myArr1, myArr2...]
+        <br />
+        12. myArr.at(index) is same as myArr[index] <br />
+
+        <h4>Array.prototype</h4>
+        <p>
+          prototype allows you to add new(your own customized) properties and
+          methods to arrays. It changes the original array.
+        </p>
+      </div>
+      <div>
+        <h2>All Example:</h2>
+
+        <h3>myArr.entries()</h3>
+        <p>
+          <button onclick="execEntries()">Try it!</button>
+          <span id="entries"></span>
+        </p>
+
+        <h3>myArr.every()</h3>
+        <p>
+          every(each) element[14, 10, 25] must be greater than 9:
+          <span id="every"></span>
+        </p>
+        <p>
+          every(each) element[14, 10, 25] must be greater than input:
+          <input id="variable" type="number" value="9" />
+          <button onclick="everyCheck()">Check it!</button>
+          <span id="every2"></span>
+        </p>
+
+        <h3>myArr.some()</h3>
+        <p>
+          At least one element[14, 10, 25] is greater than input:
+          <input id="variable-some" type="number" value="10" />
+          <button onclick="someCheck()">Check it!</button>
+          <span id="some"></span>
+        </p>
+
+        <h3>myArr.filter()</h3>
+        <p>
+          every(each) element[14, 10, 25] which is greater than input:
+          <input id="variable2" type="number" value="10" />
+          <button onclick="filterElement()">Try It</button>
+          <span id="filter"></span>
+        </p>
+
+        <h3>myArr.find()</h3>
+        <p>
+          First element[14, 10, 25] which is greater than input:
+          <input id="variable3" type="number" value="10" />
+          <button onclick="findElement()">Try It</button>
+          <span id="find"></span>
+        </p>
+
+        <h3>myArr.forEach()</h3>
+        <p>
+          every(each) element[25, 20, 31] is multiplied by the input:
+          <input id="variable4" type="number" value="10" />
+          <button onclick="eachElement()">Try It</button>
+          <span id="each"></span>
+        </p>
+
+        <h3>myArr.map()</h3>
+        <p>
+          Array[25, 20, 31] is mapped into square root:
+          <span id="map"></span> <br />
+          <span>.map() Ex2: <span id="map2"></span> </span>
+        </p>
+
+        <h3>myArr.reduce()</h3>
+        <p>
+          Array[25, 20, 31] is reduced into single value(.reduce()):
+          <span id="reduce"></span> <br />
+          <span>.reduceRight(): <span id="reduce-right"></span> </span>
+        </p>
+
+        <h3>Object.entries(object)</h3>
+        <p>
+          makes an object({ fname: "Java", lname: "Script" }) into an array with
+          key/value pairs: <span id="obj-entries"></span>
+        </p>
+        <p>
+          Object.keys(object) & Object.values(object) does the same thing with
+          an array of keys and an array of values.
+        </p>
+
+        <h3>myArr.sort()</h3>
+        <p>
+          array ["Java", "Script", "React", "Redux"] sorting in ascending order:
+          <span id="sorting"></span>
+        </p>
+        <p>
+          array ["Java", "Script", "React", "Redux"] sorting in descending
+          order: <span id="sorting-des"></span>
+        </p>
+        <p>
+          array [45, 10, -15, 25, 25, 47] sorting in ascending order:
+          <span id="sorting-num"></span>
+          <span>. Find lowest value: <span id="lowest"></span></span>
+          <span>. Find highest value: <span id="highest"></span></span>
+        </p>
+        <p>
+          array [45, 10, -15, 25, 25, 47] sorting in descending order:
+          <span id="sorting-num-des"></span>
+        </p>
+
+        <h3>myArr.splice()</h3>
+        <p>
+          array ["Java", "Script", "React", "Redux"] splice into respectively:
+          <br />
+          <span
+            >Add Elements(splice(2,0,"Angular","Vue")):
+            <span id="splice-add"></span> . Original Arr:
+            <span id="splice-add-org"></span
+          ></span>
+          <br />
+          <span
+            >Remove Elements(splice(2,1)): <span id="splice-remove"></span> .
+            Original Arr: <span id="splice-remove-org"></span
+          ></span>
+          <br />
+          <span
+            >Add & Remove Elements(splice(2,1,"Angular","Vue")):
+            <span id="splice-add-remove"></span> . Original Arr:
+            <span id="splice-add-remove-org"></span
+          ></span>
+        </p>
+
+        <h3>myArr.slice()</h3>
+        <p>
+          array ["Java", "Script", "React", "Redux"] slice into:
+          <span id="slice"></span>
+        </p>
+
+        <h3>Array.prototype</h3>
+        <p>Customized properties or methods: <span id="prototype"></span></p>
+
+        <h3>Symbol.iterator & next()</h3>
+        <p>Use of Symbol.iterator: <span id="symbol-iterator"></span></p>
+      </div>
+    </div>
+
+    <script>
+      let myEntries = ["Java", "Script", "React", "Redux"];
+      let output = myEntries.entries();
+
+      function execEntries() {
+        for (let x of output) {
+          document.getElementById("entries").innerHTML += "[" + x + "],";
+        }
+      }
+    </script>
+
+    <script>
+      let myArr = [14, 10, 25];
+
+      /* let result = myArr.every((number) => {
+        return number > 10;
+      }); */
+
+      let result = myArr.every((number) => number > 9);
+
+      document.getElementById("every").innerHTML = result;
+
+      /* check consumer input number */
+      function checkNumber(number) {
+        return number > document.getElementById("variable").value;
+      }
+
+      function everyCheck() {
+        document.getElementById("every2").innerHTML = myArr.every(checkNumber);
+      }
+
+      /* shorthand it also can be written as below */
+      /* function everyCheck() {
+        document.getElementById("every2").innerHTML = myArr.every(
+          (number) => number > document.getElementById("variable").value
+        );
+      } */
+    </script>
+    <script>
+      function someCheck() {
+        document.getElementById("some").innerHTML = myArr.some(
+          (number) => number > document.getElementById("variable-some").value
+        );
+      }
+    </script>
+
+    <script>
+      let myFilter = [14, , 10, 25];
+      /* function checkNumber(number) {
+        return number > document.getElementById("variable2").value
+      } */
+      function filterElement() {
+        let result = myFilter.filter(
+          (number) => number > document.getElementById("variable2").value
+        );
+        document.getElementById("filter").innerHTML += result + ",";
+      }
+    </script>
+
+    <script>
+      function findElement() {
+        let result = myArr.find(
+          (number) => number > document.getElementById("variable3").value
+        );
+        document.getElementById("find").innerHTML += result + ",";
+      }
+    </script>
+
+    <script>
+      let eachArr = [25, 20, 31];
+      function eachElement() {
+        eachArr.forEach((number, index, arrItself) => {
+          arrItself[index] =
+            number * document.getElementById("variable4").value;
+          console.log(arrItself[index]);
+        });
+        document.getElementById("each").innerHTML += eachArr + ",";
+        console.log(eachArr);
+      }
+    </script>
+
+    <script>
+      let mapArr = [25, 20, 31];
+
+      let mapResult = mapArr.map(Math.sqrt); //Math.sqrt() acts as a callback function
+      //let mapResult = mapArr.map((value) => Math.sqrt(value));
+
+      mapResult.forEach((value) => {
+        document.getElementById("map").innerHTML += Math.round(value) + ",";
+        console.log(Math.round(value));
+      });
+
+      //document.getElementById("map").innerHTML = mapResult;
+
+      let mapResult1 = mapArr.map((value, index) => value * 10);
+      document.getElementById("map2").innerHTML = mapResult1;
+    </script>
+
+    <script>
+      let reduceArr = [25, 20, 31];
+      let reduceResult = reduceArr.reduce(reduceCallback, 10);
+
+      function reduceCallback(total, currentValue) {
+        return total - currentValue;
+      }
+      document.getElementById("reduce").innerHTML = reduceResult;
+
+      /* reduceRught */
+      let reduceRightResult = reduceArr.reduceRight((total, value) => {
+        return total - value;
+      });
+      document.getElementById("reduce-right").innerHTML = reduceRightResult;
+    </script>
+
+    <script>
+      const myObject = { fname: "Java", lname: "Script" };
+      document.getElementById("obj-entries").innerHTML =
+        Object.entries(myObject);
+      console.log(Object.entries(myObject));
+    </script>
+    <script>
+      let sortArr = ["Java", "Script", "React", "Redux"];
+      document.getElementById("sorting").innerHTML = sortArr.sort(); //array will be in ascending(alphabetical) order
+      document.getElementById("sorting-des").innerHTML = sortArr.reverse();
+
+      let numSortArr = [45, 10, -15, 25, 25, 47];
+      //sorts the values according to the returned (negative,zero, positive) value.
+      document.getElementById("sorting-num").innerHTML = numSortArr.sort(
+        (a, b) => a - b
+      );
+      document.getElementById("lowest").innerHTML = numSortArr[0];
+      document.getElementById("highest").innerHTML =
+        numSortArr[numSortArr.length - 1];
+
+      document.getElementById("sorting-num-des").innerHTML = numSortArr.sort(
+        (a, b) => {
+          return b - a;
+        }
+      );
+    </script>
+
+    <script>
+      /* splice */
+      //.splice() returns only array of the removed elements
+      let addArr = ["Java", "Script", "React", "Redux"];
+      document.getElementById("splice-add").innerHTML = addArr.splice(
+        2,
+        0,
+        "Angular",
+        "Vue"
+      );
+      document.getElementById("splice-add-org").innerHTML = addArr;
+
+      let removeArr = ["Java", "Script", "React", "Redux"];
+      document.getElementById("splice-remove").innerHTML = removeArr.splice(
+        2,
+        2
+      );
+      document.getElementById("splice-remove-org").innerHTML = removeArr;
+
+      let addRemArr = ["Java", "Script", "React", "Redux"];
+      document.getElementById("splice-add-remove").innerHTML = addRemArr.splice(
+        2,
+        1,
+        "Angular",
+        "Vue"
+      );
+      document.getElementById("splice-add-remove-org").innerHTML = addRemArr;
+
+      /* slice */
+      let sliceArr = ["Java", "Script", "React", "Redux"];
+      //document.getElementById("slice").innerHTML = sliceArr.slice(2); //slice position 2 upto end
+      //document.getElementById("slice").innerHTML = sliceArr.slice(1, 2); //slice position 1 upto 1
+      document.getElementById("slice").innerHTML = sliceArr.slice(-3, -1); //slice position(always left to right) -3(1) upto -2(2)
+    </script>
+
+    <script>
+      let prototypeArr = ["Java", "Script", "React", "Redux"];
+      Array.prototype.customizedUpperCase = function () {
+        for (let i = 0; i < this.length; i++) {
+          this[i] = this[i].toUpperCase();
+        }
+      };
+      prototypeArr.customizedUpperCase();
+      document.getElementById("prototype").innerHTML = prototypeArr;
+    </script>
+
+    <script>
+      //create an object
+      let iteratorObj = {};
+
+      //make it iterable
+      iteratorObj[Symbol.iterator] = function () {
+        let n = 0;
+        done = false;
+        return {
+          next() {
+            n += 10;
+            if (n == 100) {
+              done = true;
+            }
+            return { value: n, done: done };
+          },
+        };
+      };
+
+      /* 
+      //Symbol.iterator method is called automatically by for..of
+      for (let x of iteratorObj) {
+        document.getElementById("symbol-iterator").innerHTML += x + ",";
+      } */
+
+      //make an iterator
+      let resultIterator = iteratorObj[Symbol.iterator]();
+
+      //we can call it manually by using next() method
+      while (true) {
+        const result = resultIterator.next();
+        if (result.done) break;
+        document.getElementById("symbol-iterator").innerHTML +=
+          result.value + ",";
+      }
+    </script>
+  </body>
+</html>

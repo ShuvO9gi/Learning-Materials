@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autocomplete Search Box</title>
+    <!-- <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script> -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #644bff;
+      padding: 0 20px;
+    }
+
+    ::selection {
+      color: #fff;
+      background: #664aff;
+    }
+
+    .wrapper {
+      max-width: 450px;
+      margin: 150px auto;
+    }
+
+    .wrapper .container-tutorial {
+      margin-top: -80px;
+      margin-bottom: 30px;
+    }
+
+    .wrapper .search-input {
+      background: #fff;
+      width: 100%;
+      border-radius: 5px;
+      position: relative;
+      box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.12);
+    }
+
+    .search-input input {
+      height: 55px;
+      width: 100%;
+      outline: none;
+      border: none;
+      border-radius: 5px;
+      padding: 0 60px 0 20px;
+      font-size: 18px;
+      box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .search-input.active input {
+      border-radius: 5px 5px 0 0;
+    }
+
+    .search-input .autocom-box {
+      /* padding: 10px 8px; */
+      padding: 0;
+      opacity: 0;
+      pointer-events: none;
+      max-height: 280px;
+      overflow-y: auto;
+    }
+
+    .search-input.active .autocom-box {
+      padding: 10px 8px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .autocom-box li {
+      list-style: none;
+      padding: 8px 12px;
+      display: none;
+      width: 100%;
+      cursor: default;
+      border-radius: 3px;
+    }
+
+    .search-input.active .autocom-box li {
+      display: block;
+    }
+    .autocom-box li:hover {
+      background: #efefef;
+    }
+
+    .search-input .icon {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      height: 55px;
+      width: 55px;
+      text-align: center;
+      line-height: 55px;
+      font-size: 20px;
+      color: #644bff;
+      cursor: pointer;
+    }
+  </style>
+  <body>
+    <div class="wrapper">
+      <div class="container-tutorial">
+        <h2>
+          <span>Tutorials on: </span>Search Bar with Auto-complete Search
+          Suggestions using HTML CSS & JavaScript
+        </h2>
+        <a
+          href="https://www.youtube.com/watch?v=QxMBHi_ZiT8&t=92s"
+          target="_blank"
+          >Click to Watch</a
+        >
+      </div>
+      <div class="search-input">
+        <a href="" target="_blank" hidden></a>
+        <input type="text" placeholder="Type to search..." />
+        <div class="autocom-box">
+          <!-- <li>Login Form in HTML & CSS</li>
+          <li>How to learn HTML & CSS</li>
+          <li>How to learn JavaScript</li>
+          <li>How to became Freelancer</li>
+          <li>How to became designer</li> -->
+        </div>
+        <div class="icon"><i class="fa fa-search"></i></div>
+      </div>
+
+      <!-- <div class="check"></div> -->
+    </div>
+
+    <script src="suggestion.js"></script>
+
+    <!-- <script>
+      //document.querySelector(".check").innerHTML = ["a", "b", 3].join("");
+
+      //getting all required elements
+      const searchWrapper = document.querySelector(".search-input");
+      const inputBox = searchWrapper.querySelector("input");
+      const suggBox = searchWrapper.querySelector(".autocom-box");
+
+      //if user press any key and release
+      inputBox.onkeyup = (e) => {
+        //console.log(e.target.value);
+        let userData = e.target.value;
+        let emptyArray = [];
+        if (userData) {
+          emptyArray = suggestions.filter((data) => {
+            //filtering array value and user char to lowercase and
+            //return only those word/sentence which are matches/starts with user entered word
+
+            //show suggestion for single word
+            //return data.toLocaleLowerCase().includes(userData.toLocaleLowerCase());
+
+            return data
+              .toLocaleLowerCase()
+              .startsWith(userData.toLocaleLowerCase());
+          });
+
+          emptyArray = emptyArray.map((data2) => {
+            return (data = "<li>" + data2 + "</li>");
+          });
+
+          console.log(emptyArray);
+
+          searchWrapper.classList.add("active"); //show autocomplete box
+
+          showSuggestion(emptyArray);
+
+          let allList = suggBox.querySelectorAll("li");
+          for (let i = 0; i < allList.length; i++) {
+            //adding onclick attribute on all li tag
+            allList[i].setAttribute("onclick", "select(this)");
+          }
+        } else {
+          searchWrapper.classList.remove("active"); //hide autocomplete box //otherwise there will be a blank line
+        }
+      };
+
+      function select(element) {
+        let selectUserData = element.textContent;
+        //console.log(selectUserData);
+        inputBox.value = selectUserData; //passing the user selected list item data to the textfield
+        searchWrapper.classList.remove("active"); //after data selection hide autocomplete box
+      }
+
+      function showSuggestion(list) {
+        let listData;
+
+        if (!list.length) {
+          //when user input doesn't match, list.length will be 0
+          //used to catch the unmatched word //otherwise it will return undefined
+          let userValue = inputBox.value;
+          listData = userValue;
+        } else {
+          listData = list.join("");
+        }
+
+        //suggBox.innerHTML = list; //without joining
+        suggBox.innerHTML = listData;
+      }
+    </script> -->
+
+    <script>
+      //document.querySelector(".check").innerHTML = ["a", "b", 3].join("");
+
+      //getting all required elements
+      const searchWrapper = document.querySelector(".search-input");
+      const inputBox = searchWrapper.querySelector("input");
+      const suggBox = searchWrapper.querySelector(".autocom-box");
+
+      //for search icon
+      const icon = searchWrapper.querySelector(".icon");
+      const linkTag = searchWrapper.querySelector("a");
+      let webLink;
+
+      //if user press any key and release
+      inputBox.onkeyup = (e) => {
+        //console.log(e.target.value);
+        let userData = e.target.value;
+        let emptyArray = [];
+        if (userData) {
+          //for search icon(check it whether it has any uses)
+          icon.onclick = () => {
+            webLink = `https://www.google.com/search?q=${userData}`;
+            linkTag.setAttribute("href", webLink);
+            linkTag.click();
+          };
+
+          emptyArray = suggestions.filter((data) => {
+            //filtering array value and user char to lowercase and
+            //return only those word/sentence which are matches/starts with user entered word
+
+            //show suggestion for single word
+            //return data.toLocaleLowerCase().includes(userData.toLocaleLowerCase());
+
+            return data
+              .toLocaleLowerCase()
+              .startsWith(userData.toLocaleLowerCase());
+          });
+
+          emptyArray = emptyArray.map((data2) => {
+            return (data = "<li>" + data2 + "</li>");
+          });
+
+          console.log(emptyArray);
+
+          searchWrapper.classList.add("active"); //show autocomplete box
+
+          showSuggestion(emptyArray);
+
+          let allList = suggBox.querySelectorAll("li");
+          for (let i = 0; i < allList.length; i++) {
+            //adding onclick attribute on all li tag
+            allList[i].setAttribute("onclick", "select(this)");
+          }
+        } else {
+          searchWrapper.classList.remove("active"); //hide autocomplete box //otherwise there will be a blank line
+        }
+      };
+
+      function select(element) {
+        let selectUserData = element.textContent;
+        //console.log(selectUserData);
+        inputBox.value = selectUserData; //passing the user selected list item data to the textfield
+
+        //search icon
+        icon.onclick = () => {
+          webLink = `https://www.google.com/search?q=${selectUserData}`;
+          linkTag.setAttribute("href", webLink);
+          linkTag.click();
+
+          //after click clear(remove text from) search box
+          inputBox.value = "";
+        };
+
+        searchWrapper.classList.remove("active"); //after data selection hide autocomplete box
+      }
+
+      function showSuggestion(list) {
+        let listData;
+
+        if (!list.length) {
+          //when user input doesn't match, list.length will be 0
+          //used to catch the unmatched word //otherwise it will return undefined
+          let userValue = inputBox.value;
+          //listData = userValue;
+          listData = `<li>${userValue}</li>`;
+        } else {
+          listData = list.join("");
+        }
+
+        //suggBox.innerHTML = list; //without joining
+        suggBox.innerHTML = listData;
+      }
+    </script>
+  </body>
+</html>
