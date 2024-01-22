@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listing;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -38,10 +39,14 @@ class ListingController extends Controller
         ]);
 
         //Save the data to the database
-        Listing::create($request->all()); //Not Recommended
+        //Listing::create($request->all()); //Not Recommended
         Listing::create($formFields);
 
-        return redirect("/");
+        //Flash Message
+        // Session::flash("message", "Listing Created Successfully.");
+        //session()->flash("message", "Listing Created Successfully.");
+
+        return redirect("/")->with("message"/* "success"/"error" */, "Listing Created Successfully");
     }
 
     //Show single listing
