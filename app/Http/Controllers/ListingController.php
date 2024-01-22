@@ -12,11 +12,18 @@ class ListingController extends Controller
     //Show all listing
     public function index(/* Request $request */) {
         //dd(request("tag")); //dd(request()->tag); //dd(request()); //dd($request);
+        //Check the output
+        //dd(Listing::latest()->filter(request(['tag', 'search']))->paginate(2));
         
         return view("listings.index", [
             // "listings" => Listing::all(), // Listing::latest()->get()
             // "listings" => Listing::latest()->try(request(["tag", "search"]))->get(),
-            "listings" => Listing::latest()->filter(request(["tag", "search"]))->get(),
+            
+            //"listings" => Listing::latest()->filter(request(["tag", "search"]))->get(), //Same result //"listings" => Listing::latest()->filter(request(["tag", "search"]))->paginate(),
+
+            //For pagination
+            //"listings" => Listing::latest()->filter(request(["tag", "search"]))->simplePaginate(2), //pagination with Next & Previous
+            "listings" => Listing::latest()->filter(request(["tag", "search"]))->paginate(6), //pagination with show results
         ]);
     }
 
