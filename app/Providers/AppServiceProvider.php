@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //Elminate The Requirement of protected fillable in Lisitng Models but beware of what type of data is posted
-        // Model::unguard();
+        //Model::unguard();
         //Paginator::useBootstrapFive();
     }
 }

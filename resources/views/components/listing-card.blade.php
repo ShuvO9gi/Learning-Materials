@@ -7,7 +7,7 @@
             {{--
             src="images/no-image.png"
             --}}
-            src="{{ asset('images/no-image.png') }}"
+            src="{{ $listing->logo ? asset('storage/' . $listing->logo) : asset('images/no-image.png') }}"
             alt=""
         />
         <div>

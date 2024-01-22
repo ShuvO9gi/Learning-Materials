@@ -35,6 +35,8 @@ class ListingController extends Controller
     //Store Form
     public function store(Request $request) {
         //dd($request->all());
+        //dd($request->file("logo")->store());
+        
         $formFields = $request->validate([
             "title" => "required",
             "company" => ["required", Rule::unique("listings", "company")],
@@ -44,6 +46,11 @@ class ListingController extends Controller
             "tags" => "required",
             "description" => "required"
         ]);
+
+        //For File Upload
+        if($request->hasFile("logo")) {
+            $formFields["logo"] = $request->file("logo")->store("logos", "public");
+        }
 
         //Save the data to the database
         //Listing::create($request->all()); //Not Recommended
