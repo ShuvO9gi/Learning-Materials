@@ -42,4 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    //Relationship To Listing
+    public function listings() {
+        return $this->belongsTo([Listing::class, "user_id"]);
+    }
 }
