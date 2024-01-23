@@ -52,6 +52,9 @@ class ListingController extends Controller
             $formFields["logo"] = $request->file("logo")->store("logos", "public");
         }
 
+        //Add Ownership To A Listing
+        $formFields["user_id"] = auth()->id();
+
         //Save the data to the database
         //Listing::create($request->all()); //Not Recommended
         Listing::create($formFields);
