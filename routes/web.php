@@ -21,36 +21,42 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", [ListingController::class, "index"]);
 
 //Show Create Form
+    //Anyone Can Access
 Route::get("/listings/create", [ListingController::class, "create"]);
+    //Authenticated User Can Access
+Route::get("/listings/create", [ListingController::class, "create"])->middleware("auth");
 
 //Store Listing
 Route::post("/listings", [ListingController::class, "store"]);
 
 //Show Edit Form
-Route::get("/listings/{listing}/edit", [ListingController::class, "edit"]);
+Route::get("/listings/{listing}/edit", [ListingController::class, "edit"])->middleware("auth");
 
 //Update Listing
-Route::put("/listings/{listing}", [ListingController::class, "update"]);
+Route::put("/listings/{listing}", [ListingController::class, "update"])->middleware("auth");
 
 //Delete Listing
-Route::delete("/listings/{listing}", [ListingController::class, "destroy"]);
+Route::delete("/listings/{listing}", [ListingController::class, "destroy"])->middleware("auth");
 
 //Single Listing
 Route::get("/listings/{listing}", [ListingController::class, "show"]);
 
 //Show Register/Create Form
-Route::get("/register", [UserController::class, "create"]);
+    //Logged In User Can Access
+//Route::get("/register", [UserController::class, "create"]);
+    //Logged In User Can't Access but Guest(Anybody) //Redirect To Home Page with RouteServiceProvider
+Route::get("/register", [UserController::class, "create"])->middleware("guest");
 
 //Create New User
 Route::post("/users", [UserController::class, "store"]);
 
 //Logout User
-Route::post("/logout", [UserController::class, "logout"]);
+Route::post("/logout", [UserController::class, "logout"])->middleware("auth");
 
 //Login User
-Route::get("/login", [UserController::class, "login"]);
+Route::get("/login", [UserController::class, "login"])->name("login")->middleware("guest");
 
-//Authenticate User
+//Authenticate/Validate User
 Route::post("/users/authenticate", [UserController::class, "authenticate"]);
 
 //Common Resource Routes:
