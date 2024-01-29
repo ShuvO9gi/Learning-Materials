@@ -8,7 +8,7 @@ class Listing {
                 [
                     "id"=> 1,
                     "title" => "Listing One",
-                    "description" => "Description One: Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus dolore neque architecto, cupiditate corporis facere? Minima perferendis officia quam, suscipit hic odio est magni eos. Atque dolor dolore dolores rem.", 
+                    "description" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus dolore neque architecto, cupiditate corporis facere? Minima perferendis officia quam, suscipit hic odio est magni eos. Atque dolor dolore dolores rem.", 
                 ],
                 [
                     "id"=> 2,
